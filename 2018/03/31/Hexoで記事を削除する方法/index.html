@@ -7,18 +7,18 @@
   
   <title>Hexoで記事を削除する方法 | Test Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hexoで記事を削除するとき、なぜかうまく削除できなくて困ったのでメモ。 削除しようとしても、削除されない？/source/_postsディレクトリ内で消したい記事名の.mdファイルを消しても、なぜかサイトを表示させるとその記事が消えてなくてこまった。 どうやら.mdファイルを消しても、db.jsonというファイルにキャッシュが残っている模様。 対処法1$ hexo clean これだけでなおった">
+  <meta name="description" content="Hexoで記事を削除するとき、なぜかうまく削除できなくて困ったのでメモ。 削除しようとしても、削除されない？/_postsフォルダ内で消したい記事名の.mdファイルを消しても、サイトを表示させるとその記事が消えてなくて生き残っていて困った。 どうやら.mdファイルを消しても、db.jsonというファイルにキャッシュが残っている模様。 対処法1$ hexo clean これだけでなおった！ clea">
 <meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexoで記事を削除する方法">
 <meta property="og:url" content="https://tars75.github.io/hexotest/2018/03/31/Hexoで記事を削除する方法/index.html">
 <meta property="og:site_name" content="Test Blog">
-<meta property="og:description" content="Hexoで記事を削除するとき、なぜかうまく削除できなくて困ったのでメモ。 削除しようとしても、削除されない？/source/_postsディレクトリ内で消したい記事名の.mdファイルを消しても、なぜかサイトを表示させるとその記事が消えてなくてこまった。 どうやら.mdファイルを消しても、db.jsonというファイルにキャッシュが残っている模様。 対処法1$ hexo clean これだけでなおった">
+<meta property="og:description" content="Hexoで記事を削除するとき、なぜかうまく削除できなくて困ったのでメモ。 削除しようとしても、削除されない？/_postsフォルダ内で消したい記事名の.mdファイルを消しても、サイトを表示させるとその記事が消えてなくて生き残っていて困った。 どうやら.mdファイルを消しても、db.jsonというファイルにキャッシュが残っている模様。 対処法1$ hexo clean これだけでなおった！ clea">
 <meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2018-03-30T18:27:56.000Z">
+<meta property="og:updated_time" content="2018-03-30T18:32:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexoで記事を削除する方法">
-<meta name="twitter:description" content="Hexoで記事を削除するとき、なぜかうまく削除できなくて困ったのでメモ。 削除しようとしても、削除されない？/source/_postsディレクトリ内で消したい記事名の.mdファイルを消しても、なぜかサイトを表示させるとその記事が消えてなくてこまった。 どうやら.mdファイルを消しても、db.jsonというファイルにキャッシュが残っている模様。 対処法1$ hexo clean これだけでなおった">
+<meta name="twitter:description" content="Hexoで記事を削除するとき、なぜかうまく削除できなくて困ったのでメモ。 削除しようとしても、削除されない？/_postsフォルダ内で消したい記事名の.mdファイルを消しても、サイトを表示させるとその記事が消えてなくて生き残っていて困った。 どうやら.mdファイルを消しても、db.jsonというファイルにキャッシュが残っている模様。 対処法1$ hexo clean これだけでなおった！ clea">
   
     <link rel="alternate" href="/hexotest/atom.xml" title="Test Blog" type="application/atom+xml">
   
@@ -92,7 +92,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Hexoで記事を削除するとき、なぜかうまく削除できなくて困ったのでメモ。</p>
-<h2 id="削除しようとしても、削除されない？"><a href="#削除しようとしても、削除されない？" class="headerlink" title="削除しようとしても、削除されない？"></a>削除しようとしても、削除されない？</h2><p>/source/_postsディレクトリ内で消したい記事名の.mdファイルを消しても、なぜかサイトを表示させるとその記事が消えてなくてこまった。</p>
+<h2 id="削除しようとしても、削除されない？"><a href="#削除しようとしても、削除されない？" class="headerlink" title="削除しようとしても、削除されない？"></a>削除しようとしても、削除されない？</h2><p>/_postsフォルダ内で消したい記事名の.mdファイルを消しても、サイトを表示させるとその記事が消えてなくて生き残っていて困った。</p>
 <p>どうやら.mdファイルを消しても、db.jsonというファイルにキャッシュが残っている模様。</p>
 <h2 id="対処法"><a href="#対処法" class="headerlink" title="対処法"></a>対処法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
 <p>これだけでなおった！</p>
