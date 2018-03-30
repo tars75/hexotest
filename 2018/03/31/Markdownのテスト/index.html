@@ -5,18 +5,22 @@
   
 
   
-  <title>Test Blog</title>
+  <title>Markdownのテスト | Test Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="This is a test blog using hexo">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Test Blog">
-<meta property="og:url" content="https://tars75.github.io/hexotest/index.html">
+  <meta name="description" content="Markdownはまったく書いたことないので、とりあえずいろいろ試して見る。いろいろ方言があるみたいだけど、今回はHexoでどうなるのか確認もしたい。ちなみに困ったときはそのままHTMLのタグを書けばちゃんと反映されるみたい。 Headingの書き方Headingはでっかい見出し文字のこと。#が多いほど小さくなる。とてもよく使いそう。 123# Heading 1## Heading 2### H">
+<meta name="keywords" content="Hexo,Markdown">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdownのテスト">
+<meta property="og:url" content="https://tars75.github.io/hexotest/2018/03/31/Markdownのテスト/index.html">
 <meta property="og:site_name" content="Test Blog">
-<meta property="og:description" content="This is a test blog using hexo">
+<meta property="og:description" content="Markdownはまったく書いたことないので、とりあえずいろいろ試して見る。いろいろ方言があるみたいだけど、今回はHexoでどうなるのか確認もしたい。ちなみに困ったときはそのままHTMLのタグを書けばちゃんと反映されるみたい。 Headingの書き方Headingはでっかい見出し文字のこと。#が多いほど小さくなる。とてもよく使いそう。 123# Heading 1## Heading 2### H">
 <meta property="og:locale" content="ja">
+<meta property="og:image" content="https://tars75.github.io/hexotest/2018/03/31/Markdownのテスト/画像のURL">
+<meta property="og:updated_time" content="2018-03-30T18:19:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Test Blog">
-<meta name="twitter:description" content="This is a test blog using hexo">
+<meta name="twitter:title" content="Markdownのテスト">
+<meta name="twitter:description" content="Markdownはまったく書いたことないので、とりあえずいろいろ試して見る。いろいろ方言があるみたいだけど、今回はHexoでどうなるのか確認もしたい。ちなみに困ったときはそのままHTMLのタグを書けばちゃんと反映されるみたい。 Headingの書き方Headingはでっかい見出し文字のこと。#が多いほど小さくなる。とてもよく使いそう。 123# Heading 1## Heading 2### H">
+<meta name="twitter:image" content="https://tars75.github.io/hexotest/2018/03/31/Markdownのテスト/画像のURL">
   
     <link rel="alternate" href="/hexotest/atom.xml" title="Test Blog" type="application/atom+xml">
   
@@ -67,54 +71,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Hexoで記事を削除する方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/hexotest/2018/03/31/Hexoで記事を削除する方法/" class="article-date">
-  <time datetime="2018-03-30T18:15:34.000Z" itemprop="datePublished">2018-03-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexotest/2018/03/31/Hexoで記事を削除する方法/">Hexoで記事を削除する方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Hexoで記事を削除するとき、なぜかうまく削除できなくて困ったのでメモ。</p>
-<h2 id="削除しようとしても、削除されない？"><a href="#削除しようとしても、削除されない？" class="headerlink" title="削除しようとしても、削除されない？"></a>削除しようとしても、削除されない？</h2><p>/source/_postsディレクトリ内で消したい記事名の.mdファイルを消しても、なぜかサイトを表示させるとその記事が消えてなくてこまった。</p>
-<p>どうやら.mdファイルを消しても、db.jsonというファイルにキャッシュが残っている模様。</p>
-<h2 id="対処法"><a href="#対処法" class="headerlink" title="対処法"></a>対処法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
-<p>これだけでなおった！</p>
-<p>cleanコマンドを使うと、db.jsonと、generateされたpublicファイルが文字通りクリーンされる様子。削除するとき以外でもなんかおかしいなと思ったらとりあえずcleanしてみたらいいかもしれない。</p>
-<p><a href="https://hexo.io/docs/commands.html#clean" target="_blank" rel="noopener">公式ドキュメント</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://tars75.github.io/hexotest/2018/03/31/Hexoで記事を削除する方法/" data-id="cjfea8oo30000kubmwhox1jhq" class="article-share-link">共有</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexotest/tags/Hexo/">Hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Markdownのテスト" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Markdownのテスト" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/hexotest/2018/03/31/Markdownのテスト/" class="article-date">
   <time datetime="2018-03-30T17:01:35.000Z" itemprop="datePublished">2018-03-31</time>
@@ -127,8 +84,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexotest/2018/03/31/Markdownのテスト/">Markdownのテスト</a>
+    <h1 class="article-title" itemprop="name">
+      Markdownのテスト
     </h1>
   
 
@@ -202,102 +159,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Hexoで記事を書いてみる" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/hexotest/2018/03/31/Hexoで記事を書いてみる/" class="article-date">
-  <time datetime="2018-03-30T16:40:00.000Z" itemprop="datePublished">2018-03-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/hexotest/2018/03/31/Hexoで記事を削除する方法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexotest/2018/03/31/Hexoで記事を書いてみる/">Hexoで記事を書いてみる</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Webの勉強がてら、Hexoでブログを作ってみることにした。</p>
-<h3 id="とりあえず記事を書いてみる"><a href="#とりあえず記事を書いてみる" class="headerlink" title="とりあえず記事を書いてみる"></a>とりあえず記事を書いてみる</h3><p>記事を作るときは、</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"記事のタイトル名"</span></span><br></pre></td></tr></table></figure>
-<p>とコマンドラインに入力する。</p>
-<p>そうすると、sourceというフォルダに記事のタイトル名のMarkdownファイルができる。<br>あとはこのMarkdownファイルを開いて好きなように記事を書けばOK！</p>
-<p>draftというコマンドで下書きも書けるみたいだけど、そもそもサーバーにdeployするまでは公開されないので、今の所は使わなさそう。</p>
-<h3 id="今後の課題"><a href="#今後の課題" class="headerlink" title="今後の課題"></a>今後の課題</h3><p>記事を書くにあたって、Markdownの書き方を覚える必要がある。</p>
-<h3 id="公式のドキュメント"><a href="#公式のドキュメント" class="headerlink" title="公式のドキュメント"></a>公式のドキュメント</h3><p>公式サイトにちゃんと<a href="http://hexo.io/docs/" target="_blank" rel="noopener">ドキュメント</a>があるので、まずはここを見てみるのがよさそう。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://tars75.github.io/hexotest/2018/03/31/Hexoで記事を書いてみる/" data-id="cjfea8oo80001kubmgmn8w8vl" class="article-share-link">共有</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexotest/tags/Hexo/">Hexo</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/hexotest/2018/03/29/hello-world/" class="article-date">
-  <time datetime="2018-03-29T13:57:04.000Z" itemprop="datePublished">2018-03-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          Hexoで記事を削除する方法
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/hexotest/2018/03/29/hello-world/">Hello World</a>
-    </h1>
   
+    <a href="/hexotest/2018/03/31/Hexoで記事を書いてみる/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Hexoで記事を書いてみる</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://tars75.github.io/hexotest/2018/03/29/hello-world/" data-id="cjfea8oog0004kubmmck4usok" class="article-share-link">共有</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
 
 </section>
         
