@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Webの勉強がてら、Hexoでブログを作ってみることにした。 とりあえず記事を書いてみる記事を作るときは、 1$ hexo new &quot;記事のタイトル名&quot; とコマンドラインに入力する。 そうすると、sourceというフォルダ配下の_postsというフォルダ内に記事のタイトル名のMarkdownファイルができる。あとはこのMarkdownファイルを開いて好きなように記事を書けばOK！ draftという">
+<meta name="description" content="Hexoで記事を削除するとき、なぜかうまく削除できなくて困ったのでメモ。 削除しようとしても、削除されない？_postsフォルダ内で消したい記事名の.mdファイルを消しても、サイトを表示させるとその記事が消えてなくて生き残っていて困った。 どうやら.mdファイルを消しても、db.jsonというファイルにキャッシュが残っている模様。 対処法1$ hexo clean これだけでなおった！ clean">
 <meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexoで記事を書いてみる">
-<meta property="og:url" content="https://tars75.github.io/hexotest/2018/03/31/Hexoで記事を書いてみる/index.html">
+<meta property="og:title" content="Hexoで記事を削除する方法">
+<meta property="og:url" content="https://tars75.github.io/hexotest/2018/03/31/delete-post/index.html">
 <meta property="og:site_name" content="ノートでありメモでありブログであり">
-<meta property="og:description" content="Webの勉強がてら、Hexoでブログを作ってみることにした。 とりあえず記事を書いてみる記事を作るときは、 1$ hexo new &quot;記事のタイトル名&quot; とコマンドラインに入力する。 そうすると、sourceというフォルダ配下の_postsというフォルダ内に記事のタイトル名のMarkdownファイルができる。あとはこのMarkdownファイルを開いて好きなように記事を書けばOK！ draftという">
+<meta property="og:description" content="Hexoで記事を削除するとき、なぜかうまく削除できなくて困ったのでメモ。 削除しようとしても、削除されない？_postsフォルダ内で消したい記事名の.mdファイルを消しても、サイトを表示させるとその記事が消えてなくて生き残っていて困った。 どうやら.mdファイルを消しても、db.jsonというファイルにキャッシュが残っている模様。 対処法1$ hexo clean これだけでなおった！ clean">
 <meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2018-03-30T18:35:59.000Z">
+<meta property="og:updated_time" content="2018-03-30T18:35:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexoで記事を書いてみる">
-<meta name="twitter:description" content="Webの勉強がてら、Hexoでブログを作ってみることにした。 とりあえず記事を書いてみる記事を作るときは、 1$ hexo new &quot;記事のタイトル名&quot; とコマンドラインに入力する。 そうすると、sourceというフォルダ配下の_postsというフォルダ内に記事のタイトル名のMarkdownファイルができる。あとはこのMarkdownファイルを開いて好きなように記事を書けばOK！ draftという">
+<meta name="twitter:title" content="Hexoで記事を削除する方法">
+<meta name="twitter:description" content="Hexoで記事を削除するとき、なぜかうまく削除できなくて困ったのでメモ。 削除しようとしても、削除されない？_postsフォルダ内で消したい記事名の.mdファイルを消しても、サイトを表示させるとその記事が消えてなくて生き残っていて困った。 どうやら.mdファイルを消しても、db.jsonというファイルにキャッシュが残っている模様。 対処法1$ hexo clean これだけでなおった！ clean">
 
 
 
@@ -114,7 +114,7 @@
   var CONFIG = {
     root: '/hexotest/',
     scheme: 'Muse',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: true,
@@ -138,7 +138,7 @@
 
 
 
-  <title>Hexoで記事を書いてみる | ノートでありメモでありブログであり</title>
+  <title>Hexoで記事を削除する方法 | ノートでありメモでありブログであり</title>
   
 
 
@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/03/31/Hexoで記事を書いてみる/">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/03/31/delete-post/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tars75">
@@ -278,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hexoで記事を書いてみる</h1>
+          <h1 class="post-title" itemprop="name headline">Hexoで記事を削除する方法</h1>
         
 
         <div class="post-meta">
@@ -290,7 +290,7 @@
               
                 <span class="post-meta-item-text">投稿日</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-31T01:40:00+09:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-31T03:15:34+09:00">
                 2018-03-31
               </time>
             
@@ -328,14 +328,13 @@
       
 
       
-        <p>Webの勉強がてら、Hexoでブログを作ってみることにした。</p>
-<h2 id="とりあえず記事を書いてみる"><a href="#とりあえず記事を書いてみる" class="headerlink" title="とりあえず記事を書いてみる"></a>とりあえず記事を書いてみる</h2><p>記事を作るときは、</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"記事のタイトル名"</span></span><br></pre></td></tr></table></figure>
-<p>とコマンドラインに入力する。</p>
-<p>そうすると、sourceというフォルダ配下の_postsというフォルダ内に記事のタイトル名のMarkdownファイルができる。<br>あとはこのMarkdownファイルを開いて好きなように記事を書けばOK！</p>
-<p>draftというコマンドで下書きも書けるみたいだけど、そもそもサーバーにdeployするまでは公開されないので、今の所は使わなさそう。</p>
-<h2 id="今後の課題"><a href="#今後の課題" class="headerlink" title="今後の課題"></a>今後の課題</h2><p>記事を書くにあたって、Markdownの書き方を覚える必要がある。</p>
-<h2 id="公式のドキュメント"><a href="#公式のドキュメント" class="headerlink" title="公式のドキュメント"></a>公式のドキュメント</h2><p>公式サイトにちゃんと<a href="http://hexo.io/docs/" target="_blank" rel="noopener">ドキュメント</a>があるので、まずはここを見てみるのがよさそう。</p>
+        <p>Hexoで記事を削除するとき、なぜかうまく削除できなくて困ったのでメモ。</p>
+<h2 id="削除しようとしても、削除されない？"><a href="#削除しようとしても、削除されない？" class="headerlink" title="削除しようとしても、削除されない？"></a>削除しようとしても、削除されない？</h2><p>_postsフォルダ内で消したい記事名の.mdファイルを消しても、サイトを表示させるとその記事が消えてなくて生き残っていて困った。</p>
+<p>どうやら.mdファイルを消しても、db.jsonというファイルにキャッシュが残っている模様。</p>
+<h2 id="対処法"><a href="#対処法" class="headerlink" title="対処法"></a>対処法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<p>これだけでなおった！</p>
+<p>cleanコマンドを使うと、db.jsonと、generateされたpublicファイルが文字通りクリーンされる様子。削除するとき以外でもなんかおかしいなと思ったらとりあえずcleanしてみたらいいかもしれない。</p>
+<p><a href="https://hexo.io/docs/commands.html#clean" target="_blank" rel="noopener">公式ドキュメント</a></p>
 
       
     </div>
@@ -366,8 +365,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hexotest/2018/03/29/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/hexotest/2018/03/31/Markdown-test/" rel="next" title="Markdownのテスト">
+                <i class="fa fa-chevron-left"></i> Markdownのテスト
               </a>
             
           </div>
@@ -376,8 +375,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/hexotest/2018/03/31/Markdownのテスト/" rel="prev" title="Markdownのテスト">
-                Markdownのテスト <i class="fa fa-chevron-right"></i>
+              <a href="/hexotest/2018/04/02/1/" rel="prev" title="Themeを変える">
+                Themeを変える <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -455,7 +454,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/hexotest/archives/">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
@@ -503,7 +502,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#とりあえず記事を書いてみる"><span class="nav-number">1.</span> <span class="nav-text">とりあえず記事を書いてみる</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#今後の課題"><span class="nav-number">2.</span> <span class="nav-text">今後の課題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公式のドキュメント"><span class="nav-number">3.</span> <span class="nav-text">公式のドキュメント</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#削除しようとしても、削除されない？"><span class="nav-number">1.</span> <span class="nav-text">削除しようとしても、削除されない？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#対処法"><span class="nav-number">2.</span> <span class="nav-text">対処法</span></a></li></ol></div>
             
 
           </div>
@@ -511,6 +510,11 @@
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
       
 
     </div>
@@ -552,11 +556,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
   </div>
