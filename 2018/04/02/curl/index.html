@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/hexotest/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/hexotest/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/hexotest/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="curl,command," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/hexotest/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Webについて勉強しはじめたばかりだけどコマンドラインが関わってくると、かなりの頻度でこのcurlというコマンドがでてくる。curlってなんだ？？ってことで、ちょっと調べてみることにした。 なるべくあとで見返したときにわかりやすように、調べたことを自分の言葉でメモしていこうと思う。  curlとは？curlとは、指定したURLに対していろんなタイプのリクエスト（GETとかPOSTとか）を行ったり、">
+<meta name="keywords" content="curl,command">
+<meta property="og:type" content="article">
+<meta property="og:title" content="curlについて調べる">
+<meta property="og:url" content="https://tars75.github.io/hexotest/2018/04/02/curl/index.html">
+<meta property="og:site_name" content="ノートでありメモでありブログであり">
+<meta property="og:description" content="Webについて勉強しはじめたばかりだけどコマンドラインが関わってくると、かなりの頻度でこのcurlというコマンドがでてくる。curlってなんだ？？ってことで、ちょっと調べてみることにした。 なるべくあとで見返したときにわかりやすように、調べたことを自分の言葉でメモしていこうと思う。  curlとは？curlとは、指定したURLに対していろんなタイプのリクエスト（GETとかPOSTとか）を行ったり、">
+<meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2018-04-02T16:14:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="curlについて調べる">
+<meta name="twitter:description" content="Webについて勉強しはじめたばかりだけどコマンドラインが関わってくると、かなりの頻度でこのcurlというコマンドがでてくる。curlってなんだ？？ってことで、ちょっと調べてみることにした。 なるべくあとで見返したときにわかりやすように、調べたことを自分の言葉でメモしていこうと思う。  curlとは？curlとは、指定したURLに対していろんなタイプのリクエスト（GETとかPOSTとか）を行ったり、">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hexotest/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>curlについて調べる | ノートでありメモでありブログであり</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ja">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hexotest/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ノートでありメモでありブログであり</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hexoでブログを作ってみるテスト</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/hexotest/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            ホーム
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/hexotest/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            アーカイブ
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/hexotest/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            タグ
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/02/curl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">curlについて調べる</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-02T22:04:02+09:00">
+                2018-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Webについて勉強しはじめたばかりだけどコマンドラインが関わってくると、かなりの頻度でこの<strong>curl</strong>というコマンドがでてくる。<strong>curl</strong>ってなんだ？？ってことで、ちょっと調べてみることにした。</p>
+<p>なるべくあとで見返したときにわかりやすように、調べたことを自分の言葉でメモしていこうと思う。</p>
+<hr>
+<h3 id="curlとは？"><a href="#curlとは？" class="headerlink" title="curlとは？"></a>curlとは？</h3><p>curlとは、指定したURLに対していろんなタイプのリクエスト（GETとかPOSTとか）を行ったり、データをやりとり（ダウンロードとかアップロードとか）したりするのに使うツールのこと。</p>
+<p>HTTPやらFTPなど、いろんなインターネットプロトコルに対応している。</p>
+<p>全く同じ名前のCurl言語というプログラミング言語があるみたいだけど、それとは全く別物なので注意。</p>
+<p>読み方はそのまま<em>カール</em>でおk。または<em>シーユーアールエル</em>と呼ばれることもある。</p>
+<p><a href="https://curl.haxx.se/" target="_blank" rel="noopener">ここ</a>に公式のドキュメントがある。</p>
+<h3 id="curlの歴史"><a href="#curlの歴史" class="headerlink" title="curlの歴史"></a>curlの歴史</h3><p>1996年にDaniel Stenbergさんという方が、IRC（チャットのアプリみたいなもの）で、為替レートを変換してくれるチャットボット（100ドルを円に変換して！といったら変換してくれるみたいなもの）を暇つぶしで作ろうとしたのがきっかけだそうな。</p>
+<p>最初は<strong>HttpGet 1.0</strong>という名前で文字通りhttp-onlyのツールだったのが、その後にFTPダウンロードもサポートした<strong>urlget 2.0</strong>になり、最終的に1998年に<strong>curl 4</strong>という名前でリリースされたらしい。ちょうど20年前くらい。オープンソースで開発され、世界中のたくさんの有志の人たちが関わって作ったとのこと。</p>
+<h3 id="どういう風に使うの？"><a href="#どういう風に使うの？" class="headerlink" title="どういう風に使うの？"></a>どういう風に使うの？</h3><h4 id="1-準備"><a href="#1-準備" class="headerlink" title="1. 準備"></a>1. 準備</h4><p>とりあえずここでは、コマンドラインで使う前提で進める。</p>
+<p>最近のバージョンのOS X / macOSや、ほとんどのLinuxのディストリビューションであれば最初からインストールされていて、コマンドラインですぐにこのcurlというツールを使えるようになっている。Windowsの場合でも<em>Git bash</em>などのコマンドラインツールであれば最初からcurlコマンドが使える。</p>
+<p>とうことで、基本的にはWindows以外であれば特に準備はいらない。Windowsの場合でもcurlが使えるコマンドラインツールを使ったり、curl自体をダウンロードすれば普通に使えるようだ。</p>
+<h4 id="2-コマンドを入力"><a href="#2-コマンドを入力" class="headerlink" title="2. コマンドを入力"></a>2. コマンドを入力</h4><p>ターミナルやGit bashなどのコマンドラインツールにcurlコマンドを入力して使う。</p>
+<p>基本は</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl &lt;option とか url/uri とかいろいろ&gt;</span><br></pre></td></tr></table></figure>
+<p>というかたちで入力する。オプションはかなりいろいろあって、</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p>と入力すると、すべてのオプション一覧が見れる。</p>
+<p>オプションなしで、</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl &lt;url/uri&gt;</span><br></pre></td></tr></table></figure>
+<p>とやると、GETリクエストされる。そのままurl/uriに対してGETリクエストした結果が出力される。</p>
+<h4 id="3-試してみる！！"><a href="#3-試してみる！！" class="headerlink" title="3. 試してみる！！"></a>3. 試してみる！！</h4><p>さっそく試しにどこか適当なURIを貼っつけてみる。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://www.youtube.com</span><br></pre></td></tr></table></figure>
+<p>今回は試しにYoutubeのURIを貼り付けてみた。そうすると、Youtubeのソースコードが出力された。</p>
+<p>次に今度はオプションをつけてみる。</p>
+<p>オプションを試すにあたって、今回はここの<a href="https://jsonplaceholder.typicode.com/" target="_blank" rel="noopener">ダミーサイト</a>を使っう。</p>
+<p>-dというdataをPOSTするオプションを試してみる。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -d <span class="string">"title=Hello&amp;body=Hello World"</span> https://jsonplaceholder.typicode.com/posts</span><br></pre></td></tr></table></figure>
+<p>結果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"title"</span>: <span class="string">"Hello"</span>,</span><br><span class="line">  <span class="string">"body"</span>: <span class="string">"Hello World"</span>,</span><br><span class="line">  <span class="string">"id"</span>: 101</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>POSTリクエストで、titleに「Hello」、bodyに「Hello World」という情報を送ることができた。（ダミーサイトなので実際にはPOSTしたデータは保存されていない）</p>
+<h3 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h3><p>今まではまったく何もわからずに何らかのTutorialとかに従って<strong>curl</strong>コマンドを打ち込んでいたけど、もやもやがちょっとすっきり。</p>
+<p>オプションがかなりいろいろあるので、バックエンドの開発をするときに例えばデバッグとかでも結構使えそうだと思った。</p>
+<p>ただ、逆にバックエンド系のことをしないのであればそんなに使わなさそうというのが正直な感想。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/hexotest/tags/curl/" rel="tag"># curl</a>
+          
+            <a href="/hexotest/tags/command/" rel="tag"># command</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexotest/2018/04/02/1/" rel="next" title="Themeを変える">
+                <i class="fa fa-chevron-left"></i> Themeを変える
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            見出し
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            概要
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/hexotest/images/avatar.gif"
+               alt="Tars75" />
+          <p class="site-author-name" itemprop="name">Tars75</p>
+           
+              <p class="site-description motion-element" itemprop="description">Webの勉強のメモとか</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/hexotest/archives/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">ポスト</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/hexotest/tags/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">タグ</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#curlとは？"><span class="nav-number">1.</span> <span class="nav-text">curlとは？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#curlの歴史"><span class="nav-number">2.</span> <span class="nav-text">curlの歴史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#どういう風に使うの？"><span class="nav-number">3.</span> <span class="nav-text">どういう風に使うの？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-準備"><span class="nav-number">3.1.</span> <span class="nav-text">1. 準備</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-コマンドを入力"><span class="nav-number">3.2.</span> <span class="nav-text">2. コマンドを入力</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-試してみる！！"><span class="nav-number">3.3.</span> <span class="nav-text">3. 試してみる！！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感想"><span class="nav-number">4.</span> <span class="nav-text">感想</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tars75</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/hexotest/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/hexotest/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/hexotest/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
