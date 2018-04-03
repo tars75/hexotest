@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="JavaScriptについて新たに学習したことや、改めて復習したことなどをメモしていくシリーズ第一回目。 今回はJSの動かしかた、変数、データ型についてメモしていく。JavaScriptを動かすJavaScriptを動かすには大きく分けて3つの方法がある。 1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。1&amp;lt;script&amp;gt; ほげほげ &amp;lt;/scri">
+<meta name="description" content="JavaScriptについて新たに学習したことや、改めて復習したことなどをメモしていくシリーズ第一回目。  JavaScriptを動かすJavaScriptを動かすには大きく分けて3つの方法がある。 1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。1&amp;lt;script&amp;gt; ほげほげ &amp;lt;/script&amp;gt; HTML5ではscriptエレメントの中に書">
 <meta name="keywords" content="JavaScript,学習メモ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScriptについて学ぶ - 1">
 <meta property="og:url" content="https://tars75.github.io/hexotest/2018/04/04/js-1/index.html">
 <meta property="og:site_name" content="ノートでありメモでありブログであり">
-<meta property="og:description" content="JavaScriptについて新たに学習したことや、改めて復習したことなどをメモしていくシリーズ第一回目。 今回はJSの動かしかた、変数、データ型についてメモしていく。JavaScriptを動かすJavaScriptを動かすには大きく分けて3つの方法がある。 1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。1&amp;lt;script&amp;gt; ほげほげ &amp;lt;/scri">
+<meta property="og:description" content="JavaScriptについて新たに学習したことや、改めて復習したことなどをメモしていくシリーズ第一回目。  JavaScriptを動かすJavaScriptを動かすには大きく分けて3つの方法がある。 1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。1&amp;lt;script&amp;gt; ほげほげ &amp;lt;/script&amp;gt; HTML5ではscriptエレメントの中に書">
 <meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2018-04-03T21:14:17.000Z">
+<meta property="og:updated_time" content="2018-04-03T21:16:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScriptについて学ぶ - 1">
-<meta name="twitter:description" content="JavaScriptについて新たに学習したことや、改めて復習したことなどをメモしていくシリーズ第一回目。 今回はJSの動かしかた、変数、データ型についてメモしていく。JavaScriptを動かすJavaScriptを動かすには大きく分けて3つの方法がある。 1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。1&amp;lt;script&amp;gt; ほげほげ &amp;lt;/scri">
+<meta name="twitter:description" content="JavaScriptについて新たに学習したことや、改めて復習したことなどをメモしていくシリーズ第一回目。  JavaScriptを動かすJavaScriptを動かすには大きく分けて3つの方法がある。 1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。1&amp;lt;script&amp;gt; ほげほげ &amp;lt;/script&amp;gt; HTML5ではscriptエレメントの中に書">
 
 
 
@@ -329,7 +329,8 @@
 
       
         <p>JavaScriptについて新たに学習したことや、改めて復習したことなどをメモしていくシリーズ第一回目。</p>
-<h2 id="今回はJSの動かしかた、変数、データ型についてメモしていく。"><a href="#今回はJSの動かしかた、変数、データ型についてメモしていく。" class="headerlink" title="今回はJSの動かしかた、変数、データ型についてメモしていく。"></a>今回はJSの動かしかた、変数、データ型についてメモしていく。</h2><h2 id="JavaScriptを動かす"><a href="#JavaScriptを動かす" class="headerlink" title="JavaScriptを動かす"></a>JavaScriptを動かす</h2><p>JavaScriptを動かすには大きく分けて3つの方法がある。</p>
+<hr>
+<h2 id="JavaScriptを動かす"><a href="#JavaScriptを動かす" class="headerlink" title="JavaScriptを動かす"></a>JavaScriptを動かす</h2><p>JavaScriptを動かすには大きく分けて3つの方法がある。</p>
 <h5 id="1-scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。"><a href="#1-scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。" class="headerlink" title="1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。"></a>1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt; ほげほげ &lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>HTML5ではscriptエレメントの中に書いたものはデフォルトでJSとして実行される。JSでスクリプトを書く場合、type属性をわざわざ書かずに省略することが推奨されている。</p>
 <h5 id="2-scriptエレメントのsrc属性を使って、外部から読み込む。"><a href="#2-scriptエレメントのsrc属性を使って、外部から読み込む。" class="headerlink" title="2. scriptエレメントのsrc属性を使って、外部から読み込む。"></a>2. scriptエレメントのsrc属性を使って、外部から読み込む。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"hogehoge.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
@@ -553,7 +554,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#今回はJSの動かしかた、変数、データ型についてメモしていく。"><span class="nav-number">1.</span> <span class="nav-text">今回はJSの動かしかた、変数、データ型についてメモしていく。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScriptを動かす"><span class="nav-number">2.</span> <span class="nav-text">JavaScriptを動かす</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-scriptエレメントのsrc属性を使って、外部から読み込む。"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">2. scriptエレメントのsrc属性を使って、外部から読み込む。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-ブラウザのデベロッパーツールでコンソールを出して打ち込む。"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">3. ブラウザのデベロッパーツールでコンソールを出して打ち込む。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#変数-var-let-const"><span class="nav-number">3.</span> <span class="nav-text">変数 - var, let, const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#データ型"><span class="nav-number">4.</span> <span class="nav-text">データ型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScriptを動かす"><span class="nav-number">1.</span> <span class="nav-text">JavaScriptを動かす</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-scriptエレメントのsrc属性を使って、外部から読み込む。"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2. scriptエレメントのsrc属性を使って、外部から読み込む。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-ブラウザのデベロッパーツールでコンソールを出して打ち込む。"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3. ブラウザのデベロッパーツールでコンソールを出して打ち込む。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#変数-var-let-const"><span class="nav-number">2.</span> <span class="nav-text">変数 - var, let, const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#データ型"><span class="nav-number">3.</span> <span class="nav-text">データ型</span></a></li></ol></div>
             
 
           </div>

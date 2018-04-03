@@ -333,7 +333,8 @@
         
           
             <p>JavaScriptについて新たに学習したことや、改めて復習したことなどをメモしていくシリーズ第一回目。</p>
-<h2 id="今回はJSの動かしかた、変数、データ型についてメモしていく。"><a href="#今回はJSの動かしかた、変数、データ型についてメモしていく。" class="headerlink" title="今回はJSの動かしかた、変数、データ型についてメモしていく。"></a>今回はJSの動かしかた、変数、データ型についてメモしていく。</h2><h2 id="JavaScriptを動かす"><a href="#JavaScriptを動かす" class="headerlink" title="JavaScriptを動かす"></a>JavaScriptを動かす</h2><p>JavaScriptを動かすには大きく分けて3つの方法がある。</p>
+<hr>
+<h2 id="JavaScriptを動かす"><a href="#JavaScriptを動かす" class="headerlink" title="JavaScriptを動かす"></a>JavaScriptを動かす</h2><p>JavaScriptを動かすには大きく分けて3つの方法がある。</p>
 <h5 id="1-scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。"><a href="#1-scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。" class="headerlink" title="1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。"></a>1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt; ほげほげ &lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>HTML5ではscriptエレメントの中に書いたものはデフォルトでJSとして実行される。JSでスクリプトを書く場合、type属性をわざわざ書かずに省略することが推奨されている。</p>
 <h5 id="2-scriptエレメントのsrc属性を使って、外部から読み込む。"><a href="#2-scriptエレメントのsrc属性を使って、外部から読み込む。" class="headerlink" title="2. scriptエレメントのsrc属性を使って、外部から読み込む。"></a>2. scriptエレメントのsrc属性を使って、外部から読み込む。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"hogehoge.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
