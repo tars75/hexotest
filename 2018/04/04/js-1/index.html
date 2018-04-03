@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/hexotest/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/hexotest/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/hexotest/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript,学習メモ," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/hexotest/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="JavaScriptについて新たに学習したことや、改めて復習したことなどをメモしていくシリーズ第一回目。 今回はJSの動かしかた、変数、データ型についてメモしていく。JavaScriptを動かすJavaScriptを動かすには大きく分けて3つの方法がある。 1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。1&amp;lt;script&amp;gt; ほげほげ &amp;lt;/scri">
+<meta name="keywords" content="JavaScript,学習メモ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScriptについて学ぶ - 1">
+<meta property="og:url" content="https://tars75.github.io/hexotest/2018/04/04/js-1/index.html">
+<meta property="og:site_name" content="ノートでありメモでありブログであり">
+<meta property="og:description" content="JavaScriptについて新たに学習したことや、改めて復習したことなどをメモしていくシリーズ第一回目。 今回はJSの動かしかた、変数、データ型についてメモしていく。JavaScriptを動かすJavaScriptを動かすには大きく分けて3つの方法がある。 1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。1&amp;lt;script&amp;gt; ほげほげ &amp;lt;/scri">
+<meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2018-04-03T21:14:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScriptについて学ぶ - 1">
+<meta name="twitter:description" content="JavaScriptについて新たに学習したことや、改めて復習したことなどをメモしていくシリーズ第一回目。 今回はJSの動かしかた、変数、データ型についてメモしていく。JavaScriptを動かすJavaScriptを動かすには大きく分けて3つの方法がある。 1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。1&amp;lt;script&amp;gt; ほげほげ &amp;lt;/scri">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hexotest/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>JavaScriptについて学ぶ - 1 | ノートでありメモでありブログであり</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ja">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hexotest/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ノートでありメモでありブログであり</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hexoでブログを作ってみるテスト</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/hexotest/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            ホーム
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/hexotest/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            アーカイブ
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/hexotest/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            タグ
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/04/js-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScriptについて学ぶ - 1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-04T02:41:24+09:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JavaScriptについて新たに学習したことや、改めて復習したことなどをメモしていくシリーズ第一回目。</p>
+<h2 id="今回はJSの動かしかた、変数、データ型についてメモしていく。"><a href="#今回はJSの動かしかた、変数、データ型についてメモしていく。" class="headerlink" title="今回はJSの動かしかた、変数、データ型についてメモしていく。"></a>今回はJSの動かしかた、変数、データ型についてメモしていく。</h2><h2 id="JavaScriptを動かす"><a href="#JavaScriptを動かす" class="headerlink" title="JavaScriptを動かす"></a>JavaScriptを動かす</h2><p>JavaScriptを動かすには大きく分けて3つの方法がある。</p>
+<h5 id="1-scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。"><a href="#1-scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。" class="headerlink" title="1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。"></a>1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt; ほげほげ &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>HTML5ではscriptエレメントの中に書いたものはデフォルトでJSとして実行される。JSでスクリプトを書く場合、type属性をわざわざ書かずに省略することが推奨されている。</p>
+<h5 id="2-scriptエレメントのsrc属性を使って、外部から読み込む。"><a href="#2-scriptエレメントのsrc属性を使って、外部から読み込む。" class="headerlink" title="2. scriptエレメントのsrc属性を使って、外部から読み込む。"></a>2. scriptエレメントのsrc属性を使って、外部から読み込む。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"hogehoge.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>このやり方でスクリプトを読み込むのがもっとも基本的なやり方。</p>
+<h5 id="3-ブラウザのデベロッパーツールでコンソールを出して打ち込む。"><a href="#3-ブラウザのデベロッパーツールでコンソールを出して打ち込む。" class="headerlink" title="3. ブラウザのデベロッパーツールでコンソールを出して打ち込む。"></a>3. ブラウザのデベロッパーツールでコンソールを出して打ち込む。</h5><p>コンソールにJSを入力することはあんまりないかもしれないけど、入力すればちゃんと動く。</p>
+<hr>
+<h2 id="変数-var-let-const"><a href="#変数-var-let-const" class="headerlink" title="変数 - var, let, const"></a>変数 - var, let, const</h2><p>変数には、<strong><em>var</em></strong>, <strong><em>let</em></strong>, <strong><em>const</em></strong>の3つがある。<br>ES6(ES2015)からブロックスコープの変数である<strong><em>let</em></strong>と<strong><em>const</em></strong>が追加された。<br>主要なブラウザがES6に対応して、<strong><em>let</em></strong>と<strong><em>const</em></strong>が使えるようになった現在では、グローバルスコープの変数である<strong><em>var</em></strong>の使用は非推奨となっている。</p>
+<p><strong><em>let</em></strong>と<strong><em>const</em></strong>の比較。</p>
+<ul>
+<li>let： 宣言できるのは一回のみ。reassign可（reassign = 代入しなおすこと）。</li>
+<li>const: 宣言できるのは一回のみ。reassign不可。また、宣言時に初期値を代入しないとエラーになる。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> firstName; <span class="comment">// Missing initializerというエラーになる。</span></span><br><span class="line"><span class="keyword">const</span> lastName = <span class="string">"hoge"</span>; <span class="comment">// このように宣言時に初期値をassignする必要がある。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>ただし、<strong><em>const</em></strong>はreassign不可であるものの、配列やオブジェクトの場合は<strong><em>mutable</em></strong>である（値が可変であり、宣言したあとも中の値を変更できる可能性がある）ことに<strong>注意！！</strong><br><br></p>
+<p>変数名に使えるのは、次の三つ。</p>
+<ul>
+<li>英数字</li>
+<li>_（アンダースコア）</li>
+<li>$ （マネーサイン）</li>
+</ul>
+<p>ただし、数字を一文字目にはできない。<br>また、$や_を一文字目にしてもエラーなどはでないものの、他のライブラリやフレームワーク独自の規格とかぶったりするので基本的には避けたほうがよいとされている。</p>
+<p>変数名に複数の単語をもつ場合、従わなくてもエラーがでるわけではないけど書き方の作法のようなものがある。</p>
+<ul>
+<li><p><strong>Camel case</strong><br>基本的にはこの書き方を使う。<br>例）firstName</p>
+</li>
+<li><p><strong>Pascal case</strong><br>クラス名と、クラスのコンストラクタにはこの書き方を使う。<br>例）FirstName</p>
+</li>
+</ul>
+<hr>
+<h2 id="データ型"><a href="#データ型" class="headerlink" title="データ型"></a>データ型</h2><p>JavaScriptには、大きく分けて<strong><em>Primitive</em></strong>と<strong><em>Reference</em></strong>の二つのデータタイプがある。細かく分けると、<strong><em>Primitive</em></strong>の中にさらに6つのデータ型がある。<strong><em>Reference</em></strong>に関してはObjectというデータ型一つのため、全部で7つのデータ型がある。</p>
+<ul>
+<li><p><strong><em>Primitive Data Types</em></strong><br>スタック領域に格納される。変数がアクセスする場所にダイレクトに値を格納する。</p>
+</li>
+<li><p><strong><em>Reference Data Types</em></strong><br>ヒープ領域に格納されるObject。変数がアクセスする場所にはポインターと呼ばれるものが格納されていて、実際のObjectはポインターが指すメモリに格納される。<br><br></p>
+</li>
+</ul>
+<p><strong><em>Primitive</em></strong>である6つのデータ型。</p>
+<ul>
+<li><p><strong>String</strong><br>文字列。</p>
+</li>
+<li><p><strong>Number</strong><br>数値。整数に限らず、小数や+/-Infinity、およびNaNも全てこのnumber型。</p>
+</li>
+<li><p><strong>Boolean</strong><br>trueまたはfalseのどちらかの値をもつ。</p>
+</li>
+<li><p><strong>Null</strong><br>意図的に変数の値が空であることを示す時に使う。値はnullのみ。注意点として、<em>typeof null</em>のリターンが<em>Object</em>になるというバグがある。</p>
+</li>
+<li><p><strong>Undefined</strong><br>何も代入されていない変数の値。</p>
+</li>
+<li><p><strong>Symbols(ES6)</strong><br>ES6からの新機能。Objectのプロパティを指すユニークなシンボル。</p>
+</li>
+</ul>
+<p><strong>Object型</strong>になるもの。</p>
+<ul>
+<li>Arrays（配列）</li>
+<li>Object Literals（オブジェクトリテラル）</li>
+<li>Functions（関数）</li>
+<li>Dates（日付オブジェクト）<br>…など、ここまでで記載ないものも基本的にObjectになる。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/hexotest/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/hexotest/tags/学習メモ/" rel="tag"># 学習メモ</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexotest/2018/04/02/curl/" rel="next" title="curlについて調べる">
+                <i class="fa fa-chevron-left"></i> curlについて調べる
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            見出し
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            概要
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/hexotest/images/avatar.gif"
+               alt="Tars75" />
+          <p class="site-author-name" itemprop="name">Tars75</p>
+           
+              <p class="site-description motion-element" itemprop="description">Webの勉強のメモとか</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/hexotest/archives/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">ポスト</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/hexotest/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">タグ</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#今回はJSの動かしかた、変数、データ型についてメモしていく。"><span class="nav-number">1.</span> <span class="nav-text">今回はJSの動かしかた、変数、データ型についてメモしていく。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScriptを動かす"><span class="nav-number">2.</span> <span class="nav-text">JavaScriptを動かす</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-scriptエレメントのsrc属性を使って、外部から読み込む。"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">2. scriptエレメントのsrc属性を使って、外部から読み込む。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-ブラウザのデベロッパーツールでコンソールを出して打ち込む。"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">3. ブラウザのデベロッパーツールでコンソールを出して打ち込む。</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#変数-var-let-const"><span class="nav-number">3.</span> <span class="nav-text">変数 - var, let, const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#データ型"><span class="nav-number">4.</span> <span class="nav-text">データ型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tars75</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/hexotest/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/hexotest/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/hexotest/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
