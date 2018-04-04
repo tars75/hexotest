@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="ノートでありメモでありブログであり">
 <meta property="og:description" content="JavaScriptについてのメモ。第2回目。  データ型の変換 - Type Conversionデータ型を変換する方法のメモ。 Stringに変換する。方法1 - String()で囲む。 1234567891011121314151617let val;// Number to stringval = String(4+4); // 8console.log(typeof val); //">
 <meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2018-04-04T22:47:34.000Z">
+<meta property="og:updated_time" content="2018-04-04T22:48:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScriptについて学ぶ - 2">
 <meta name="twitter:description" content="JavaScriptについてのメモ。第2回目。  データ型の変換 - Type Conversionデータ型を変換する方法のメモ。 Stringに変換する。方法1 - String()で囲む。 1234567891011121314151617let val;// Number to stringval = String(4+4); // 8console.log(typeof val); //">
@@ -350,7 +350,7 @@
 <p><strong>方法2 - <code>parseInt()</code>または<code>parseFloat()</code>を使う。</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ここから先は面倒なのでconsole.log()は省略して記載。</span></span><br><span class="line">val = <span class="built_in">parseInt</span>(<span class="string">'6123.4'</span>); <span class="comment">// 6123 </span></span><br><span class="line">val = <span class="built_in">parseFloat</span>(<span class="string">'6123.4'</span>); <span class="comment">// 6123.4</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">parseInt</span>([<span class="number">10.3</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// 10</span></span><br><span class="line">val = <span class="built_in">parseFloat</span>([<span class="number">10.3</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// 10.3</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">parseInt</span>(<span class="string">'61a23.4'</span>); <span class="comment">// 61</span></span><br><span class="line">val = <span class="built_in">parseFloat</span>(<span class="string">'61a23.4'</span>); <span class="comment">// 61</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">parseInt</span>(<span class="string">'hello'</span>); <span class="comment">// NaN</span></span><br><span class="line">val = <span class="built_in">parseFloat</span>(<span class="string">'hello'</span>); <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><p><code>parseInt()</code>は整数に、<code>parseFloat()</code>は少数に変換する。</p>
+<li><p><code>parseInt()</code>は整数に、<code>parseFloat()</code>は小数に変換する。</p>
 </li>
 <li><p><code>parseInt()</code>に関しては本来は第2引数をもつが、今回はそこについては触れない。（基数という何進法として扱うかを設定できるパラメーターで、デフォルトでは10だが第1引数が0xで始まるときは16になる）</p>
 </li>
