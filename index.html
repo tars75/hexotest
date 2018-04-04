@@ -332,30 +332,30 @@
       
         
           
-            <p>JavaScriptについて新たに学習したことや、改めて復習したことなどをメモしていくシリーズ第一回目。</p>
+            <p>JavaScriptについて新たに学習したことや、改めて復習したことなどを自分のためにメモしていく。シリーズ第一回目。</p>
 <hr>
-<h2 id="JavaScriptを動かす"><a href="#JavaScriptを動かす" class="headerlink" title="JavaScriptを動かす"></a>JavaScriptを動かす</h2><p>JavaScriptを動かすには大きく分けて3つの方法がある。</p>
-<h5 id="1-scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。"><a href="#1-scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。" class="headerlink" title="1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。"></a>1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt; ほげほげ &lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>HTML5ではscriptエレメントの中に書いたものはデフォルトでJSとして実行される。JSでスクリプトを書く場合、type属性をわざわざ書かずに省略することが推奨されている。</p>
-<h5 id="2-scriptエレメントのsrc属性を使って、外部から読み込む。"><a href="#2-scriptエレメントのsrc属性を使って、外部から読み込む。" class="headerlink" title="2. scriptエレメントのsrc属性を使って、外部から読み込む。"></a>2. scriptエレメントのsrc属性を使って、外部から読み込む。</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"hogehoge.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>このやり方でスクリプトを読み込むのがもっとも基本的なやり方。</p>
-<h5 id="3-ブラウザのデベロッパーツールでコンソールを出して打ち込む。"><a href="#3-ブラウザのデベロッパーツールでコンソールを出して打ち込む。" class="headerlink" title="3. ブラウザのデベロッパーツールでコンソールを出して打ち込む。"></a>3. ブラウザのデベロッパーツールでコンソールを出して打ち込む。</h5><p>コンソールにJSを入力することはあんまりないかもしれないけど、入力すればちゃんと動く。</p>
+<h2 id="JavaScriptを動かす"><a href="#JavaScriptを動かす" class="headerlink" title="JavaScriptを動かす"></a>JavaScriptを動かす</h2><p>簡単にJavaScriptを動かす方法3つをメモ。<br><br></p>
+<p><strong>1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt; ほげほげ &lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>HTML5ではscriptエレメントの中に書いたものはデフォルトでJSとして実行される。JSでスクリプトを書く場合、type属性をわざわざ書かずに省略することが推奨されている。<br><br></p>
+<p><strong>2. scriptエレメントのsrc属性を使って、外部から読み込む。</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"hogehoge.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>外部スクリプトを読み込んで実行する。htmlファイルとは別のファイルを作って、そこにjsを書く。この方法を使う場合は、1番目のやり方でscriptエレメントの中に直接スクリプトを書いてはいけない。<br><br></p>
+<p><strong>3. ブラウザのデベロッパーツールでコンソールを出して打ち込む。</strong><br>コンソールにJSを入力することはあんまりないかもしれないけど、入力すればちゃんと動く。</p>
 <hr>
-<h2 id="変数-var-let-const"><a href="#変数-var-let-const" class="headerlink" title="変数 - var, let, const"></a>変数 - var, let, const</h2><p>変数には、<strong><em>var</em></strong>, <strong><em>let</em></strong>, <strong><em>const</em></strong>の3つがある。<br>ES6(ES2015)からブロックスコープの変数である<strong><em>let</em></strong>と<strong><em>const</em></strong>が追加された。<br>主要なブラウザがES6に対応して、<strong><em>let</em></strong>と<strong><em>const</em></strong>が使えるようになった現在では、グローバルスコープの変数である<strong><em>var</em></strong>の使用は非推奨となっている。</p>
+<h2 id="変数-var-let-const"><a href="#変数-var-let-const" class="headerlink" title="変数 - var, let, const"></a>変数 - var, let, const</h2><p>変数には、<strong><em>var</em></strong>, <strong><em>let</em></strong>, <strong><em>const</em></strong>の3つがある。<br>ES6(ES2015)からブロックスコープの変数である<strong><em>let</em></strong>と<strong><em>const</em></strong>が追加された。<br>主要なブラウザがES6に対応して、<strong><em>let</em></strong>と<strong><em>const</em></strong>が使えるようになった現在では、グローバルスコープの変数である<strong><em>var</em></strong>の使用は非推奨となっている。<br><br></p>
 <p><strong><em>let</em></strong>と<strong><em>const</em></strong>の比較。</p>
 <ul>
 <li>let： 宣言できるのは一回のみ。reassign可（reassign = 代入しなおすこと）。</li>
-<li>const: 宣言できるのは一回のみ。reassign不可。また、宣言時に初期値を代入しないとエラーになる。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> firstName; <span class="comment">// Missing initializerというエラーになる。</span></span><br><span class="line"><span class="keyword">const</span> lastName = <span class="string">"hoge"</span>; <span class="comment">// このように宣言時に初期値をassignする必要がある。</span></span><br></pre></td></tr></table></figure>
+<li>const： 宣言できるのは一回のみ。reassign不可。また、宣言時に初期値を代入しないとエラーになる。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> firstName; <span class="comment">// Missing initializerというエラーになる。</span></span><br><span class="line"><span class="keyword">const</span> lastName = <span class="string">"hoge"</span>; <span class="comment">// このように宣言時に初期値をassignする必要がある。</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>ただし、<strong><em>const</em></strong>はreassign不可であるものの、配列やオブジェクトの場合は<strong><em>mutable</em></strong>である（値が可変であり、宣言したあとも中の値を変更できる可能性がある）ことに<strong>注意！！</strong><br><br></p>
 <p>変数名に使えるのは、次の三つ。</p>
 <ul>
-<li>英数字</li>
+<li>英数字（英字に関しては、大文字と小文字は区別される）</li>
 <li>_（アンダースコア）</li>
 <li>$ （マネーサイン）</li>
 </ul>
-<p>ただし、数字を一文字目にはできない。<br>また、$や_を一文字目にしてもエラーなどはでないものの、他のライブラリやフレームワーク独自の規格とかぶったりするので基本的には避けたほうがよいとされている。</p>
+<p>ただし、数字を一文字目にはできない。<br>また、$や_を一文字目にしてもエラーなどはでないものの、他のライブラリやフレームワーク独自の規格とかぶったりするので基本的には避けたほうがよいとされている。<br><br></p>
 <p>変数名に複数の単語をもつ場合、従わなくてもエラーがでるわけではないけど書き方の作法のようなものがある。</p>
 <ul>
 <li><p><strong>Camel case</strong><br>基本的にはこの書き方を使う。<br>例）firstName</p>
