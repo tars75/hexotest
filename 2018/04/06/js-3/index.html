@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/hexotest/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/hexotest/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/hexotest/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学習メモ,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/hexotest/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="JavaScriptについてのメモ。第3回目。  Stringの取り扱いString型の取り扱いについてメモしていく。 連結 - Concatenation+を使ってString同士を連結できる。 123456const firstName = &apos;Bla&apos;;const lastName = &apos;Hoge&apos;;let val;val = firstName + lastName; // BlaHogev">
+<meta name="keywords" content="学習メモ,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScriptについて学ぶ - 3">
+<meta property="og:url" content="https://tars75.github.io/hexotest/2018/04/06/js-3/index.html">
+<meta property="og:site_name" content="ノートでありメモでありブログであり">
+<meta property="og:description" content="JavaScriptについてのメモ。第3回目。  Stringの取り扱いString型の取り扱いについてメモしていく。 連結 - Concatenation+を使ってString同士を連結できる。 123456const firstName = &apos;Bla&apos;;const lastName = &apos;Hoge&apos;;let val;val = firstName + lastName; // BlaHogev">
+<meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2018-04-05T21:20:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScriptについて学ぶ - 3">
+<meta name="twitter:description" content="JavaScriptについてのメモ。第3回目。  Stringの取り扱いString型の取り扱いについてメモしていく。 連結 - Concatenation+を使ってString同士を連結できる。 123456const firstName = &apos;Bla&apos;;const lastName = &apos;Hoge&apos;;let val;val = firstName + lastName; // BlaHogev">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hexotest/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>JavaScriptについて学ぶ - 3 | ノートでありメモでありブログであり</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ja">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hexotest/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ノートでありメモでありブログであり</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hexoでブログを作ってみるテスト。主に自分用のノート件メモ。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/hexotest/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/hexotest/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/hexotest/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            記事一覧
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/hexotest/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            タグ
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/06/js-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScriptについて学ぶ - 3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-06T03:39:15+09:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JavaScriptについてのメモ。第3回目。</p>
+<hr>
+<h2 id="Stringの取り扱い"><a href="#Stringの取り扱い" class="headerlink" title="Stringの取り扱い"></a>Stringの取り扱い</h2><p>String型の取り扱いについてメモしていく。</p>
+<h4 id="連結-Concatenation"><a href="#連結-Concatenation" class="headerlink" title="連結 - Concatenation"></a>連結 - Concatenation</h4><p><code>+</code>を使ってString同士を連結できる。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> firstName = <span class="string">'Bla'</span>;</span><br><span class="line"><span class="keyword">const</span> lastName = <span class="string">'Hoge'</span>;</span><br><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line">val = firstName + lastName; <span class="comment">// BlaHoge</span></span><br><span class="line">val = firstName + <span class="string">' '</span> + lastName; <span class="comment">// Bla Hoge</span></span><br></pre></td></tr></table></figure>
+<p><code>+=</code>で、すでに文字列を持っている変数にappendできる。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val = <span class="string">'blah '</span>;</span><br><span class="line"></span><br><span class="line">val += <span class="string">'hoge '</span>; <span class="comment">// blah hoge</span></span><br><span class="line">val += <span class="string">'and some more blah'</span>; <span class="comment">// blah hoge and some more blah</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="エスケープ-Escape"><a href="#エスケープ-Escape" class="headerlink" title="エスケープ - Escape"></a>エスケープ - Escape</h4><p><code>&#39;</code>や<code>&quot;</code>など、直接入力できない文字を文字列として使いたい場合は、前に<code>\</code>を付ける。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val = <span class="string">'That\'s awesome!'</span>; <span class="comment">// That's awesome!</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="メソッドとプロパティ-Methods-and-Properties"><a href="#メソッドとプロパティ-Methods-and-Properties" class="headerlink" title="メソッドとプロパティ - Methods and Properties"></a>メソッドとプロパティ - Methods and Properties</h4><p>Stringにはたくさんのメソッドやプロパティが用意されているが、その中からいくつかピックアップしてメモ。<br>また、メソッドではないが<strong>配列のようなBehavior</strong>についても結構重要そうなので合わせてメモしておく。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Length</span></span><br><span class="line">val = firstName.length; <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// concat() </span></span><br><span class="line"><span class="comment">// 文字列を挟んで連結する。concatation用のメソッド。</span></span><br><span class="line">val = firstName.concat(<span class="string">' '</span>, lastName); <span class="comment">// Bla Hoge</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Change case</span></span><br><span class="line">val = firstName.toUpperCase(); <span class="comment">// BLA</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Stringは読み取り専用の配列のように扱うことが可能。</span></span><br><span class="line">val = firstName[<span class="number">0</span>]; <span class="comment">// B</span></span><br><span class="line">val = firstName[<span class="number">1</span>]; <span class="comment">// l</span></span><br><span class="line">val = firstName[<span class="number">2</span>]; <span class="comment">// a</span></span><br><span class="line">val = firstName[<span class="number">3</span>]; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// indexOf()</span></span><br><span class="line">val = firstName.indexOf(<span class="string">'a'</span>); <span class="comment">// 2</span></span><br><span class="line">val = firstName.lastIndexOf(<span class="string">'a'</span>); <span class="comment">// 2 (一番最後に文字があったところのindexを取得) </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// charAt()</span></span><br><span class="line"><span class="comment">// indexOfの逆。上で紹介したように配列で書くこともできる。</span></span><br><span class="line">val = firstName.charAt(<span class="number">2</span>); <span class="comment">// a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 長さがわからないときに最後の文字を取得するやり方。</span></span><br><span class="line">val = firstName.charAt(firstName.length - <span class="number">1</span>); <span class="comment">// a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// substring()</span></span><br><span class="line"><span class="comment">// 開始indexと終了indexを指定して文字列を取得</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'Hello there my name is Blah'</span></span><br><span class="line">val = str.substring(<span class="number">0</span>, <span class="number">4</span>); <span class="comment">// Hell</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// slice() </span></span><br><span class="line"><span class="comment">// substringと似ているが、マイナスで後ろから取得できる</span></span><br><span class="line">val = str.slice(<span class="number">0</span>, <span class="number">4</span>); <span class="comment">// Hell</span></span><br><span class="line">val = str.slice(<span class="number">-7</span>); <span class="comment">// is Blah</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// split() </span></span><br><span class="line"><span class="comment">// 指定した文字で区切って配列として取得。</span></span><br><span class="line">val = str.split(<span class="string">' '</span>); <span class="comment">// ["Hello", "there", "my", "name", "is", "Blah"]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// replace() </span></span><br><span class="line"><span class="comment">// 指定した文字列を置き換える。</span></span><br><span class="line">val = str.replace(<span class="string">'Blah'</span>, <span class="string">'Hoge'</span>); <span class="comment">// Hello there my name is Hoge</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// includes() </span></span><br><span class="line"><span class="comment">// 指定した文字列が含まれているかチェック</span></span><br><span class="line">val = str.includes(<span class="string">'Hello'</span>); <span class="comment">// true</span></span><br><span class="line">val = str.includes(<span class="string">'foo'</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="テンプレートリテラル-Template-Literals"><a href="#テンプレートリテラル-Template-Literals" class="headerlink" title="テンプレートリテラル - Template Literals"></a>テンプレートリテラル - Template Literals</h4><p>ES6からの機能として、<code>`</code>（バックティック）で囲うことでテンプレートリテラルを使うことができ、より簡単にコードを書ける。</p>
+<p>特に文字列と変数や関数を連結するときにプレースホルダーを使うことでだいぶコードを短くかける。<br>プレースホルダーは<code>${foo}</code>と書き、<code>foo</code>には任意の変数や関数、計算式などが入る。</p>
+<p>共通の変数を下記として、従来の書き方とテンプレートリテラルを使った書き方を比較してみる。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 共通の変数</span></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">'John'</span>;</span><br><span class="line"><span class="keyword">const</span> age = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">let</span> html;</span><br></pre></td></tr></table></figure></p>
+<p><strong>従来の場合</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html = <span class="string">'&lt;p&gt;Name: '</span> + name + <span class="string">' Age: '</span> + age + <span class="string">'&lt;/p&gt; '</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = html; <span class="comment">// Name: John Age: 100</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>テンプレートリテラルを使った書き方</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html = <span class="string">`&lt;p&gt;Name: <span class="subst">$&#123;name&#125;</span>  Age: <span class="subst">$&#123;age&#125;</span>&lt;/p&gt;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = html; <span class="comment">// Name: John Age: 100</span></span><br></pre></td></tr></table></figure></p>
+<p>テンプレートリテラルを使うことで文字列と変数を連結したりする手間が省略でき、コードの見た目もスッキリ読みやすくなる。ミスも減らせそうなので有効活用していきたい。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/hexotest/tags/学習メモ/" rel="tag"># 学習メモ</a>
+          
+            <a href="/hexotest/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexotest/2018/04/05/js-2/" rel="next" title="JavaScriptについて学ぶ - 2">
+                <i class="fa fa-chevron-left"></i> JavaScriptについて学ぶ - 2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            見出し
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            概要
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/hexotest/images/avatar.gif"
+               alt="Tars75" />
+          <p class="site-author-name" itemprop="name">Tars75</p>
+           
+              <p class="site-description motion-element" itemprop="description">調べたり勉強したことなどを自分用にノートをとったりメモ書きしていくブログです。ノートやメモ書きレベルで文を書いているので、誤字脱字や情報の間違いがあるかもしれません。他人のチラシの裏の落書きぐらいに思って見ていただけると幸いです。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/hexotest/archives/">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">ポスト</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/hexotest/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">タグ</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Stringの取り扱い"><span class="nav-number">1.</span> <span class="nav-text">Stringの取り扱い</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#連結-Concatenation"><span class="nav-number">1.0.1.</span> <span class="nav-text">連結 - Concatenation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#エスケープ-Escape"><span class="nav-number">1.0.2.</span> <span class="nav-text">エスケープ - Escape</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#メソッドとプロパティ-Methods-and-Properties"><span class="nav-number">1.0.3.</span> <span class="nav-text">メソッドとプロパティ - Methods and Properties</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#テンプレートリテラル-Template-Literals"><span class="nav-number">1.0.4.</span> <span class="nav-text">テンプレートリテラル - Template Literals</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tars75</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/hexotest/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/hexotest/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/hexotest/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
