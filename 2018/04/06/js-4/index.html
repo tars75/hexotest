@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/hexotest/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/hexotest/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/hexotest/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学習メモ,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/hexotest/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="JavaScriptについての学習メモ。第4回目。  配列 - Arrays配列の作り方や、メソッド、プロパティに関するメモ。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727">
+<meta name="keywords" content="学習メモ,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScriptについて学ぶ - 4">
+<meta property="og:url" content="https://tars75.github.io/hexotest/2018/04/06/js-4/index.html">
+<meta property="og:site_name" content="ノートでありメモでありブログであり">
+<meta property="og:description" content="JavaScriptについての学習メモ。第4回目。  配列 - Arrays配列の作り方や、メソッド、プロパティに関するメモ。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727">
+<meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2018-04-06T22:24:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScriptについて学ぶ - 4">
+<meta name="twitter:description" content="JavaScriptについての学習メモ。第4回目。  配列 - Arrays配列の作り方や、メソッド、プロパティに関するメモ。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hexotest/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>JavaScriptについて学ぶ - 4 | ノートでありメモでありブログであり</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ja">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hexotest/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ノートでありメモでありブログであり</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hexoでブログを作ってみるテスト。主に自分用のノート件メモ。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/hexotest/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/hexotest/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/hexotest/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            記事一覧
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/hexotest/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            タグ
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/06/js-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScriptについて学ぶ - 4</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-06T17:32:32+09:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JavaScriptについての学習メモ。第4回目。</p>
+<hr>
+<h2 id="配列-Arrays"><a href="#配列-Arrays" class="headerlink" title="配列 - Arrays"></a>配列 - Arrays</h2><p>配列の作り方や、メソッド、プロパティに関するメモ。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配列の作り方</span></span><br><span class="line"><span class="keyword">const</span> numbers = [<span class="number">43</span>,<span class="number">56</span>,<span class="number">33</span>,<span class="number">23</span>,<span class="number">44</span>,<span class="number">36</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> numbers2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">22</span>,<span class="number">45</span>,<span class="number">12</span>,<span class="number">41</span>,<span class="number">51</span>);</span><br><span class="line"><span class="keyword">const</span> fruits = [<span class="string">'Banana'</span>, <span class="string">'Apple'</span>, <span class="string">'Orange'</span>];</span><br><span class="line"><span class="keyword">const</span> mixed = [<span class="number">22</span>, <span class="string">'Hello'</span>, <span class="literal">true</span>, <span class="literal">undefined</span>, <span class="literal">null</span>, &#123;<span class="attr">a</span>:<span class="number">1</span>, <span class="attr">b</span>:<span class="number">1</span>&#125;, <span class="keyword">new</span> <span class="built_in">Date</span>()];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配列の長さを取得</span></span><br><span class="line">val = numbers.length; <span class="comment">// 7</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配列かどうかチェック</span></span><br><span class="line">val = <span class="built_in">Array</span>.isArray(numbers); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配列の中の値を取得</span></span><br><span class="line">val = numbers[<span class="number">3</span>]; <span class="comment">// 23</span></span><br><span class="line">val = numbers[<span class="number">0</span>]; <span class="comment">// 43</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配列の中の値を取得;</span></span><br><span class="line">val = numbers.indexOf(<span class="number">36</span>); <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Mutating Arrays!! (constでもmutable)</span></span><br><span class="line"><span class="comment">// 配列に値を入れる</span></span><br><span class="line">numbers[<span class="number">2</span>] = <span class="number">100</span>; <span class="comment">// [43, 56, 100, 23, 44, 36, 5]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配列の最後に値をプッシュ</span></span><br><span class="line">numbers.push(<span class="number">250</span>); <span class="comment">// [43, 56, 100, 23, 44, 36, 5, 250]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配列の最初に値を追加</span></span><br><span class="line">numbers.unshift(<span class="number">120</span>); <span class="comment">// [120, 43, 56, 100, 23, 44, 36, 5, 250]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配列の最後の値を取り除く</span></span><br><span class="line">numbers.pop(); <span class="comment">// [120, 43, 56, 100, 23, 44, 36, 5]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配列の最初の値を取り除く</span></span><br><span class="line">numbers.shift(); <span class="comment">// [43, 56, 100, 23, 44, 36, 5]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定した範囲の要素を取り除く</span></span><br><span class="line">numbers.splice(<span class="number">1</span>, <span class="number">3</span>); <span class="comment">// [43, 44, 36, 5]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配列を逆にする</span></span><br><span class="line">numbers.reverse(); <span class="comment">// [5, 36, 44, 43]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 二つの配列を連結</span></span><br><span class="line">val = numbers.concat(numbers2); <span class="comment">// [5, 36, 44, 43, 22, 45, 12, 41, 51]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ソートする</span></span><br><span class="line">val = fruits.sort(); <span class="comment">// ["Apple", "Banana", "Orange"]</span></span><br><span class="line">val = numbers.sort(); <span class="comment">// [36, 43, 44, 5]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数値についてはcompare functionを使うことでちゃんとソートできる </span></span><br><span class="line"><span class="comment">// compare function を使って昇順にソート</span></span><br><span class="line">val = numbers.sort(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x - y;</span><br><span class="line">&#125;); <span class="comment">// [5, 36, 43, 44]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// compare functionを使って降順にソート</span></span><br><span class="line">val = numbers.sort(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> y - x;</span><br><span class="line">&#125;); <span class="comment">// [44, 43, 36, 5]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配列の要素を探す</span></span><br><span class="line"><span class="comment">// 40以下の要素を探す</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">under40</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num &lt; <span class="number">40</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">val = numbers.find(under40); <span class="comment">// 36</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 40以上の要素を探す</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">over40</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num &gt; <span class="number">40</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">val = numbers.find(over40); <span class="comment">// 44</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>配列を作る方法は複数あり、リテラルとコンストラクタが使える。要素には複数のデータ型を混ぜることもできる。</p>
+</li>
+<li><p>第1回目の記事で記載したように、配列は<strong>const</strong>であっても<strong>mutable</strong>なので要注意！</p>
+</li>
+<li><p>sortメソッドは、ABC順で並び替える。その際に要素の値を自動的にStringに変換して比較する。</p>
+</li>
+<li><p>sortメソッドは対象の配列自体を並び替える。</p>
+</li>
+<li><p>sortメソッドで数値として比較して並び替えたい場合は、Compare functionを使う。</p>
+</li>
+</ul>
+<p><br></p>
+<hr>
+<h2 id="オブジェクトリテラル-Object-Literals"><a href="#オブジェクトリテラル-Object-Literals" class="headerlink" title="オブジェクトリテラル - Object Literals"></a>オブジェクトリテラル - Object Literals</h2><p>オブジェクトとは、変数やメソッド、配列などの集まり。オブジェクトがもつ変数などの情報をプロパティと呼び、プロパティが関数の場合はメソッドと呼ぶ。オブジェクトの中に、プロパティの値としてさらに別のオブジェクトをもつこともできる。</p>
+<p>またPrimitive型であるstringやnumberなどに対してもラッパーオブジェクトが用意されているため、ビルトインメソッドやビルトインプロパティが使える。</p>
+<p>以下オブジェクトの書き方についてのメモ。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// オブジェクトリテラル</span></span><br><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  firstName: <span class="string">'Steve'</span>,</span><br><span class="line">  lastName: <span class="string">'Smith'</span>,</span><br><span class="line">  age: <span class="number">30</span>,</span><br><span class="line">  email: <span class="string">'steve@aol.com'</span>,</span><br><span class="line">  hobbies: [<span class="string">'music'</span>, <span class="string">'sports'</span>],</span><br><span class="line">  address: &#123;</span><br><span class="line">    city: <span class="string">'Miami'</span>,</span><br><span class="line">    state: <span class="string">'FL'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  getBirthYear: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2018</span> - <span class="keyword">this</span>.age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line"><span class="comment">// オブジェクトの受け渡し</span></span><br><span class="line">val = person; <span class="comment">// &#123;firstName: "Steve", lastName: "Smith"....&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// プロパティ、メソッドへのアクセス方法いろいろ</span></span><br><span class="line">val = person.firstName; <span class="comment">// Steve</span></span><br><span class="line">val = person[<span class="string">'lastName'</span>]; <span class="comment">// Smith</span></span><br><span class="line">val = person.age; <span class="comment">// 30</span></span><br><span class="line">val = person.hobbies[<span class="number">1</span>]; <span class="comment">// sports</span></span><br><span class="line">val = person.address.state; <span class="comment">// FL</span></span><br><span class="line">val = person.address[<span class="string">'city'</span>]; <span class="comment">// Miami</span></span><br><span class="line">val = person.getBirthYear(); <span class="comment">// 1988</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// オブジェクトをもつ配列</span></span><br><span class="line"><span class="keyword">const</span> people = [</span><br><span class="line">  &#123;<span class="attr">name</span>: <span class="string">'John'</span>, <span class="attr">age</span>: <span class="number">30</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">name</span>: <span class="string">'Mike'</span>, <span class="attr">age</span>: <span class="number">23</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">name</span>: <span class="string">'Nancy'</span>, <span class="attr">age</span>: <span class="number">40</span>&#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 配列の各キーがオブジェクト名になる</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; people.length; i++)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(people[i].name);</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// John</span></span><br><span class="line"><span class="comment">// Mike</span></span><br><span class="line"><span class="comment">// Nancy</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>プロパティにアクセスするにはオブジェクトの名前に<code>.</code>をつけて記述する。</p>
+</li>
+<li><p><code>[]</code>でもプロパティにアクセスできる。</p>
+</li>
+<li><p>メソッド内で現在のオブジェクトのプロパティにアクセスするには<code>this</code>を使う。（ただし、アロー関数では<code>this</code>の挙動が異なるので注意）</p>
+</li>
+</ul>
+<p><br></p>
+<hr>
+<h2 id="日付と時刻-Dates-amp-Times"><a href="#日付と時刻-Dates-amp-Times" class="headerlink" title="日付と時刻 - Dates &amp; Times"></a>日付と時刻 - Dates &amp; Times</h2><p>JSには日付や時刻を扱うことが可能な<strong>Dateオブジェクト</strong>が用意されている。</p>
+<p>以下Dateオブジェクトの使い方についてメモ。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"><span class="keyword">let</span> birthday;</span><br><span class="line"></span><br><span class="line"><span class="comment">// インスタンス生成</span></span><br><span class="line"><span class="keyword">const</span> today = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// デフォルトでは現在日時をもつ</span></span><br><span class="line">val = today; <span class="comment">// Sat Apr 07 2018 04:55:23 GMT+0900 (JST)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Dateオブジェクトの情報をStringとして扱いたい場合</span></span><br><span class="line">val = today.toString(); <span class="comment">// Sat Apr 07 2018 04:55:23 GMT+0900 (JST)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// インスタンス生成時に日時を指定する</span></span><br><span class="line">birthday = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'9-10-1981 11:25:00'</span>); <span class="comment">// Thu Sep 10 1981 11:25:00 GMT+0900 (JST)</span></span><br><span class="line">birthday = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'September 10 1981'</span>); <span class="comment">// Thu Sep 10 1981 00:00:00 GMT+0900 (JST)</span></span><br><span class="line">birthday = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'9/10/1981'</span>); <span class="comment">// Thu Sep 10 1981 00:00:00 GMT+0900 (JST)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Dateオブジェクトのゲッターいろいろ</span></span><br><span class="line">val = today.getMonth(); <span class="comment">// 3 (1月が0で、12月は11)</span></span><br><span class="line">val = today.getDate(); <span class="comment">// 7 (1から31まで)</span></span><br><span class="line">val = today.getDay(); <span class="comment">// 6 (0が日曜日で6が土曜日)</span></span><br><span class="line">val = today.getFullYear(); <span class="comment">// 2018 (4桁で現在の年)</span></span><br><span class="line">val = today.getHours(); <span class="comment">// 5 (現在の時間)</span></span><br><span class="line">val = today.getSeconds(); <span class="comment">// 39 (現在の秒)</span></span><br><span class="line">val = today.getMilliseconds(); <span class="comment">// 674 (現在のms)</span></span><br><span class="line">val = today.getTime(); <span class="comment">// 1523046297137 (1970年1月1日0秒から、何ms経過したか)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// セッター</span></span><br><span class="line">birthday.setMonth(<span class="number">2</span>); <span class="comment">// Tue Mar 10 1981 00:00:00 GMT+0900 (JST)</span></span><br><span class="line">birthday.setDate(<span class="number">12</span>); <span class="comment">// Tue Mar 12 1981 00:00:00 GMT+0900 (JST)</span></span><br><span class="line">birthday.setFullYear(<span class="number">1985</span>); <span class="comment">// Tue Mar 12 1985 00:00:00 GMT+0900 (JST)</span></span><br><span class="line">birthday.setHours(<span class="number">3</span>); <span class="comment">// Tue Mar 12 1985 03:00:00 GMT+0900 (JST)</span></span><br><span class="line">birthday.setMinutes(<span class="number">30</span>); <span class="comment">// Tue Mar 12 1985 03:30:00 GMT+0900 (JST)</span></span><br><span class="line">birthday.setSeconds(<span class="number">25</span>); <span class="comment">// Tue Mar 12 1985 03:30:25 GMT+0900 (JST)</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>インスタンス生成時に日時を指定する場合、ブラウザごとに動作がことなるため注意が必要。</p>
+</li>
+<li><p>タイムゾーンに関しては、意図的に指定しない限りJSが動いているクライアントのタイムゾーンが使われる様子。</p>
+</li>
+<li><p><code>getMonth()</code>では1月が0で、<code>getDay()</code>では日曜日が0であることに注意。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/hexotest/tags/学習メモ/" rel="tag"># 学習メモ</a>
+          
+            <a href="/hexotest/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexotest/2018/04/06/js-3/" rel="next" title="JavaScriptについて学ぶ - 3">
+                <i class="fa fa-chevron-left"></i> JavaScriptについて学ぶ - 3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            見出し
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            概要
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/hexotest/images/avatar.gif"
+               alt="Tars75" />
+          <p class="site-author-name" itemprop="name">Tars75</p>
+           
+              <p class="site-description motion-element" itemprop="description">調べたり勉強したことなどを自分用にノートをとったりメモ書きしていくブログです。ノートやメモ書きレベルで文を書いているので、誤字脱字や情報の間違いがあるかもしれません。他人のチラシの裏の落書きぐらいに思って見ていただけると幸いです。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/hexotest/archives/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">ポスト</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/hexotest/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">タグ</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配列-Arrays"><span class="nav-number">1.</span> <span class="nav-text">配列 - Arrays</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#オブジェクトリテラル-Object-Literals"><span class="nav-number">2.</span> <span class="nav-text">オブジェクトリテラル - Object Literals</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日付と時刻-Dates-amp-Times"><span class="nav-number">3.</span> <span class="nav-text">日付と時刻 - Dates &amp; Times</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tars75</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/hexotest/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/hexotest/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/hexotest/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
