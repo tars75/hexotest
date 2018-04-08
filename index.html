@@ -271,6 +271,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/08/js-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexotest/2018/04/08/js-5/" itemprop="url">JavaScriptについて学ぶ - 5</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-08T19:51:24+09:00">
+                2018-04-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JavaScriptについて新たに学習したことや、改めて復習したことなどを自分のためにメモしていく。第5回目。</p>
+<hr>
+<h2 id="Truthy-or-Falsy"><a href="#Truthy-or-Falsy" class="headerlink" title="Truthy or Falsy"></a>Truthy or Falsy</h2><p>JSではすべての変数が<strong>Truthy</strong>か<strong>Falsy</strong>に分けられる。<code>boolean</code>に変換したときに<code>True</code>になる値が<strong>Truthy</strong>、<code>False</code>になる値が<strong>Falsy</strong>と呼ばれる。</p>
+<p><strong><em>Falsy</em></strong>な値：</p>
+<ul>
+<li><code>false</code></li>
+<li><code>0</code> and <code>-0</code></li>
+<li><code>&#39;&#39;</code> and <code>&quot;&quot;</code> (空っぽの文字列)</li>
+<li><code>null</code> and <code>undefined</code></li>
+<li><code>NaN</code></li>
+<li><code>document.all</code></li>
+</ul>
+<p>上記以外はすべて<strong><em>Truthy</em></strong>な値。</p>
+<hr>
+<h2 id="比較-Comparison"><a href="#比較-Comparison" class="headerlink" title="比較 - Comparison"></a>比較 - Comparison</h2><p>二つの値や型を比較する条件式の構文まとめ。比較演算子と呼ばれる。</p>
+<ul>
+<li><p><code>==</code><br>二つの値が等しいかチェックする。データ型が異なる場合、自動的に変換した上で比較される。等しければ<code>true</code>を返す。</p>
+</li>
+<li><p><code>!=</code><br>二つの値が等しくないかをチェックする。データ型が異なる場合、自動的に変換した上で比較される。等しくなければ<code>true</code>を返す。</p>
+</li>
+<li><p><code>===</code><br>データ型と値の両方を比較し、どちらも等しければ<code>true</code>を返す。</p>
+</li>
+<li><p><code>!==</code><br>データ型と値の両方を比較し、等しくないところがあったら<code>true</code>を返す。</p>
+</li>
+<li><p><code>&gt;</code><br>左が右より大きければ<code>true</code>を返す。</p>
+</li>
+<li><p><code>&gt;=</code><br>左が右より大きいか等しければ<code>true</code>を返す。</p>
+</li>
+<li><p><code>&lt;</code>と<code>&lt;=</code><br>それぞれ<code>&gt;</code>と<code>&gt;=</code>の逆。</p>
+</li>
+</ul>
+<hr>
+<h2 id="論理演算子-Logical-Operators"><a href="#論理演算子-Logical-Operators" class="headerlink" title="論理演算子 - Logical Operators"></a>論理演算子 - Logical Operators</h2><p>条件式2つを比較して値を返す構文。</p>
+<ul>
+<li><p><strong>論理AND</strong><br><code>条件1 &amp;&amp; 条件2</code><br>条件1が<strong>Falsy</strong>な場合は条件1を返す。<br>条件1が<strong>Truthy</strong>な場合は条件2を返す。<br>よって、条件がどちらとも<strong>Truthy</strong>のときのみ<strong>Truthyな値</strong>がリターンされる。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val;</span><br><span class="line">val = falsy &amp;&amp; truthy <span class="comment">// falsy</span></span><br><span class="line">val = truthy &amp;&amp; falsy <span class="comment">// falsy</span></span><br><span class="line">val = truthy &amp;&amp; truthy <span class="comment">// truthy</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>論理OR</strong><br><code>条件1 || 条件2</code><br>条件1が<strong>Truthy</strong>な場合は条件1を返す。<br>条件1が<strong>Falsy</strong>な場合は条件2を返す。<br>よって、条件のどちらかが<strong>Truthy</strong>であれば<strong>Truthyな値</strong>がリターンされ、両方ともが<strong>Falsy</strong>なときにはじめて<strong>Falsyな値</strong>がリターンされる。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val = falsy || truthy <span class="comment">// truthy</span></span><br><span class="line">val = truthy || falsy <span class="comment">// truthy</span></span><br><span class="line">val = truthy || truthy <span class="comment">// truthy</span></span><br><span class="line">val = falsy || falsy <span class="comment">// falsy</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="If文-If-Statements"><a href="#If文-If-Statements" class="headerlink" title="If文 - If Statements"></a>If文 - If Statements</h2><p>if文についてメモ。<code>()</code>の中が<strong>Truthy</strong>か<strong>Falsy</strong>かを比較してフローを制御する。</p>
+<p><code>()</code>の中が<strong>Truthy</strong>なら<code>// do something</code>へ進み、<strong>Falsy</strong>なら<code>else</code>以下へ進む。どれかに進んだあとはif文のフローから抜ける。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基本的な書き方</span></span><br><span class="line"><span class="keyword">if</span>()&#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// do something else</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//　一応&#123;&#125;なしでも動くが非推奨</span></span><br><span class="line"><span class="keyword">if</span>()</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  <span class="comment">// do something else</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p><code>else if</code>の書き方。<code>if()</code>が<strong>Falsy</strong>なときに<code>else if()</code>に進み、<code>else if()</code>の中が<strong>Truthy</strong>なときに<code>// do hoge</code>が実行される。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// else ifの書き方</span></span><br><span class="line"><span class="keyword">if</span>()&#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>()&#123;</span><br><span class="line">  <span class="comment">// do hoge</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// do something else</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p>変数が存在しているかどうかのチェックの仕方についてメモ。</p>
+<p><code>if(変数名)</code>という書き方だと、その変数をスコープ内で宣言していなかったときにエラーがでてしまう。<br>存在するかのチェックをしたい場合は<code>if(typeof 変数名 !== &#39;undefined&#39;)</code>とすることで、エラーを回避できる。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// これだとidという変数が一切宣言されていないときにエラーになる。</span></span><br><span class="line"><span class="keyword">if</span>(id)&#123; <span class="comment">// Uncaught ReferenceError: id is not defined</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`The ID is <span class="subst">$&#123;id&#125;</span>`</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// if(id)の時点でエラーがでるためここまで実行されない</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'No ID'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// これならエラーにならない</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> id !== <span class="string">'undefined'</span>)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`The ID is <span class="subst">$&#123;id&#125;</span>`</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'No ID'</span>); <span class="comment">// No ID</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ちなみに同じ<code>undefined</code>でも、変数を宣言しているけど<code>undefined</code>な場合と、そもそも宣言すらしていなくて<code>undefined</code>な場合では扱いが異なる。</p>
+<p>変数の宣言はしてあるけど<code>undefined</code>なときは<code>if(変数名)</code>でもエラーはでない。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 変数strを宣言。宣言だけして値を入れなかった場合はデフォルトでundefinedになる。</span></span><br><span class="line"><span class="keyword">let</span> str;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(str)&#123; <span class="comment">// 上で変数自体は宣言しているのでエラーはでない</span></span><br><span class="line">  <span class="built_in">console</span>.log(str);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// undefinedはfalsyなのでelseが実行される</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> str); <span class="comment">// undefined</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'strはundefinedです'</span>); <span class="comment">// strはundefinedです</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>そもそも変数を宣言すらしていない場合に<code>if(変数名)</code>でエラーになる。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 変数strを宣言しない</span></span><br><span class="line"><span class="comment">// 変数strの型をチェック</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> str); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 変数strを宣言していないままif文を実行</span></span><br><span class="line"><span class="keyword">if</span>(str)&#123; <span class="comment">//この時点でUncaught Reference...のエラーがでる</span></span><br><span class="line">  <span class="built_in">console</span>.log(str);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// undefinedはfalsyなのでelseが実行されると思いきや、</span></span><br><span class="line">  <span class="comment">// if(str)の時点でエラーがでるためここまで実行されない</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">typeof</span> str);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'strはundefinedです'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="三項演算子-Ternary-Operator"><a href="#三項演算子-Ternary-Operator" class="headerlink" title="三項演算子 - Ternary Operator"></a>三項演算子 - Ternary Operator</h2><p><code>?</code>と<code>:</code>を使ってif文を短く書く構文。また処理結果がリターンされるため式の中に書いたりすることができる。</p>
+<p><code>条件 ? truthyの場合の処理 : falsyの場合の処理</code></p>
+<p>以下使い方の例をメモ。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> id = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Ternary Operator</span></span><br><span class="line"><span class="built_in">console</span>.log(id === <span class="number">100</span> ? <span class="string">'id is 100'</span> : <span class="string">'id is not 100'</span>);</span><br><span class="line"><span class="comment">// id is 100</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="Switch文-Switches"><a href="#Switch文-Switches" class="headerlink" title="Switch文 - Switches"></a>Switch文 - Switches</h2><p>if文で<code>else if</code>が多いときなどは、switch文のほうが簡単にかける。以下switch文の書き方。</p>
+<p><code>switch()</code>の中の条件と<code>===</code>な<code>case</code>が実行される。<code>break</code>の時点でswitch文から抜ける。<code>break</code>がない場合は、条件に関わらず次の<code>case</code>が実行される。</p>
+<p>条件がどの<code>case</code>にも当てはまらない場合、<code>default</code>が実行される。<code>default</code>がない場合はそのままswitch文を抜ける。<code>default</code>は省略可能。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> day;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 今日の日付を取得</span></span><br><span class="line"><span class="keyword">switch</span>(<span class="keyword">new</span> <span class="built_in">Date</span>().getDay())&#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">    day = <span class="string">'Sunday'</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    day = <span class="string">'Monday'</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">    day = <span class="string">'Tuesday'</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">    day = <span class="string">'Wednesday'</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">    day = <span class="string">'Thursday'</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">    day = <span class="string">'Friday'</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">    day = <span class="string">'Saturday'</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">default</span></span><br><span class="line">    day = <span class="string">'Unknownday'</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`Today is <span class="subst">$&#123;day&#125;</span>`</span>) <span class="comment">// Today is Sunday</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/06/js-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -880,7 +1064,7 @@
 </li>
 <li><p>Primitive型でも必要に応じてラッパーオブジェクト（オブジェクト型）で自動的にラップされる。</p>
 </li>
-<li><p><strong>Static Typeing（静的型付け）</strong>をできるようにするスーパーセット（上位拡張）やアドオンがある。TypeScriptやFlowなど。また特に日本国内ではそういったものをJSのAlternativesとして、AltJSと呼んだりする。英語圏ではおそらく意味は通じるだろうけど、一般的に使われているのかどうかは不明。</p>
+<li><p><strong>Static Typing（静的型付け）</strong>をできるようにするスーパーセット（上位拡張）やアドオンがある。TypeScriptやFlowなど。また特に日本国内ではそういったものをJSのAlternativesとして、AltJSと呼んだりする。英語圏では、おそらく意味は通じるだろうけど一般的に使われているのかどうかは不明。</p>
 </li>
 </ul>
 
@@ -1640,137 +1824,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/03/29/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tars75">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/hexotest/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ノートでありメモでありブログであり">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hexotest/2018/03/29/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">投稿日</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-29T22:57:04+09:00">
-                2018-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/hexotest/page/2/">2</a><a class="extend next" rel="next" href="/hexotest/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1814,7 +1874,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/hexotest/archives/">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
