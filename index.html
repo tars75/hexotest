@@ -271,6 +271,150 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/09/js-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexotest/2018/04/09/js-6/" itemprop="url">JavaScriptについて学ぶ - 6</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-09T02:17:07+09:00">
+                2018-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JavaScriptについて新たに学習したことや、改めて復習したことなどを自分のためにメモしていく。第6回目。</p>
+<hr>
+<h2 id="関数宣言-Function-Declarations"><a href="#関数宣言-Function-Declarations" class="headerlink" title="関数宣言 - Function Declarations"></a>関数宣言 - Function Declarations</h2><p>関数とは、なんらかの機能をもったコードのかたまりのこと。基本的に関数を宣言するだけではそのコードのかたまりは実行されない。関数を使いたいところで呼びだすことでコードのかたまりが実行される。</p>
+<p>パラメーターを設定し、関数を呼びだすときに値（引数と呼ばれる）を渡して、その値を関数の中で使うことができる。また関数の中で処理した結果を出力して渡すこともできる。（返り値やreturnなどと呼ばれる。）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基本的な宣言の仕方</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> 関数名(<span class="params">パラメーター</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 処理いろいろ</span></span><br><span class="line">  処理</span><br><span class="line"></span><br><span class="line">  <span class="comment">// リターンを渡す場合は下記を記載</span></span><br><span class="line">  <span class="keyword">return</span>　返り値;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 関数の呼び出しかた</span></span><br><span class="line">関数名.(パラメーターに渡す引数);</span><br></pre></td></tr></table></figure>
+<p>パラメーターは<code>,</code>で区切ることで複数設定でき、またパラメーターなしでも関数を作れる。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使い方の例</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">firstName, lastName</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Hello '</span> + firstName + <span class="string">' '</span> + lastName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(greet(<span class="string">'Steve'</span>, <span class="string">'Smith'</span>)); <span class="comment">// Hello Steve Smith</span></span><br></pre></td></tr></table></figure>
+<p>パラメーターのある関数を呼ぶときに、引数を何も渡さないと、パラメータは<code>undefined</code>になる。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// パラメーターを設定して引数をなにも渡さなかった場合、undefinedになる</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">firstName, lastName</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Hello '</span> + firstName + <span class="string">' '</span> + lastName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(greet()); <span class="comment">// Hello undefined undefined</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="関数のデフォルトパラメータ-Default-Function-Parameters"><a href="#関数のデフォルトパラメータ-Default-Function-Parameters" class="headerlink" title="関数のデフォルトパラメータ - Default Function Parameters"></a>関数のデフォルトパラメータ - Default Function Parameters</h2><p>上記で記載したように、パラメータになにも引数を渡さないと、<code>undefined</code>になる。<br>これを防ぐために、パラメーターに対して引数を渡さなかった場合のデフォルト値を設定することができる。ES6からは従来と比較してかなり簡単に書ける。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES6では、単純にパラメーターに = をつけてデフォルト値を書くだけ！</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">firstName = <span class="string">'John'</span>, lastName = <span class="string">'Doe'</span></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Hello '</span> + firstName + <span class="string">' '</span> + lastName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(greet()); <span class="comment">// Hello John Doe</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES6以前は関数の中でif文を書き、undefinedかどうかをチェックする必要があった</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">firstName, lastName</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> firstName === <span class="string">'undefined'</span>)&#123;firstName = <span class="string">'John'</span>&#125;</span><br><span class="line">  <span class="keyword">if</span>(<span class="keyword">typeof</span> lastName === <span class="string">'undefined'</span>)&#123;lastName = <span class="string">'Doe'</span>&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="string">'Hello '</span> + firstName + <span class="string">' '</span> + lastName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(greet()); <span class="comment">// Hello John Doe</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="関数式-Function-Expressions"><a href="#関数式-Function-Expressions" class="headerlink" title="関数式 - Function Expressions"></a>関数式 - Function Expressions</h2><p>Function Expressionsとは、基本的に関数を他の変数に代入するときに使われる構文を指す。<br>書き方は関数宣言とほとんど同じだが、関数宣言との違いとしては、関数名を省略できるという特徴がある。また関数宣言とは違って最後にセミコロン<code>;</code>が必要なので注意。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 無名な関数を作ることができる</span></span><br><span class="line"><span class="keyword">const</span> square = <span class="function"><span class="keyword">function</span>(<span class="params">x = <span class="number">3</span></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x*x;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(square()); <span class="comment">// 9</span></span><br><span class="line"><span class="built_in">console</span>.log(square(<span class="number">8</span>)); <span class="comment">// 64</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// さらにES6ではアロー関数という書き方もできる</span></span><br><span class="line"><span class="keyword">const</span> square = <span class="function">(<span class="params">x = <span class="number">3</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> x*x;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(square()); <span class="comment">// 9</span></span><br><span class="line"><span class="built_in">console</span>.log(square(<span class="number">8</span>)); <span class="comment">// 64</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// またアロー関数にもいろいろ省略系がある</span></span><br><span class="line"><span class="keyword">const</span> sq = <span class="function">(<span class="params">x = <span class="number">3</span></span>) =&gt;</span> x*x; <span class="comment">// 中身が一行のみの場合、&#123;&#125;とreturnを省略できる</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sq()); <span class="comment">// 9</span></span><br><span class="line"><span class="built_in">console</span>.log(sq(<span class="number">8</span>)); <span class="comment">// 64</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="IIFEs-Immediately-Invokable-Function-Expressions"><a href="#IIFEs-Immediately-Invokable-Function-Expressions" class="headerlink" title="IIFEs - Immediately Invokable Function Expressions"></a>IIFEs - Immediately Invokable Function Expressions</h2><p>直訳すると、<strong>即座に呼び出し可能な関数表現</strong>。<br>IIFEsとは文字通り、関数宣言時に呼び出しもおこなってそのまま実行できる関数のこと。もっとざっくり言うと、<strong>宣言と実行を同時にできる関数の書き方</strong>。</p>
+<p>ちなみにIIFEは英単語のiffyと同じような発音（カタカナで書くとたぶんイフィーが近い）で呼ばれ、IIFEsはそれにsをつけてイフィースまたはイフィーズなどと発音される。</p>
+<p>名前はなんだか長くて難しそうだけど、書き方自体はかんたんで、<code>()</code>の中に無名な関数の宣言をかいて、そのあとにまたさらに呼びだすための<code>()</code>をつけるだけ。この呼びだすための<code>()</code>を書かないと実行されないのでそこは要注意。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 書き方の例</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'IIFE 実行中'</span>);</span><br><span class="line">&#125;)(); <span class="comment">// IIFE 実行中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//　引数も渡せる</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Hello '</span> + name);</span><br><span class="line">&#125;)(<span class="string">'Foo'</span>); <span class="comment">// Hello Foo</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="プロパティメソッド-Property-Methods"><a href="#プロパティメソッド-Property-Methods" class="headerlink" title="プロパティメソッド - Property Methods"></a>プロパティメソッド - Property Methods</h2><p>オブジェクトのプロパティとして書く関数はメソッドと呼ばれる。今回までにもでてきてたけど改めてメモ。</p>
+<p>以下メソッドの書き方。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// オブジェクト宣言時にメソッドも宣言</span></span><br><span class="line"><span class="keyword">const</span> roboman = &#123;</span><br><span class="line">  punch: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'punch'</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  eat: <span class="function"><span class="keyword">function</span>(<span class="params">food</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`eat <span class="subst">$&#123;food&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// あとからメソッドを追加も可能</span></span><br><span class="line">roboman.beam = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'BEAM!'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// メソッドの呼び出し方</span></span><br><span class="line">roboman.punch(); <span class="comment">// punch</span></span><br><span class="line">roboman.eat(<span class="string">'sushi'</span>); <span class="comment">// eat sushi</span></span><br><span class="line">roboman.beam(); <span class="comment">// BEAM!</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/08/js-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1064,7 +1208,7 @@
 </li>
 <li><p>Primitive型でも必要に応じてラッパーオブジェクト（オブジェクト型）で自動的にラップされる。</p>
 </li>
-<li><p><strong>Static Typing（静的型付け）</strong>をできるようにするスーパーセット（上位拡張）やアドオンがある。TypeScriptやFlowなど。また特に日本国内ではそういったものをJSのAlternativesとして、AltJSと呼んだりする。英語圏では、おそらく意味は通じるだろうけど一般的に使われているのかどうかは不明。</p>
+<li><p><strong>Static Typing（静的型付け）</strong>をできるようにするスーパーセット（上位拡張）やアドオンがある。TypeScriptやFlowなど。また特に日本国内ではそういったものをJSのAlternativesとして、AltJSと呼んだりする。英語圏で一般的に使われているのかどうかは不明。（おそらく、少なくとも意味は通じると思う。。。）</p>
 </li>
 </ul>
 
@@ -1697,133 +1841,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/03/31/letspost/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tars75">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/hexotest/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ノートでありメモでありブログであり">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hexotest/2018/03/31/letspost/" itemprop="url">Hexoで記事を書いてみる</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">投稿日</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-31T01:40:00+09:00">
-                2018-03-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Webの勉強がてら、Hexoでブログを作ってみることにした。</p>
-<h2 id="とりあえず記事を書いてみる"><a href="#とりあえず記事を書いてみる" class="headerlink" title="とりあえず記事を書いてみる"></a>とりあえず記事を書いてみる</h2><p>記事を作るときは、</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"記事のタイトル名"</span></span><br></pre></td></tr></table></figure>
-<p>とコマンドラインに入力する。</p>
-<p>そうすると、sourceというフォルダ配下の_postsというフォルダ内に記事のタイトル名のMarkdownファイルができる。<br>あとはこのMarkdownファイルを開いて好きなように記事を書けばOK！</p>
-<p>draftというコマンドで下書きも書けるみたいだけど、そもそもサーバーにdeployするまでは公開されないので、今の所は使わなさそう。</p>
-<h2 id="今後の課題"><a href="#今後の課題" class="headerlink" title="今後の課題"></a>今後の課題</h2><p>記事を書くにあたって、Markdownの書き方を覚える必要がある。</p>
-<h2 id="公式のドキュメント"><a href="#公式のドキュメント" class="headerlink" title="公式のドキュメント"></a>公式のドキュメント</h2><p>公式サイトにちゃんと<a href="http://hexo.io/docs/" target="_blank" rel="noopener">ドキュメント</a>があるので、まずはここを見てみるのがよさそう。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1874,7 +1891,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/hexotest/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
