@@ -271,6 +271,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/03/31/Markdown-test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexotest/2018/03/31/Markdown-test/" itemprop="url">Markdownのテスト</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-31T02:01:35+09:00">
+                2018-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Markdownはまったく書いたことないので、とりあえずいろいろ試して見る。いろいろ方言があるみたいだけど、今回はHexoでどうなるのか確認もしたい。ちなみに困ったときはそのままHTMLのタグを書けばちゃんと反映されるみたい。</p>
+<h2 id="Headingの書き方"><a href="#Headingの書き方" class="headerlink" title="Headingの書き方"></a>Headingの書き方</h2><p>Headingはでっかい見出し文字のこと。#が多いほど小さくなる。とてもよく使いそう。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Heading 1</span></span><br><span class="line"><span class="comment">## Heading 2</span></span><br><span class="line"><span class="comment">### Heading 3</span></span><br></pre></td></tr></table></figure>
+<h2 id="Italic-と-Strong"><a href="#Italic-と-Strong" class="headerlink" title="Italic と Strong"></a>Italic と Strong</h2><p>Italicは斜体で、Strongは強調（太字）のこと。あまり使わないかな？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*Italic* と **Strong**</span><br></pre></td></tr></table></figure>
+<h2 id="Strikethrough"><a href="#Strikethrough" class="headerlink" title="Strikethrough"></a>Strikethrough</h2><p>Strikethroughとは打ち消し線のこと。これもあんまり使わないかも。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~打ち消されまん~~</span><br></pre></td></tr></table></figure>
+<h2 id="Horizontal-Rule"><a href="#Horizontal-Rule" class="headerlink" title="Horizontal Rule"></a>Horizontal Rule</h2><p>Horizontal Ruleとは水平のけい線のこと。コンテンツを分けるときに使う。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">---</span><br></pre></td></tr></table></figure>
+<h2 id="Blockquote"><a href="#Blockquote" class="headerlink" title="Blockquote"></a>Blockquote</h2><p>Blockquoteとは、引用文のこと。わりとよく見かける気がする。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; 私は引用文として生まれました</span><br></pre></td></tr></table></figure>
+<h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><p>Linkとは、、文字通りリンクそのまま。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Youtube](https://www.youtube.com/)</span><br></pre></td></tr></table></figure>
+<h2 id="UL"><a href="#UL" class="headerlink" title="UL"></a>UL</h2><p>ULとは番号順なしのリストのこと。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* りすとまん</span><br><span class="line">* りすとまん</span><br><span class="line">* りすとまん</span><br><span class="line">  * ネステッドりすとまん</span><br><span class="line">  * ネステッドりすとまん</span><br><span class="line">  * ネステッドりすとまん</span><br><span class="line">    * 超ネステッドりすとまん</span><br></pre></td></tr></table></figure>
+<h2 id="OL"><a href="#OL" class="headerlink" title="OL"></a>OL</h2><p>OLとは番号順ありのリストのこと。ULの * を 1. に変えるだけ。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. りすとまん</span><br><span class="line">1. りすとまん</span><br><span class="line">1. りすとまん</span><br><span class="line">  1. ネステッドりすとまん</span><br><span class="line">  1. ネステッドりすとまん</span><br><span class="line">  1. ネステッドりすとまん</span><br><span class="line">    1. 超ネステッドりすとまん</span><br></pre></td></tr></table></figure>
+<h2 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h2><p>Imagesはそのまんま画像のこと。リンクの書き方にプラスして、先頭に!をつけると画像になる。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![画像の名前](画像のURL)</span><br></pre></td></tr></table></figure>
+<h2 id="書いてみた結果"><a href="#書いてみた結果" class="headerlink" title="書いてみた結果"></a>書いてみた結果</h2><h1 id="Heading-1"><a href="#Heading-1" class="headerlink" title="Heading 1"></a>Heading 1</h1><h2 id="Heading-2"><a href="#Heading-2" class="headerlink" title="Heading 2"></a>Heading 2</h2><h3 id="Heading-3"><a href="#Heading-3" class="headerlink" title="Heading 3"></a>Heading 3</h3><p><em>Italic</em>　と　<strong>Strong</strong></p>
+<p><del>打ち消されまん</del></p>
+<hr>
+<blockquote>
+<p>私は引用文として生まれました</p>
+</blockquote>
+<p><a href="https://www.youtube.com/" target="_blank" rel="noopener">Youtube</a></p>
+<ul>
+<li>りすとまん</li>
+<li>りすとまん</li>
+<li>りすとまん<ul>
+<li>ネステッドりすとまん</li>
+<li>ネステッドりすとまん</li>
+<li>ネステッドりすとまん<ul>
+<li>超ネステッドりすとまん</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>りすとまん</li>
+<li>りすとまん</li>
+<li>りすとまん<ol>
+<li>ネステッドりすとまん</li>
+<li>ネステッドりすとまん</li>
+<li>ネステッドりすとまん<ol>
+<li>超ネステッドりすとまん</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>だいたいこれくらいあれば記事を書くには大丈夫そうな感じ。Themeによって、だいぶ見た目も変わるようなのでこだわるなら自分でThemeを作ったほうがいいのかも。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/03/31/letspost/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -563,7 +735,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/hexotest/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">ポスト</span>
               </a>
             </div>

@@ -271,6 +271,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/10/js-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexotest/2018/04/10/js-7/" itemprop="url">JavaScriptについて学ぶ - 7</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-10T22:34:08+09:00">
+                2018-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JavaScriptについてのメモ第7回目。今回はループについて。</p>
+<hr>
+<h2 id="forループ"><a href="#forループ" class="headerlink" title="forループ"></a>forループ</h2><p>基本的な<strong>for文</strong>の書き方。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// for loop</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 5</span></span><br><span class="line"><span class="comment">// 6</span></span><br><span class="line"><span class="comment">// 7</span></span><br><span class="line"><span class="comment">// 8</span></span><br><span class="line"><span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+<h2 id="Continue"><a href="#Continue" class="headerlink" title="Continue"></a>Continue</h2><p><code>continue</code>があった時点で次のイテレーションへ進む。下の例は<code>continue</code>ありなしの比較。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// continueがあった時点で次のiterationに進む</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Continueなし</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">  <span class="keyword">if</span>(i === <span class="number">6</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'6です'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 5</span></span><br><span class="line"><span class="comment">// 6です</span></span><br><span class="line"><span class="comment">// 6</span></span><br><span class="line"><span class="comment">// 7</span></span><br><span class="line"><span class="comment">// 8</span></span><br><span class="line"><span class="comment">// 9</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Continueあり</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">  <span class="keyword">if</span>(i === <span class="number">6</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'6です'</span>);</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 5</span></span><br><span class="line"><span class="comment">// 6です</span></span><br><span class="line"><span class="comment">// 7</span></span><br><span class="line"><span class="comment">// 8</span></span><br><span class="line"><span class="comment">// 9</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 「6です」のあとの`console.log(i)`が実行されずに次のイテレーションへ進んでいる様子がわかる。</span></span><br></pre></td></tr></table></figure>
+<h2 id="Break"><a href="#Break" class="headerlink" title="Break"></a>Break</h2><p><code>break</code>の時点でforループを抜ける。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// breakでループを抜ける</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">  <span class="keyword">if</span>(i === <span class="number">6</span>)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'6です'</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 5</span></span><br><span class="line"><span class="comment">// 6です</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 「6です」までで終わっている様子がわかる。</span></span><br></pre></td></tr></table></figure>
+<h2 id="whileループ"><a href="#whileループ" class="headerlink" title="whileループ"></a>whileループ</h2><p>基本的な<strong>while文</strong>の書き方。決まりはないが、イテレーションの回数がわかっている場合は<strong>for文</strong>推奨。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// while loop</span></span><br><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(i &lt; <span class="number">10</span>)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">  i++; <span class="comment">// increment</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 5</span></span><br><span class="line"><span class="comment">// 6</span></span><br><span class="line"><span class="comment">// 7</span></span><br><span class="line"><span class="comment">// 8</span></span><br><span class="line"><span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+<h2 id="do-whileループ"><a href="#do-whileループ" class="headerlink" title="do whileループ"></a>do whileループ</h2><p>基本的な<strong>do while文</strong>の書き方。似ているが<strong>while文</strong>とは違い、条件式を満たしていなくても1回は実行される。（1回実行してから条件式が比較される）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// do while</span></span><br><span class="line"><span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">  i++;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (i &lt; <span class="number">10</span>);</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 5</span></span><br><span class="line"><span class="comment">// 6</span></span><br><span class="line"><span class="comment">// 7</span></span><br><span class="line"><span class="comment">// 8</span></span><br><span class="line"><span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 条件式にあてはまらない数値をいれてみる</span></span><br><span class="line"><span class="keyword">let</span> i = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">  i++;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (i &lt; <span class="number">10</span>);</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// 100</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 条件式を満たしていなくても1回は実行される。</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="配列のループおよびイテレーターメソッド-Iterators"><a href="#配列のループおよびイテレーターメソッド-Iterators" class="headerlink" title="配列のループおよびイテレーターメソッド - Iterators"></a>配列のループおよびイテレーターメソッド - Iterators</h2><p>配列にはループ処理をするための便利な<strong>イテレーター</strong>が用意されている。<strong>for文</strong>で書くよりも、<strong>イテレーター</strong>のほうが簡単に書ける。</p>
+<p>普通に<strong>for文</strong>で書いてみた例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配列</span></span><br><span class="line"><span class="keyword">const</span> cars = [<span class="string">'Toyota'</span>, <span class="string">'Honda'</span>, <span class="string">'Mazda'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// まずは普通にfor文で書いてみる</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; cars.length; i++)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(cars[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// Toyota</span></span><br><span class="line"><span class="comment">// Honda</span></span><br><span class="line"><span class="comment">// Mazda</span></span><br></pre></td></tr></table></figure>
+<p>次に<code>forEach()</code>というイテレータメソッドを使って書いてみた例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配列</span></span><br><span class="line"><span class="keyword">const</span> cars = [<span class="string">'Toyota'</span>, <span class="string">'Honda'</span>, <span class="string">'Mazda'</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// foreach</span></span><br><span class="line">cars.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">car, index</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;index&#125;</span> : <span class="subst">$&#123;car&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// 0 : Toyota</span></span><br><span class="line"><span class="comment">// 1 : Honda</span></span><br><span class="line"><span class="comment">// 2 : Mazda</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>forEach</code>は配列のすべての要素に同じコードを実行する。</li>
+<li>引数に、配列の各要素に適用する関数を書く。</li>
+<li>その関数の1番目のパラメータは、現在処理されている要素の値を示す。</li>
+<li>その関数の2番目のパラメータ（省略可）は現在処理されている要素のインデックスを示す。</li>
+<li><code>forEach()</code>では実際の配列の中身はかわらない。</li>
+<li>処理結果をリターンしない。return valueは<code>undefined</code></li>
+</ul>
+<h2 id="mapメソッド"><a href="#mapメソッド" class="headerlink" title="mapメソッド"></a>mapメソッド</h2><p><code>map()</code>はイテレータの1つ。配列のすべての要素に同じ処理を実行し、その結果からなる新しい配列を生成してリターンする。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// オブジェクトをもつ配列</span></span><br><span class="line"><span class="keyword">const</span> users = [</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">'hoge'</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">'foo'</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">'bar'</span>&#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// idsという変数でmap()のリターンを受け取る</span></span><br><span class="line"><span class="keyword">const</span> ids = users.map(<span class="function"><span class="keyword">function</span>(<span class="params">user</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> user.name + <span class="string">'さん'</span>; <span class="comment">// 配列の中のオブジェクトのnameに「さん」をつける</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(ids); <span class="comment">// ["hogeさん", "fooさん", "barさん"]</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>forEach</code>と同じく配列のすべての要素に同じコードを実行する。</li>
+<li>リターン以外は基本<code>forEach()</code>と同じ。</li>
+<li>処理結果かからなる新しい配列を作ってリターンする。</li>
+</ul>
+<h2 id="for-inループ"><a href="#for-inループ" class="headerlink" title="for inループ"></a>for inループ</h2><p><strong>for in文</strong>は基本的にオブジェクトに対して使うループ。全プロパティに対して同じ処理を実行できる。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// For in loop</span></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  firstName: <span class="string">'Hoge'</span>,</span><br><span class="line">  lastName: <span class="string">'Man'</span>,</span><br><span class="line">  age: <span class="number">40</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// オブジェクトuserに対してfor in文を実行</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> x <span class="keyword">in</span> user)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;x&#125;</span> : <span class="subst">$&#123;user[x]&#125;</span>`</span>); <span class="comment">// xには現在処理中のプロパティ名が入る</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Output:</span></span><br><span class="line"><span class="comment">// firstName : Hoge</span></span><br><span class="line"><span class="comment">// lastName : Man</span></span><br><span class="line"><span class="comment">// age : 40</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>プロパティが配列やオブジェクとなどの場合はループされず処理が実行できない。</li>
+<li><code>for(let 変数名 in オブジェクト名)</code>としたとき、各プロパティの値は<code>オブジェクト名[変数名]</code>と書き、<code>変数名</code>にはプロパティの名前が入る。</li>
+<li>順不同で実行される。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/09/js-6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1669,178 +1829,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/03/31/Markdown-test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tars75">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/hexotest/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ノートでありメモでありブログであり">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hexotest/2018/03/31/Markdown-test/" itemprop="url">Markdownのテスト</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">投稿日</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-31T02:01:35+09:00">
-                2018-03-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Markdownはまったく書いたことないので、とりあえずいろいろ試して見る。いろいろ方言があるみたいだけど、今回はHexoでどうなるのか確認もしたい。ちなみに困ったときはそのままHTMLのタグを書けばちゃんと反映されるみたい。</p>
-<h2 id="Headingの書き方"><a href="#Headingの書き方" class="headerlink" title="Headingの書き方"></a>Headingの書き方</h2><p>Headingはでっかい見出し文字のこと。#が多いほど小さくなる。とてもよく使いそう。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Heading 1</span></span><br><span class="line"><span class="comment">## Heading 2</span></span><br><span class="line"><span class="comment">### Heading 3</span></span><br></pre></td></tr></table></figure>
-<h2 id="Italic-と-Strong"><a href="#Italic-と-Strong" class="headerlink" title="Italic と Strong"></a>Italic と Strong</h2><p>Italicは斜体で、Strongは強調（太字）のこと。あまり使わないかな？</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*Italic* と **Strong**</span><br></pre></td></tr></table></figure>
-<h2 id="Strikethrough"><a href="#Strikethrough" class="headerlink" title="Strikethrough"></a>Strikethrough</h2><p>Strikethroughとは打ち消し線のこと。これもあんまり使わないかも。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~打ち消されまん~~</span><br></pre></td></tr></table></figure>
-<h2 id="Horizontal-Rule"><a href="#Horizontal-Rule" class="headerlink" title="Horizontal Rule"></a>Horizontal Rule</h2><p>Horizontal Ruleとは水平のけい線のこと。コンテンツを分けるときに使う。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">---</span><br></pre></td></tr></table></figure>
-<h2 id="Blockquote"><a href="#Blockquote" class="headerlink" title="Blockquote"></a>Blockquote</h2><p>Blockquoteとは、引用文のこと。わりとよく見かける気がする。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; 私は引用文として生まれました</span><br></pre></td></tr></table></figure>
-<h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><p>Linkとは、、文字通りリンクそのまま。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[Youtube](https://www.youtube.com/)</span><br></pre></td></tr></table></figure>
-<h2 id="UL"><a href="#UL" class="headerlink" title="UL"></a>UL</h2><p>ULとは番号順なしのリストのこと。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* りすとまん</span><br><span class="line">* りすとまん</span><br><span class="line">* りすとまん</span><br><span class="line">  * ネステッドりすとまん</span><br><span class="line">  * ネステッドりすとまん</span><br><span class="line">  * ネステッドりすとまん</span><br><span class="line">    * 超ネステッドりすとまん</span><br></pre></td></tr></table></figure>
-<h2 id="OL"><a href="#OL" class="headerlink" title="OL"></a>OL</h2><p>OLとは番号順ありのリストのこと。ULの * を 1. に変えるだけ。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. りすとまん</span><br><span class="line">1. りすとまん</span><br><span class="line">1. りすとまん</span><br><span class="line">  1. ネステッドりすとまん</span><br><span class="line">  1. ネステッドりすとまん</span><br><span class="line">  1. ネステッドりすとまん</span><br><span class="line">    1. 超ネステッドりすとまん</span><br></pre></td></tr></table></figure>
-<h2 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h2><p>Imagesはそのまんま画像のこと。リンクの書き方にプラスして、先頭に!をつけると画像になる。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![画像の名前](画像のURL)</span><br></pre></td></tr></table></figure>
-<h2 id="書いてみた結果"><a href="#書いてみた結果" class="headerlink" title="書いてみた結果"></a>書いてみた結果</h2><h1 id="Heading-1"><a href="#Heading-1" class="headerlink" title="Heading 1"></a>Heading 1</h1><h2 id="Heading-2"><a href="#Heading-2" class="headerlink" title="Heading 2"></a>Heading 2</h2><h3 id="Heading-3"><a href="#Heading-3" class="headerlink" title="Heading 3"></a>Heading 3</h3><p><em>Italic</em>　と　<strong>Strong</strong></p>
-<p><del>打ち消されまん</del></p>
-<hr>
-<blockquote>
-<p>私は引用文として生まれました</p>
-</blockquote>
-<p><a href="https://www.youtube.com/" target="_blank" rel="noopener">Youtube</a></p>
-<ul>
-<li>りすとまん</li>
-<li>りすとまん</li>
-<li>りすとまん<ul>
-<li>ネステッドりすとまん</li>
-<li>ネステッドりすとまん</li>
-<li>ネステッドりすとまん<ul>
-<li>超ネステッドりすとまん</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li>りすとまん</li>
-<li>りすとまん</li>
-<li>りすとまん<ol>
-<li>ネステッドりすとまん</li>
-<li>ネステッドりすとまん</li>
-<li>ネステッドりすとまん<ol>
-<li>超ネステッドりすとまん</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>だいたいこれくらいあれば記事を書くには大丈夫そうな感じ。Themeによって、だいぶ見た目も変わるようなのでこだわるなら自分でThemeを作ったほうがいいのかも。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1891,7 +1879,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/hexotest/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
