@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/hexotest/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/hexotest/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/hexotest/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学習メモ,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/hexotest/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="JavaScriptについてのメモ第8回目。今回はいよいよWindowオブジェクトについて。  Window ObjectWindowオブジェクトはブラウザのウインドウ本体を表し、ブラウザとJSをつなぐ一番の大本となるオブジェクト。 ブラウザやウェブページはすべて、オブジェクトのツリー構造によって表現されている。「ウインドウのなかの、htmlエレメントのなかの、headエレメントの中の、pエレメン">
+<meta name="keywords" content="学習メモ,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScriptについて学ぶ - 8">
+<meta property="og:url" content="https://tars75.github.io/hexotest/2018/04/11/js-8/index.html">
+<meta property="og:site_name" content="ノートでありメモでありブログであり">
+<meta property="og:description" content="JavaScriptについてのメモ第8回目。今回はいよいよWindowオブジェクトについて。  Window ObjectWindowオブジェクトはブラウザのウインドウ本体を表し、ブラウザとJSをつなぐ一番の大本となるオブジェクト。 ブラウザやウェブページはすべて、オブジェクトのツリー構造によって表現されている。「ウインドウのなかの、htmlエレメントのなかの、headエレメントの中の、pエレメン">
+<meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2018-04-10T21:26:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScriptについて学ぶ - 8">
+<meta name="twitter:description" content="JavaScriptについてのメモ第8回目。今回はいよいよWindowオブジェクトについて。  Window ObjectWindowオブジェクトはブラウザのウインドウ本体を表し、ブラウザとJSをつなぐ一番の大本となるオブジェクト。 ブラウザやウェブページはすべて、オブジェクトのツリー構造によって表現されている。「ウインドウのなかの、htmlエレメントのなかの、headエレメントの中の、pエレメン">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hexotest/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>JavaScriptについて学ぶ - 8 | ノートでありメモでありブログであり</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ja">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hexotest/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ノートでありメモでありブログであり</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hexoでブログを作ってみるテスト。主に自分用のノート件メモ。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/hexotest/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/hexotest/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/hexotest/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            記事一覧
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/hexotest/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            タグ
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/11/js-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScriptについて学ぶ - 8</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-11T02:13:06+09:00">
+                2018-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JavaScriptについてのメモ第8回目。今回はいよいよWindowオブジェクトについて。</p>
+<hr>
+<h2 id="Window-Object"><a href="#Window-Object" class="headerlink" title="Window Object"></a>Window Object</h2><p>Windowオブジェクトはブラウザのウインドウ本体を表し、ブラウザとJSをつなぐ一番の大本となるオブジェクト。</p>
+<p>ブラウザやウェブページはすべて、オブジェクトのツリー構造によって表現されている。<br>「ウインドウのなかの、htmlエレメントのなかの、headエレメントの中の、pエレメントの〜、」といった形でブラウザやWebページの要素をオブジェクトのつらなりとして扱えるようになっていて、その一番上にあるのがこの<strong>Windowオブジェクト。</strong></p>
+<p>ウェブページのツリー構造の標準化されたモデル自体を<strong><em>DOM</em></strong>とよび、documentオブジェクトによってそのモデル構造が実現されている。<br>その中にはすべてのhtmlエレメントに対応したプロパティ、すべてのhtmlエレメントにアクセスできるメソッド、すべてのhtmlイベントなどが含まれている。<br>このdocumentオブジェクトもまた、Windowオブジェクトに含まれている。</p>
+<p>とりあえずコンソールで<code>window</code>と入力してみると、ずらっとWindowオブジェクトに含まれているものの一覧がでてくる。</p>
+<ul>
+<li>alert()</li>
+<li>documentオブジェクト</li>
+<li>fetch API</li>
+<li>innerHeight</li>
+<li>innerWidth</li>
+</ul>
+<p>などなど。とにかく数え切れないくらいでてくる。</p>
+<p>Windowオブジェクトのすべてをメモするのは不可能なので、今回はさらっと触りだけメモする。</p>
+<hr>
+<h2 id="alertメソッド"><a href="#alertメソッド" class="headerlink" title="alertメソッド"></a>alertメソッド</h2><p>windowオブジェクトのなかでabc順的に一番最初にくるメソッド。警告ダイアログを出す。<br>なんとなく90年代のイメージがあるメソッド。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.alert(<span class="string">'hello'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ショートハンド</span></span><br><span class="line">alert(<span class="string">'hello'</span>); <span class="comment">// 暗黙的にwindowオブジェクトを示すので省略してかける</span></span><br></pre></td></tr></table></figure>
+<h2 id="promptメソッド"><a href="#promptメソッド" class="headerlink" title="promptメソッド"></a>promptメソッド</h2><p>ユーザー入力ダイアログをだして、その入力を受け取れるメソッド。<br>これも<code>window.</code>は省略してかける。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ユーザー入力を受け取り、inputに渡す</span></span><br><span class="line"><span class="keyword">const</span> input = prompt();</span><br><span class="line">alert(input); <span class="comment">// ユーザー入力をalertで表示</span></span><br></pre></td></tr></table></figure>
+<h2 id="confirmメソッド"><a href="#confirmメソッド" class="headerlink" title="confirmメソッド"></a>confirmメソッド</h2><p>okボタンとキャンセルボタンのあるダイアログをだして、okが押されたら<code>true</code>を返す。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Confirm </span></span><br><span class="line"><span class="comment">// okかキャンセルのダイアログをだして、okがクリックされたらtrue</span></span><br><span class="line"><span class="keyword">if</span>(confirm(<span class="string">'ほんとにおk？'</span>))&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'YES'</span>); <span class="comment">// okならコンソールにYES</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'NO'</span>); <span class="comment">// キャンセルならNO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Outer-Height-と-Outer-Width"><a href="#Outer-Height-と-Outer-Width" class="headerlink" title="Outer Height と Outer Width"></a>Outer Height と Outer Width</h2><p>ウインドウの一番外側の高さや幅を取得するプロパティ。読み取り専用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ウインドウ外側の大きさ</span></span><br><span class="line"><span class="comment">// ウインドウの大きさを変えると連動する</span></span><br><span class="line">val = <span class="built_in">window</span>.outerHeight; <span class="comment">// 1057</span></span><br><span class="line">val = <span class="built_in">window</span>.outerWidth; <span class="comment">// 908</span></span><br></pre></td></tr></table></figure>
+<h2 id="Inner-Height-と-Inner-Width"><a href="#Inner-Height-と-Inner-Width" class="headerlink" title="Inner Height と　Inner Width"></a>Inner Height と　Inner Width</h2><p>ウインドウの内側、ウェブページそのものが表示されているところの高さや幅を取得するプロパティ。読み取り専用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ウインドウ内側の大きさ</span></span><br><span class="line"><span class="comment">// ウインドウの大きさを変えると連動する</span></span><br><span class="line">val = <span class="built_in">window</span>.innerHeight; <span class="comment">// 960 </span></span><br><span class="line">val = <span class="built_in">window</span>.innerWidth; <span class="comment">// 908</span></span><br></pre></td></tr></table></figure>
+<h2 id="Scrollポイント"><a href="#Scrollポイント" class="headerlink" title="Scrollポイント"></a>Scrollポイント</h2><p>縦方向または横方向にどれだけスクロールされているかを取得するプロパティ。読み取り専用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Scroll points</span></span><br><span class="line">val = <span class="built_in">window</span>.scrollY; <span class="comment">// 0 縦方向のスクロールの位置</span></span><br><span class="line">val = <span class="built_in">window</span>.scrollX; <span class="comment">// 0 横方向のスクロールの位置</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Location-オブジェクト"><a href="#Location-オブジェクト" class="headerlink" title="Location オブジェクト"></a>Location オブジェクト</h2><p>クライアントのホストやドメイン、ポートなど、ネット上での場所に関する情報を取得するオブジェクト。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Location Object</span></span><br><span class="line">val = <span class="built_in">window</span>.location; <span class="comment">// Locationオブジェクト全体</span></span><br><span class="line">val = <span class="built_in">window</span>.location.hostname; <span class="comment">// 127.0.0.1 ホスト名（今回はテスト環境なのでループバックアドレス）</span></span><br><span class="line">val = <span class="built_in">window</span>.location.port; <span class="comment">// 5500 ポート番号</span></span><br><span class="line">val = <span class="built_in">window</span>.location.href; <span class="comment">// http://127.0.0.1:5500/</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">window</span>.location.search; <span class="comment">// Queryストリングだけを取れる</span></span><br><span class="line"><span class="comment">//　例) アドレスバーの末尾に?id=1&amp;name=hogeと入力して移動</span></span><br><span class="line"><span class="comment">// そこでsearchを取得すると</span></span><br><span class="line"><span class="comment">// id=1&amp;name=hoge　という値が取れる</span></span><br></pre></td></tr></table></figure>
+<p><code>href</code>プロパティにアドレスを入れると<strong>Redirect</strong>される。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Redirect</span></span><br><span class="line"><span class="built_in">window</span>.location.href = <span class="string">'http://google.com'</span>; <span class="comment">// googleに飛ばされる</span></span><br></pre></td></tr></table></figure>
+<p>Reloadメソッドでページの再読み込みができる。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Reload</span></span><br><span class="line"><span class="built_in">window</span>.location.reload(); <span class="comment">// ページがリロードされる</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ただ、このままだとリロードしたあとにまたこのメソッドが読み込まれるので無限にリロードが繰り返される</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="History-オブジェクト"><a href="#History-オブジェクト" class="headerlink" title="History オブジェクト"></a>History オブジェクト</h2><p>今のウインドウで読み込んだページの履歴を取得するオブジェクト。</p>
+<p>ブラウザの戻るボタン的なメソッドがある。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// History Object</span></span><br><span class="line"><span class="built_in">window</span>.history.go(<span class="number">-1</span>); <span class="comment">// 1つ前のページに戻る 2つ前にもどりたかったら-2</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">window</span>.history.length; <span class="comment">// 履歴というか、戻れるページがどれだけあるかを取得</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Navigator-オブジェクト"><a href="#Navigator-オブジェクト" class="headerlink" title="Navigator オブジェクト"></a>Navigator オブジェクト</h2><p>ブラウザの種類やバージョン、言語など、JSが動いているブラウザの情報を取得するオブジェクト。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Navigator Object</span></span><br><span class="line">val = <span class="built_in">window</span>.navigator;</span><br><span class="line"></span><br><span class="line">val = <span class="built_in">window</span>.navigator.appName; <span class="comment">// Netscape 非推奨</span></span><br><span class="line">val = <span class="built_in">window</span>.navigator.appVersion; <span class="comment">// 5.0 (Macintosh; Inte~~</span></span><br><span class="line">val = <span class="built_in">window</span>.navigator.userAgent; <span class="comment">// 非推奨</span></span><br><span class="line">val = <span class="built_in">window</span>.navigator.platform; <span class="comment">// MacIntel</span></span><br><span class="line">val = <span class="built_in">window</span>.navigator.vendor; <span class="comment">// Google Inc.</span></span><br><span class="line">val = <span class="built_in">window</span>.navigator.language; <span class="comment">// ja</span></span><br></pre></td></tr></table></figure>
+<p>ただ、MDNをみると<strong>ブラウザの検出</strong>という行為自体できる限り避けるように提唱されているようなので要注意。</p>
+<p>ブラウザ同士の競争でuserAgentがごちゃごちゃになってしまったことなどが背景にある様子。</p>
+<p>ブラウザ検出に関してのリンクも一応メモ</p>
+<ul>
+<li><p><a href="https://developer.mozilla.org/ja/docs/Web/HTTP/Browser_detection_using_the_user_agent" target="_blank" rel="noopener">MDN - ブラウザの検出について</a><br>未翻訳だけどいろいろ詳しくかいてある。</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/NavigatorID/appName" target="_blank" rel="noopener">MDN - navigator.appNameについて</a><br>未翻訳かつ日本語のページはリンク切れの様子。</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/hexotest/tags/学習メモ/" rel="tag"># 学習メモ</a>
+          
+            <a href="/hexotest/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexotest/2018/04/10/js-7/" rel="next" title="JavaScriptについて学ぶ - 7">
+                <i class="fa fa-chevron-left"></i> JavaScriptについて学ぶ - 7
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            見出し
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            概要
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/hexotest/images/avatar.gif"
+               alt="Tars75" />
+          <p class="site-author-name" itemprop="name">Tars75</p>
+           
+              <p class="site-description motion-element" itemprop="description">調べたり勉強したことなどを自分用にノートをとったりメモ書きしていくブログです。ノートやメモ書きレベルで文を書いているので、誤字脱字や情報の間違いがあるかもしれません。他人のチラシの裏の落書きぐらいに思って見ていただけると幸いです。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/hexotest/archives/">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">ポスト</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/hexotest/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">タグ</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Window-Object"><span class="nav-number">1.</span> <span class="nav-text">Window Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alertメソッド"><span class="nav-number">2.</span> <span class="nav-text">alertメソッド</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#promptメソッド"><span class="nav-number">3.</span> <span class="nav-text">promptメソッド</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#confirmメソッド"><span class="nav-number">4.</span> <span class="nav-text">confirmメソッド</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Outer-Height-と-Outer-Width"><span class="nav-number">5.</span> <span class="nav-text">Outer Height と Outer Width</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inner-Height-と-Inner-Width"><span class="nav-number">6.</span> <span class="nav-text">Inner Height と　Inner Width</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrollポイント"><span class="nav-number">7.</span> <span class="nav-text">Scrollポイント</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Location-オブジェクト"><span class="nav-number">8.</span> <span class="nav-text">Location オブジェクト</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#History-オブジェクト"><span class="nav-number">9.</span> <span class="nav-text">History オブジェクト</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigator-オブジェクト"><span class="nav-number">10.</span> <span class="nav-text">Navigator オブジェクト</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tars75</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/hexotest/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/hexotest/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/hexotest/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
