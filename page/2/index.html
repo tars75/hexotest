@@ -271,6 +271,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/02/curl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexotest/2018/04/02/curl/" itemprop="url">curlについて調べる</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-02T22:04:02+09:00">
+                2018-04-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Webについて勉強しはじめたばかりだけどコマンドラインが関わってくると、かなりの頻度でこの<strong>curl</strong>というコマンドがでてくる。<strong>curl</strong>ってなんだ？？ってことで、ちょっと調べてみることにした。</p>
+<p>なるべくあとで見返したときにわかりやすように、調べたことを自分の言葉でメモしていこうと思う。</p>
+<hr>
+<h3 id="curlとは？"><a href="#curlとは？" class="headerlink" title="curlとは？"></a>curlとは？</h3><p>curlとは、指定したURLに対していろんなタイプのリクエスト（GETとかPOSTとか）を行ったり、データをやりとり（ダウンロードとかアップロードとか）したりするのに使うツールのこと。</p>
+<p>HTTPやらFTPなど、いろんなインターネットプロトコルに対応している。</p>
+<p>全く同じ名前のCurl言語というプログラミング言語があるみたいだけど、それとは全く別物なので注意。</p>
+<p>読み方はそのまま<em>カール</em>でおk。または<em>シーユーアールエル</em>と呼ばれることもある。</p>
+<p><a href="https://curl.haxx.se/" target="_blank" rel="noopener">ここ</a>に公式のドキュメントがある。</p>
+<h3 id="curlの歴史"><a href="#curlの歴史" class="headerlink" title="curlの歴史"></a>curlの歴史</h3><p>1996年にDaniel Stenbergさんという方が、IRC（チャットのアプリみたいなもの）で、為替レートを変換してくれるチャットボット（100ドルを円に変換して！といったら変換してくれるみたいなもの）を暇つぶしで作ろうとしたのがきっかけだそうな。</p>
+<p>最初は<strong>HttpGet 1.0</strong>という名前で文字通りhttp-onlyのツールだったのが、その後にFTPダウンロードもサポートした<strong>urlget 2.0</strong>になり、最終的に1998年に<strong>curl 4</strong>という名前でリリースされたらしい。ちょうど20年前くらい。オープンソースで開発され、世界中のたくさんの有志の人たちが関わって作ったとのこと。</p>
+<h3 id="どういう風に使うの？"><a href="#どういう風に使うの？" class="headerlink" title="どういう風に使うの？"></a>どういう風に使うの？</h3><h4 id="1-準備"><a href="#1-準備" class="headerlink" title="1. 準備"></a>1. 準備</h4><p>とりあえずここでは、コマンドラインで使う前提で進める。</p>
+<p>最近のバージョンのOS X / macOSや、ほとんどのLinuxのディストリビューションであれば最初からインストールされていて、コマンドラインですぐにこのcurlというツールを使えるようになっている。Windowsの場合でも<em>Git bash</em>などのコマンドラインツールであれば最初からcurlコマンドが使える。</p>
+<p>とうことで、基本的にはWindows以外であれば特に準備はいらない。Windowsの場合でもcurlが使えるコマンドラインツールを使ったり、curl自体をダウンロードすれば普通に使えるようだ。</p>
+<h4 id="2-コマンドを入力"><a href="#2-コマンドを入力" class="headerlink" title="2. コマンドを入力"></a>2. コマンドを入力</h4><p>ターミナルやGit bashなどのコマンドラインツールにcurlコマンドを入力して使う。</p>
+<p>基本は</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl &lt;option とか url/uri とかいろいろ&gt;</span><br></pre></td></tr></table></figure>
+<p>というかたちで入力する。オプションはかなりいろいろあって、</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+<p>と入力すると、すべてのオプション一覧が見れる。</p>
+<p>オプションなしで、</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl &lt;url/uri&gt;</span><br></pre></td></tr></table></figure>
+<p>とやると、GETリクエストされる。そのままurl/uriに対してGETリクエストした結果が出力される。</p>
+<h4 id="3-試してみる！！"><a href="#3-試してみる！！" class="headerlink" title="3. 試してみる！！"></a>3. 試してみる！！</h4><p>さっそく試しにどこか適当なURIを貼っつけてみる。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://www.youtube.com</span><br></pre></td></tr></table></figure>
+<p>今回は試しにYoutubeのURIを貼り付けてみた。そうすると、Youtubeのソースコードが出力された。</p>
+<p>次に今度はオプションをつけてみる。</p>
+<p>オプションを試すにあたって、今回はここの<a href="https://jsonplaceholder.typicode.com/" target="_blank" rel="noopener">ダミーサイト</a>を使っう。</p>
+<p>-dというdataをPOSTするオプションを試してみる。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -d <span class="string">"title=Hello&amp;body=Hello World"</span> https://jsonplaceholder.typicode.com/posts</span><br></pre></td></tr></table></figure>
+<p>結果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"title"</span>: <span class="string">"Hello"</span>,</span><br><span class="line">  <span class="string">"body"</span>: <span class="string">"Hello World"</span>,</span><br><span class="line">  <span class="string">"id"</span>: 101</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>POSTリクエストで、titleに「Hello」、bodyに「Hello World」という情報を送ることができた。（ダミーサイトなので実際にはPOSTしたデータは保存されていない）</p>
+<h3 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h3><p>今まではまったく何もわからずに何らかのTutorialとかに従って<strong>curl</strong>コマンドを打ち込んでいたけど、もやもやがちょっとすっきり。</p>
+<p>オプションがかなりいろいろあるので、バックエンドの開発をするときに例えばデバッグとかでも結構使えそうだと思った。</p>
+<p>ただ、逆にバックエンド系のことをしないのであればそんなに使わなさそうというのが正直な感想。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/02/1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1003,7 +1157,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/hexotest/archives/">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
@@ -1016,7 +1170,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/hexotest/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">タグ</span>
               </a>
             </div>
