@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/hexotest/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/hexotest/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/hexotest/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学習メモ,JavaScript,DOM," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/hexotest/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="JavaScriptについてのメモ第11回目。前回に引き続きDOMについて。  DOM セレクター ( Single Elements用 )Documentオブジェクトには、DOMからHTMLエレメントを取得するためのDOMセレクターが用意されている。 ここではDOMセレクターのうち、シングルエレメント用（エレメントを単体で取得するもの）についてメモ。   document.querySelect">
+<meta name="keywords" content="学習メモ,JavaScript,DOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScriptについて学ぶ - 11">
+<meta property="og:url" content="https://tars75.github.io/hexotest/2018/04/16/js-11/index.html">
+<meta property="og:site_name" content="ノートでありメモでありブログであり">
+<meta property="og:description" content="JavaScriptについてのメモ第11回目。前回に引き続きDOMについて。  DOM セレクター ( Single Elements用 )Documentオブジェクトには、DOMからHTMLエレメントを取得するためのDOMセレクターが用意されている。 ここではDOMセレクターのうち、シングルエレメント用（エレメントを単体で取得するもの）についてメモ。   document.querySelect">
+<meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2018-04-15T19:53:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScriptについて学ぶ - 11">
+<meta name="twitter:description" content="JavaScriptについてのメモ第11回目。前回に引き続きDOMについて。  DOM セレクター ( Single Elements用 )Documentオブジェクトには、DOMからHTMLエレメントを取得するためのDOMセレクターが用意されている。 ここではDOMセレクターのうち、シングルエレメント用（エレメントを単体で取得するもの）についてメモ。   document.querySelect">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hexotest/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>JavaScriptについて学ぶ - 11 | ノートでありメモでありブログであり</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ja">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hexotest/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ノートでありメモでありブログであり</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hexoでブログを作ってみるテスト。主に自分用のノート件メモ。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/hexotest/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/hexotest/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/hexotest/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            記事一覧
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/hexotest/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            タグ
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/16/js-11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScriptについて学ぶ - 11</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-16T02:34:01+09:00">
+                2018-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JavaScriptについてのメモ第11回目。前回に引き続きDOMについて。</p>
+<hr>
+<h2 id="DOM-セレクター-Single-Elements用"><a href="#DOM-セレクター-Single-Elements用" class="headerlink" title="DOM セレクター ( Single Elements用 )"></a>DOM セレクター ( Single Elements用 )</h2><p>Documentオブジェクトには、DOMからHTMLエレメントを取得するためのDOMセレクターが用意されている。</p>
+<p>ここではDOMセレクターのうち、シングルエレメント用（エレメントを単体で取得するもの）についてメモ。</p>
+<p><br></p>
+<ul>
+<li><p><code>document.querySelector()</code></p>
+<ul>
+<li><p><strong>CSSのセレクタ</strong>でエレメントを取得できるDOMセレクター。</p>
+</li>
+<li><p>なので<strong><em>ID</em></strong>でも<strong><em>クラス</em></strong>でも<strong><em>ネストされたエレメント</em></strong>でも、もっと言えば <strong><em>nth-child</em></strong> みたいなやつでも指定できる。</p>
+</li>
+<li><p>あくまでもシングルエレメント用なので、複数該当するエレメントがあっても、取得されるのは最初のエレメント1つだけなので注意。</p>
+</li>
+<li><p>はっきりいってこれがあれば<code>getElementById()</code>はいらない気がするけど、よく出てくるのでいちおう両方ともメモする。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>document.getElementById()</code></p>
+<ul>
+<li>メモするまでもなく文字通りそのまま、<strong><em>ID</em></strong>からエレメントを取得するDOMセレクター。</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<p><code>getElementById</code>でも<code>querySelector</code>でも、DOMセレクターでエレメントを取得した後はそのエレメントにいろいろ変更をかけたりすることができ、例えば<strong>CSSのスタイル</strong>や<strong>中身のテキスト</strong>なども変更できる。</p>
+<p><br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// あらかじめHTMLでテキトーなページを作ってからテストしてみる</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// document.querySelector()</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.querySelector(<span class="string">'#task-title'</span>)); <span class="comment">// &lt;h5 id="task-title"&gt;Tasks&lt;/h5&gt;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.querySelector(<span class="string">'.card-title'</span>)); <span class="comment">// &lt;span class="card-title"&gt;Task List&lt;/span&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'li:last-child'</span>).style.color = <span class="string">'red'</span>; <span class="comment">// リストの最後のアイテムを赤色にする</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'li:nth-child(3)'</span>).style.color = <span class="string">'red'</span>; <span class="comment">// リストの3つ目のアイテムを赤色にする</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'li:nth-child(4)'</span>).textContent = <span class="string">'HELLO WORLD'</span>; <span class="comment">// リストの4つ目のアイテムのテキストを変更する</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// documenet.getElementById();</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementById(<span class="string">'task-title'</span>)); <span class="comment">// &lt;h5 id="task-title"&gt;Tasks&lt;/h5&gt;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">document</span>.getElementById(<span class="string">'task-title'</span>).id); <span class="comment">// task-title</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得したオブジェクトを格納できる（querySelectorでも可）</span></span><br><span class="line"><span class="keyword">const</span> taskTitle = <span class="built_in">document</span>.getElementById(<span class="string">'task-title'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// スタイルを変更する</span></span><br><span class="line">taskTitle.style.background = <span class="string">'black'</span>; <span class="comment">// task-titleの背景色を黒にする</span></span><br><span class="line">taskTitle.style.color = <span class="string">'#fff'</span>; <span class="comment">// task-titleの文字色を白にする</span></span><br><span class="line">taskTitle.style.padding = <span class="string">'5px'</span>; <span class="comment">// task-titleのpaddingを変える</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// テキストコンテンツを変える</span></span><br><span class="line">taskTitle.textContent = <span class="string">'Task List'</span>; <span class="comment">// task-titleのテキストをTask Listに変更</span></span><br><span class="line">taskTitle.innerText = <span class="string">'Hoge Title'</span>; <span class="comment">// task-titleのテキストをHoge Titleに変更</span></span><br><span class="line">taskTitle.innerHTML = <span class="string">'&lt;span style="color:red"&gt;My Tasks&lt;/span&gt;'</span>; <span class="comment">// task-titleにMy Tasksというテキストをもったspan要素を埋め込む</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>getElementById()</code>でも、<code>querySelector()</code>でも、取得したオブジェクトを変数に渡して格納できる。</p>
+</li>
+<li><p><code>.style</code>と続けてからCSSのプロパティを指定することで、CSSのスタイルを変えることができる。</p>
+</li>
+</ul>
+<hr>
+<h2 id="DOM-セレクター-Multiple-Elements用"><a href="#DOM-セレクター-Multiple-Elements用" class="headerlink" title="DOM セレクター ( Multiple Elements用 )"></a>DOM セレクター ( Multiple Elements用 )</h2><p>今度はDOMセレクターのうち、複数のエレメントを取得する用のものについてメモ。</p>
+<p><br></p>
+<ul>
+<li><p><code>document.getElementsByClassName()</code></p>
+<ul>
+<li><p>文字通り、クラス名からエレメントを取得する。</p>
+</li>
+<li><p>HTMLコレクションで取得されるため、配列のメソッドなどを使いたい場合は配列に変換する必要がある。</p>
+</li>
+</ul>
+</li>
+<li><p><code>document.getElementsByTagName()</code></p>
+<ul>
+<li><p>こっちは文字通りタグ名でエレメントを取得する。</p>
+</li>
+<li><p>これもHTMLコレクションで取得されるため、配列のメソッドなどを使いたい場合は配列に変換する必要がある。</p>
+</li>
+</ul>
+</li>
+<li><p><code>document.querySelectorAll()</code></p>
+<ul>
+<li><p><code>document.querySelector()</code>が複数のエレメント取得に対応したもの。</p>
+</li>
+<li><p>CSSセレクタで当てはまるもの全てを取得できる。</p>
+</li>
+<li><p>ノードリストとして取得されるため、上記2つとは違って変換しなくてもそのまま配列のメソッドが使える。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// あらかじめHTMLでテキトーなページを作ってからテスト</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// *</span></span><br><span class="line"><span class="comment">// document.getElementsByClassName</span></span><br><span class="line"><span class="comment">// *</span></span><br><span class="line"><span class="keyword">const</span> items = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'collection-item'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(items); <span class="comment">// HTMLコレクション</span></span><br><span class="line"><span class="built_in">console</span>.log(items[<span class="number">0</span>]); <span class="comment">// &lt;li class="collection-item"&gt;…&lt;/li&gt;</span></span><br><span class="line">items[<span class="number">0</span>].style.color = <span class="string">'red'</span>; <span class="comment">// リストの最初の要素を赤に</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// documentオブジェクトだけでなく、querySelectorなどで取得したオブジェクトに対しても使える</span></span><br><span class="line"><span class="keyword">const</span> listItems = <span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>).getElementsByClassName(<span class="string">'collection-item'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(listItems); <span class="comment">// HTMLコレクション</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// * </span></span><br><span class="line"><span class="comment">// document.getElementsByTagName</span></span><br><span class="line"><span class="comment">// * </span></span><br><span class="line"><span class="keyword">let</span> lis = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(lis); <span class="comment">// HTMLコレクション</span></span><br><span class="line"><span class="built_in">console</span>.log(lis[<span class="number">0</span>]); <span class="comment">// &lt;li class="collection-item"&gt;…&lt;/li&gt;</span></span><br><span class="line">lis[<span class="number">0</span>].style.color = <span class="string">'red'</span>;</span><br><span class="line">lis[<span class="number">3</span>].textContent = <span class="string">'Hello'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// HTMLコレクションを配列に変換する</span></span><br><span class="line">lis = <span class="built_in">Array</span>.from(lis);</span><br><span class="line">lis.reverse(); <span class="comment">// 配列に変換することでArray用のメソッドが使える</span></span><br><span class="line">lis.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">li, index</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(li.className);</span><br><span class="line">  li.textContent = <span class="string">`<span class="subst">$&#123;index&#125;</span>: Hello`</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// *</span></span><br><span class="line"><span class="comment">// document.querySelectorAll</span></span><br><span class="line"><span class="comment">// *</span></span><br><span class="line"><span class="keyword">const</span> items = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(items); <span class="comment">// NodeList</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ノードリストなので、そのまま配列のメソッドが使える</span></span><br><span class="line">items.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item, index</span>)</span>&#123;</span><br><span class="line">  item.textContent = <span class="string">`<span class="subst">$&#123;index&#125;</span>: Hello`</span>;</span><br><span class="line">&#125;); <span class="comment">// li要素のテキストをすべて番号付きのHelloに変更</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> liOdd = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li:nth-child(odd)'</span>);</span><br><span class="line"><span class="keyword">const</span> liEven = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li:nth-child(even)'</span>);</span><br><span class="line"></span><br><span class="line">liOdd.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">li, index</span>)</span>&#123;</span><br><span class="line">  li.style.background = <span class="string">'#ccc'</span>;</span><br><span class="line">&#125;); <span class="comment">// 奇数のリストの背景をグレーにする</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 配列のプロパティも使える</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; liEven.length; i++)&#123;</span><br><span class="line">  liEven[i].style.background = <span class="string">'#f4f4f4'</span>; </span><br><span class="line">&#125; <span class="comment">// 偶数のリストの背景をやさしい白にする</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/hexotest/tags/学習メモ/" rel="tag"># 学習メモ</a>
+          
+            <a href="/hexotest/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/hexotest/tags/DOM/" rel="tag"># DOM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexotest/2018/04/15/js-10/" rel="next" title="JavaScriptについて学ぶ - 10">
+                <i class="fa fa-chevron-left"></i> JavaScriptについて学ぶ - 10
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            見出し
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            概要
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/hexotest/images/avatar.gif"
+               alt="Tars75" />
+          <p class="site-author-name" itemprop="name">Tars75</p>
+           
+              <p class="site-description motion-element" itemprop="description">調べたり勉強したことなどを自分用にノートをとったりメモ書きしていくブログです。ノートやメモ書きレベルで文を書いているので、誤字脱字や情報の間違いがあるかもしれません。他人のチラシの裏の落書きぐらいに思って見ていただけると幸いです。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/hexotest/archives/">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">ポスト</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/hexotest/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">タグ</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-セレクター-Single-Elements用"><span class="nav-number">1.</span> <span class="nav-text">DOM セレクター ( Single Elements用 )</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM-セレクター-Multiple-Elements用"><span class="nav-number">2.</span> <span class="nav-text">DOM セレクター ( Multiple Elements用 )</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tars75</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/hexotest/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/hexotest/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/hexotest/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

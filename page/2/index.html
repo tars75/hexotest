@@ -271,6 +271,206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/04/js-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexotest/2018/04/04/js-1/" itemprop="url">JavaScriptについて学ぶ - 1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-04T02:41:24+09:00">
+                2018-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JavaScriptについて新たに学習したことや、改めて復習したことなどを自分のためにメモしていく。第1回目。</p>
+<hr>
+<h2 id="JavaScriptを動かす"><a href="#JavaScriptを動かす" class="headerlink" title="JavaScriptを動かす"></a>JavaScriptを動かす</h2><p>簡単にJavaScriptを動かす方法3つをメモ。<br><br></p>
+<p><strong>1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt; ほげほげ &lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>HTML5ではscriptエレメントの中に書いたものはデフォルトでJSとして実行される。JSでスクリプトを書く場合、type属性をわざわざ書かずに省略することが推奨されている。<br><br></p>
+<p><strong>2. scriptエレメントのsrc属性を使って、外部から読み込む。</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"hogehoge.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>外部スクリプトを読み込んで実行する。htmlファイルとは別のファイルを作って、そこにjsを書く。この方法を使う場合は、1番目のやり方でscriptエレメントの中に直接スクリプトを書いてはいけない。<br><br></p>
+<p><strong>3. ブラウザのデベロッパーツールでコンソールを出して打ち込む。</strong><br>コンソールにJSを入力することはあんまりないかもしれないけど、入力すればちゃんと動く。</p>
+<hr>
+<h2 id="変数-var-let-const"><a href="#変数-var-let-const" class="headerlink" title="変数 - var, let, const"></a>変数 - var, let, const</h2><p>変数には、<strong><em>var</em></strong>, <strong><em>let</em></strong>, <strong><em>const</em></strong>の3つがある。<br>ES6(ES2015)からブロックスコープの変数である<strong><em>let</em></strong>と<strong><em>const</em></strong>が追加された。<br>主要なブラウザで<strong><em>let</em></strong>と<strong><em>const</em></strong>が使えるようになった現在では、グローバルスコープの変数である<strong><em>var</em></strong>の使用は非推奨となっている。<br><br></p>
+<p><strong><em>let</em></strong>と<strong><em>const</em></strong>の比較。</p>
+<ul>
+<li>let： 宣言できるのは一回のみ。reassign可（reassign = 代入しなおすこと）。</li>
+<li>const： 宣言できるのは一回のみ。reassign不可。また、宣言時に初期値を代入しないとエラーになる。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> firstName; <span class="comment">// Missing initializerというエラーになる。</span></span><br><span class="line"><span class="keyword">const</span> lastName = <span class="string">"hoge"</span>; <span class="comment">// このように宣言時に初期値をassignする必要がある。</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>ただし、<strong><em>const</em></strong>はreassign不可であるものの、配列やオブジェクトの場合は<strong><em>mutable</em></strong>である（値が可変であり、宣言したあとも中の値を変更できる可能性がある）ことに<strong>注意！！</strong><br><br></p>
+<p>変数名に使えるのは、次の三つ。</p>
+<ul>
+<li>英数字（英字に関しては、大文字と小文字は区別される）</li>
+<li>_（アンダースコア）</li>
+<li>$ （マネーサイン）</li>
+</ul>
+<p>ただし、数字を一文字目にはできない。<br>また、$や_を一文字目にしてもエラーなどはでないものの、他のライブラリやフレームワーク独自の規格とかぶったりするので基本的には避けたほうがよいとされている。<br><br></p>
+<p>変数名に複数の単語をもつ場合、従わなくてもエラーがでるわけではないけど書き方の作法のようなものがある。</p>
+<ul>
+<li><p><strong>Camel case</strong><br>基本的にはこの書き方を使う。<br>例）firstName</p>
+</li>
+<li><p><strong>Pascal case</strong><br>クラス名と、クラスのコンストラクタにはこの書き方を使う。<br>例）FirstName</p>
+</li>
+</ul>
+<hr>
+<h2 id="データ型"><a href="#データ型" class="headerlink" title="データ型"></a>データ型</h2><p>JavaScriptには、大きく分けて<strong><em>Primitive</em></strong>と<strong><em>Object</em></strong>の二つのデータ構造がある。さらに<strong><em>Primitive</em></strong>であるデータ型は6つある。その6つ以外のものは全てObject型となる。</p>
+<h3 id="Primitives"><a href="#Primitives" class="headerlink" title="Primitives"></a>Primitives</h3><p>オブジェクトではないデータのこと。基本的には値そのものを指す。メソッドは持たず、immutableな（変更することができない）値と定義されている。</p>
+<ul>
+<li><p><strong>String型</strong><br>文字列。ラッパーオブジェクトあり。</p>
+</li>
+<li><p><strong>Number型</strong><br>数値。整数に限らず、小数や+/-Infinity、およびNaNも全てこのnumber型。ラッパーオブジェクトあり。</p>
+</li>
+<li><p><strong>Boolean型</strong><br>trueまたはfalseのどちらかの値をもつ。ラッパーオブジェクトあり。</p>
+</li>
+<li><p><strong>Null型</strong><br>意図的に変数の値が空であることを示す時に使う。値はnullのみ。注意点として、<em>typeof null</em>のリターンが<em>Object</em>になるというバグがある。</p>
+</li>
+<li><p><strong>Undefined型</strong><br>何も代入されていない変数の値。</p>
+</li>
+<li><p><strong>Symbols型(ES6)</strong><br>ES6からの新機能。Objectのプロパティを指すユニークなシンボル。ラッパーオブジェクトあり。</p>
+</li>
+</ul>
+<h3 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h3><p>オブジェクトになるものの例。</p>
+<ul>
+<li>Arrays（配列）</li>
+<li>Object Literals（オブジェクトリテラル）</li>
+<li>Functions（関数）</li>
+<li>Dates（日付オブジェクト）<br>…など。<strong>Primitive</strong>でないものは全て<strong>Object</strong>になる。</li>
+</ul>
+<p><br></p>
+<h3 id="ラッパーオブジェクト"><a href="#ラッパーオブジェクト" class="headerlink" title="ラッパーオブジェクト"></a>ラッパーオブジェクト</h3><p><em>Null</em>と<em>Undefined</em>以外は<strong>ラッパーオブジェクト</strong>が用意されているため、オブジェクトのように扱うことができる。これによってもともと用意されている便利なビルトインメソッドやプロパティを使うことができる。</p>
+<p><br></p>
+<h3 id="Immutableについて"><a href="#Immutableについて" class="headerlink" title="Immutableについて"></a>Immutableについて</h3><p><em>immutabel</em>という単語を目にしたときに「どいうこと？変数に再代入できないの？」という疑問が浮かんだが、変数に再代入することはできる。</p>
+<p>試しに<code>str</code>という変数に、<code>&#39;foo&#39;</code>という文字列を格納したあと<code>&#39;bar&#39;</code>を再代入してみる。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// これは可能</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'foo'</span>; <span class="comment">// 文字列を格納するメモリが割り当てられる。</span></span><br><span class="line">str = <span class="string">'bar'</span>; <span class="comment">// 新たに別のbuffer(メモリ)が確保される</span></span><br></pre></td></tr></table></figure></p>
+<p>このとき何が行われているかというと、</p>
+<ol>
+<li><code>&#39;foo&#39;</code>を格納するためのメモリが割り当てられる。</li>
+<li><code>&#39;bar&#39;</code>を格納するために、新たに別のメモリが割り当てられる。</li>
+<li><code>&#39;foo&#39;</code>が格納されていたメモリはどうなるのかというと、<strong>メモリライフサイクル</strong>や<strong>Garbage Collection</strong>と呼ばれる機能によって必要ないと判断されたときに自動的に解放される。</li>
+</ol>
+<p>では、今度はメモリに格納されている値自体を変えようとしてみる。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'foo'</span>;</span><br><span class="line">str[<span class="number">0</span>] = <span class="string">'g'</span>; <span class="comment">// 直接'f'が格納されているメモリの値自体を変えようとしてみる。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//上記を実行してもエラーは起きないが値を表示してみると..</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str); <span class="comment">// foo (gooにはなっていない)</span></span><br><span class="line"><span class="built_in">console</span>.log(str[<span class="number">0</span>]) <span class="comment">// f (fのまま変わっていない)</span></span><br></pre></td></tr></table></figure></p>
+<p>最初に<code>f</code>を格納したメモリの値を変えようとしても、変えられないということがわかる。</p>
+<p>つまり、<strong>Primitive値がimmutable</strong>というのは、変数のことではなくメモリに格納されている値そのものが<strong>immutable</strong>であるということを言っている。</p>
+<p><br></p>
+<h3 id="Dynamically-Typed-Language-（動的型付け言語）"><a href="#Dynamically-Typed-Language-（動的型付け言語）" class="headerlink" title="Dynamically Typed Language （動的型付け言語）"></a>Dynamically Typed Language （動的型付け言語）</h3><p>ここまでデータ型について記載したが、JSは動的型付けと呼ばれる言語のため自分でデータ型を指定する必要がない。以下それに関するメモ。</p>
+<ul>
+<li><p>データ型は宣言によって決まるのではなく、変数の中の値によって自動的に決まる。</p>
+</li>
+<li><p>同じ変数に別のデータ型が入る。例えば最初に数値を入れていた変数に対して、後から文字列を代入することができる。（自動的にNumberからStringに変換される。）</p>
+</li>
+<li><p>Primitive型でも必要に応じてラッパーオブジェクト（オブジェクト型）で自動的にラップされる。</p>
+</li>
+<li><p><strong>Static Typing（静的型付け）</strong>をできるようにするスーパーセット（上位拡張）やアドオンがある。TypeScriptやFlowなど。また特に日本国内ではそういったものをJSのAlternativesとして、AltJSと呼んだりする。英語圏で一般的に使われているのかどうかは不明。（おそらく、少なくとも意味は通じると思う。。。）</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/02/curl/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1157,7 +1357,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/hexotest/archives/">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
