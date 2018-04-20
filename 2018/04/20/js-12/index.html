@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="ja">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/hexotest/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/hexotest/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/hexotest/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="学習メモ,JavaScript,DOM," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/hexotest/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="JavaScriptについてのメモ第12回目。DOMについては3回目。  DOMツリーの探索 - DOM TraversalDOMのノードには、親ノードを取得したり、子ノードを取得したり、兄弟ノードを取得したりするプロパティが用意されている。 使いこなせば一つのノードを起点に、DOMツリー上を縦横無尽に行ったり来たりできる。 ここではDOMのノードで使える、DOMツリーを行ったり来たりするためのプ">
+<meta name="keywords" content="学習メモ,JavaScript,DOM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScriptについて学ぶ - 12">
+<meta property="og:url" content="https://tars75.github.io/hexotest/2018/04/20/js-12/index.html">
+<meta property="og:site_name" content="ノートでありメモでありブログであり">
+<meta property="og:description" content="JavaScriptについてのメモ第12回目。DOMについては3回目。  DOMツリーの探索 - DOM TraversalDOMのノードには、親ノードを取得したり、子ノードを取得したり、兄弟ノードを取得したりするプロパティが用意されている。 使いこなせば一つのノードを起点に、DOMツリー上を縦横無尽に行ったり来たりできる。 ここではDOMのノードで使える、DOMツリーを行ったり来たりするためのプ">
+<meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2018-04-20T18:02:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScriptについて学ぶ - 12">
+<meta name="twitter:description" content="JavaScriptについてのメモ第12回目。DOMについては3回目。  DOMツリーの探索 - DOM TraversalDOMのノードには、親ノードを取得したり、子ノードを取得したり、兄弟ノードを取得したりするプロパティが用意されている。 使いこなせば一つのノードを起点に、DOMツリー上を縦横無尽に行ったり来たりできる。 ここではDOMのノードで使える、DOMツリーを行ったり来たりするためのプ">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/hexotest/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>JavaScriptについて学ぶ - 12 | ノートでありメモでありブログであり</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="ja">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/hexotest/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ノートでありメモでありブログであり</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Hexoでブログを作ってみるテスト。主に自分用のノート件メモ。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/hexotest/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/hexotest/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/hexotest/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            記事一覧
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/hexotest/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            タグ
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/20/js-12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScriptについて学ぶ - 12</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-20T23:11:35+09:00">
+                2018-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JavaScriptについてのメモ第12回目。DOMについては3回目。</p>
+<hr>
+<h2 id="DOMツリーの探索-DOM-Traversal"><a href="#DOMツリーの探索-DOM-Traversal" class="headerlink" title="DOMツリーの探索 - DOM Traversal"></a>DOMツリーの探索 - DOM Traversal</h2><p>DOMのノードには、親ノードを取得したり、子ノードを取得したり、兄弟ノードを取得したりするプロパティが用意されている。</p>
+<p>使いこなせば一つのノードを起点に、DOMツリー上を縦横無尽に行ったり来たりできる。</p>
+<p>ここではDOMのノードで使える、DOMツリーを行ったり来たりするためのプロパティをメモ。</p>
+<p><br></p>
+<h2 id="子ノード"><a href="#子ノード" class="headerlink" title="子ノード"></a>子ノード</h2><ul>
+<li><p><code>.childNodes</code></p>
+<ul>
+<li><p>子ノードのノードリスト。エレメント以外のノードも含んだ全ての子ノードのリスト。</p>
+</li>
+<li><p>htmlのファイルの中で、タグ間に空白や改行、コメントなどがあればそれも<code>text</code>ノードとして含まれるので注意。</p>
+</li>
+<li><p>ほとんどの場合、<code>text</code>ノードは不要なので下記の<code>.childeren</code>プロパティの方が使いやすい。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>.children</code></p>
+<ul>
+<li><p>子ノードのHTMLコレクション。</p>
+</li>
+<li><p>エレメントのみで、エレメント以外のノードは含まれないので、エレメントだけ欲しいときに有効。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>.firstChild</code></p>
+<ul>
+<li><p>一番最初の子ノードを取得。エレメント以外も含まれる。</p>
+</li>
+<li><p>たいていの場合、エレメントではなく<code>text</code>ノードなので、一番最初の子エレメントを取得した場合は下の<code>.firstElementChild</code>を使う。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>.firstElementChild</code></p>
+<ul>
+<li>一番最初の子エレメントを取得。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>.lastChild</code></p>
+<ul>
+<li>一番最後の子ノードを取得。エレメント以外も含む。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>.lastElementChild</code></p>
+<ul>
+<li>一番最後の子エレメントを取得。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>.countElementCount</code></p>
+<ul>
+<li>子エレメントの数を数える。エレメント以外のノードの数は含まないので、空白や改行のテキストノードなどを気にせず普通に使える。</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="親ノード"><a href="#親ノード" class="headerlink" title="親ノード"></a>親ノード</h2><ul>
+<li><p><code>.parentNode</code></p>
+<ul>
+<li>親ノードを取得する。たいていの場合は親ノードはエレメント。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>.parentElement</code></p>
+<ul>
+<li>親エレメントを取得する。たいていは親ノードはエレメントなので、<code>.parentNode</code>でもこれでも同じ結果に成る場合が多い。</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<h2 id="兄弟ノード"><a href="#兄弟ノード" class="headerlink" title="兄弟ノード"></a>兄弟ノード</h2><ul>
+<li><p><code>.nextSibling</code></p>
+<ul>
+<li><p>次の兄弟ノードを取得する。兄弟ノードは、同じ階層のノードのこと。</p>
+</li>
+<li><p>エレメント以外も含むので注意。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>.nextElementSibling</code></p>
+<ul>
+<li><p>次の兄弟エレメントを取得する。エレメント以外は含まない。</p>
+</li>
+<li><p>例えばリストであれば、次のリストを取得する。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>.previousSibling</code></p>
+<ul>
+<li>前の兄弟ノードを取得する。エレメント意外も含むので注意。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>.previousElementSibling</code></p>
+<ul>
+<li>前の兄弟エレメントを取得する。</li>
+</ul>
+</li>
+</ul>
+<p><br></p>
+<p>以下に上記のテストをメモ。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> list = <span class="built_in">document</span>.querySelector(<span class="string">'ul.collection'</span>);</span><br><span class="line"><span class="keyword">const</span> listItem = <span class="built_in">document</span>.querySelector(<span class="string">'li.collection-item:first-child'</span>);</span><br><span class="line"></span><br><span class="line">val = listItem; <span class="comment">// ulエレメント</span></span><br><span class="line">val = list; <span class="comment">// ulの1番目のliエレメント</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 子ノードを取得</span></span><br><span class="line">val = list.childNodes; <span class="comment">//nodelist</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 子ノード（エレメントのみ）を取得</span></span><br><span class="line">val = list.children; <span class="comment">// html collection</span></span><br><span class="line">val = list.children[<span class="number">0</span>]; <span class="comment">// html collection</span></span><br><span class="line">list.children[<span class="number">1</span>].textContent = <span class="string">'Hi!!'</span>; <span class="comment">// html collection</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 子ノードのさらに子ノードも取得できる</span></span><br><span class="line">val = list.children[<span class="number">3</span>].children; <span class="comment">// 4つ目の子エレメントに含まれる子エレメントのコレクションを取得</span></span><br><span class="line">list.children[<span class="number">3</span>].children[<span class="number">0</span>].id = <span class="string">'test-id'</span>; <span class="comment">//　4つ目の子エレメントのなかの一つ目の子エレメントのidを書き換え</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1つ目の子ノードの取得</span></span><br><span class="line">val = list.firstChild;</span><br><span class="line">val = list.firstElementChild;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最後の子ノードの取得</span></span><br><span class="line">val = list.lastChild;</span><br><span class="line">val = list.lastElementChild;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 子エレメントの数を取得</span></span><br><span class="line">val = list.childElementCount; <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 親ノードを取得</span></span><br><span class="line">val = listItem.parentNode;</span><br><span class="line">val = listItem.parentElementl;</span><br><span class="line">val = listItem.parentElement.parentElement;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 兄弟ノードを取得</span></span><br><span class="line">val = listItem.nextSibling;</span><br><span class="line">val = listItem.nextElementSibling.nextElementSibling.previousElementSibling;</span><br><span class="line"><span class="comment">// 次の兄弟エレメントのまた次の兄弟エレメントの前の兄弟エレメント＝次の兄弟エレメントを取得と同じ</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 前の兄弟ノードを取得</span></span><br><span class="line">val = listItem.previousSibling;</span><br><span class="line">val = listItem.previousElementSibling; <span class="comment">// null</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(val);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>子ノードのそのまた子のノードの次の兄弟ノードの、、、というふうにどんどん別の階層のノードを取得しにいったりできる。</p>
+</li>
+<li><p>html文書上での空白や改行などもテキストノードとしてDOMのツリーに含まれることに注意。</p>
+</li>
+</ul>
+<hr>
+<h2 id="ノードタイプについて"><a href="#ノードタイプについて" class="headerlink" title="ノードタイプについて"></a>ノードタイプについて</h2><p>前述の通り、DOMのノードにはエレメント以外も含まれる。</p>
+<p><code>.nodeType</code>というプロパティで、ノードのタイプを数値で取得できる。<br>どの数値がどのノードタイプを示しているのかについて下にメモ。</p>
+<ul>
+<li><strong>1 : エレメント</strong></li>
+<li><strong>2 : 属性/Attribute (非推奨)</strong></li>
+<li><strong>3 : テキストノード</strong></li>
+<li><strong>8 : コメント</strong></li>
+<li><strong>9 : Document自体</strong></li>
+<li><strong>10 : Doctype</strong></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/hexotest/tags/学習メモ/" rel="tag"># 学習メモ</a>
+          
+            <a href="/hexotest/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/hexotest/tags/DOM/" rel="tag"># DOM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexotest/2018/04/16/js-11/" rel="next" title="JavaScriptについて学ぶ - 11">
+                <i class="fa fa-chevron-left"></i> JavaScriptについて学ぶ - 11
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/hexotest/2018/04/21/js-13/" rel="prev" title="JavaScriptについて学ぶ - 13">
+                JavaScriptについて学ぶ - 13 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            見出し
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            概要
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/hexotest/images/avatar.gif"
+               alt="Tars75" />
+          <p class="site-author-name" itemprop="name">Tars75</p>
+           
+              <p class="site-description motion-element" itemprop="description">調べたり勉強したことなどを自分用にノートをとったりメモ書きしていくブログです。ノートやメモ書きレベルで文を書いているので、誤字脱字や情報の間違いがあるかもしれません。他人のチラシの裏の落書きぐらいに思って見ていただけると幸いです。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/hexotest/archives/">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">ポスト</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/hexotest/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">タグ</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOMツリーの探索-DOM-Traversal"><span class="nav-number">1.</span> <span class="nav-text">DOMツリーの探索 - DOM Traversal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子ノード"><span class="nav-number">2.</span> <span class="nav-text">子ノード</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#親ノード"><span class="nav-number">3.</span> <span class="nav-text">親ノード</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#兄弟ノード"><span class="nav-number">4.</span> <span class="nav-text">兄弟ノード</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ノードタイプについて"><span class="nav-number">5.</span> <span class="nav-text">ノードタイプについて</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tars75</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/hexotest/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/hexotest/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/hexotest/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/hexotest/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/hexotest/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

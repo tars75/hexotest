@@ -271,6 +271,306 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/06/js-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexotest/2018/04/06/js-3/" itemprop="url">JavaScriptについて学ぶ - 3</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-06T03:39:15+09:00">
+                2018-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JavaScriptについてのメモ。第3回目。</p>
+<hr>
+<h2 id="Stringの取り扱い"><a href="#Stringの取り扱い" class="headerlink" title="Stringの取り扱い"></a>Stringの取り扱い</h2><p>String型の取り扱いについてメモしていく。</p>
+<h4 id="連結-Concatenation"><a href="#連結-Concatenation" class="headerlink" title="連結 - Concatenation"></a>連結 - Concatenation</h4><p><code>+</code>を使ってString同士を連結できる。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> firstName = <span class="string">'Bla'</span>;</span><br><span class="line"><span class="keyword">const</span> lastName = <span class="string">'Hoge'</span>;</span><br><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line">val = firstName + lastName; <span class="comment">// BlaHoge</span></span><br><span class="line">val = firstName + <span class="string">' '</span> + lastName; <span class="comment">// Bla Hoge</span></span><br></pre></td></tr></table></figure>
+<p><code>+=</code>で、すでに文字列を持っている変数にappendできる。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val = <span class="string">'blah '</span>;</span><br><span class="line"></span><br><span class="line">val += <span class="string">'hoge '</span>; <span class="comment">// blah hoge</span></span><br><span class="line">val += <span class="string">'and some more blah'</span>; <span class="comment">// blah hoge and some more blah</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="エスケープ-Escape"><a href="#エスケープ-Escape" class="headerlink" title="エスケープ - Escape"></a>エスケープ - Escape</h4><p><code>&#39;</code>や<code>&quot;</code>など、直接入力できない文字を文字列として使いたい場合は、前に<code>\</code>を付ける。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val = <span class="string">'That\'s awesome!'</span>; <span class="comment">// That's awesome!</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="メソッドとプロパティ-Methods-and-Properties"><a href="#メソッドとプロパティ-Methods-and-Properties" class="headerlink" title="メソッドとプロパティ - Methods and Properties"></a>メソッドとプロパティ - Methods and Properties</h4><p>Stringにはたくさんのメソッドやプロパティが用意されているが、その中からいくつかピックアップしてメモ。<br>また、メソッドではないが<strong>配列のようなBehavior</strong>についても結構重要そうなので合わせてメモしておく。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Length</span></span><br><span class="line">val = firstName.length; <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// concat() </span></span><br><span class="line"><span class="comment">// 文字列を挟んで連結する。concatation用のメソッド。</span></span><br><span class="line">val = firstName.concat(<span class="string">' '</span>, lastName); <span class="comment">// Bla Hoge</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Change case</span></span><br><span class="line">val = firstName.toUpperCase(); <span class="comment">// BLA</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Stringは読み取り専用の配列のように扱うことが可能。</span></span><br><span class="line">val = firstName[<span class="number">0</span>]; <span class="comment">// B</span></span><br><span class="line">val = firstName[<span class="number">1</span>]; <span class="comment">// l</span></span><br><span class="line">val = firstName[<span class="number">2</span>]; <span class="comment">// a</span></span><br><span class="line">val = firstName[<span class="number">3</span>]; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// indexOf()</span></span><br><span class="line">val = firstName.indexOf(<span class="string">'a'</span>); <span class="comment">// 2</span></span><br><span class="line">val = firstName.lastIndexOf(<span class="string">'a'</span>); <span class="comment">// 2 (一番最後に文字があったところのindexを取得) </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// charAt()</span></span><br><span class="line"><span class="comment">// indexOfの逆。上で紹介したように配列で書くこともできる。</span></span><br><span class="line">val = firstName.charAt(<span class="number">2</span>); <span class="comment">// a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 長さがわからないときに最後の文字を取得するやり方。</span></span><br><span class="line">val = firstName.charAt(firstName.length - <span class="number">1</span>); <span class="comment">// a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// substring()</span></span><br><span class="line"><span class="comment">// 開始indexと終了indexを指定して文字列を取得</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'Hello there my name is Blah'</span></span><br><span class="line">val = str.substring(<span class="number">0</span>, <span class="number">4</span>); <span class="comment">// Hell</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// slice() </span></span><br><span class="line"><span class="comment">// substringと似ているが、マイナスで後ろから取得できる</span></span><br><span class="line">val = str.slice(<span class="number">0</span>, <span class="number">4</span>); <span class="comment">// Hell</span></span><br><span class="line">val = str.slice(<span class="number">-7</span>); <span class="comment">// is Blah</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// split() </span></span><br><span class="line"><span class="comment">// 指定した文字で区切って配列として取得。</span></span><br><span class="line">val = str.split(<span class="string">' '</span>); <span class="comment">// ["Hello", "there", "my", "name", "is", "Blah"]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// replace() </span></span><br><span class="line"><span class="comment">// 指定した文字列を置き換える。</span></span><br><span class="line">val = str.replace(<span class="string">'Blah'</span>, <span class="string">'Hoge'</span>); <span class="comment">// Hello there my name is Hoge</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// includes() </span></span><br><span class="line"><span class="comment">// 指定した文字列が含まれているかチェック</span></span><br><span class="line">val = str.includes(<span class="string">'Hello'</span>); <span class="comment">// true</span></span><br><span class="line">val = str.includes(<span class="string">'foo'</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h4 id="テンプレートリテラル-Template-Literals"><a href="#テンプレートリテラル-Template-Literals" class="headerlink" title="テンプレートリテラル - Template Literals"></a>テンプレートリテラル - Template Literals</h4><p>ES6からの機能として、<code>`</code>（バックティック）で囲うことでテンプレートリテラルを使うことができ、より簡単にコードを書ける。</p>
+<p>特に文字列と変数や関数を連結するときにプレースホルダーを使うことでだいぶコードを短くかける。<br>プレースホルダーは<code>${foo}</code>と書き、<code>foo</code>には任意の変数や関数、計算式などが入る。</p>
+<p>共通の変数を下記として、従来の書き方とテンプレートリテラルを使った書き方を比較してみる。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 共通の変数</span></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">'John'</span>;</span><br><span class="line"><span class="keyword">const</span> age = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">let</span> html;</span><br></pre></td></tr></table></figure></p>
+<p><strong>従来の場合</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html = <span class="string">'&lt;p&gt;Name: '</span> + name + <span class="string">' Age: '</span> + age + <span class="string">'&lt;/p&gt; '</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = html; <span class="comment">// Name: John Age: 100</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>テンプレートリテラルを使った書き方</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html = <span class="string">`&lt;p&gt;Name: <span class="subst">$&#123;name&#125;</span>  Age: <span class="subst">$&#123;age&#125;</span>&lt;/p&gt;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = html; <span class="comment">// Name: John Age: 100</span></span><br></pre></td></tr></table></figure></p>
+<p>テンプレートリテラルを使うことで文字列と変数を連結したりする手間が省略でき、コードの見た目もスッキリ読みやすくなる。ミスも減らせそうなので有効活用していきたい。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/05/js-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexotest/2018/04/05/js-2/" itemprop="url">JavaScriptについて学ぶ - 2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-05T04:54:12+09:00">
+                2018-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JavaScriptについてのメモ。第2回目。</p>
+<hr>
+<h2 id="データ型の変換-Type-Conversion"><a href="#データ型の変換-Type-Conversion" class="headerlink" title="データ型の変換 - Type Conversion"></a>データ型の変換 - Type Conversion</h2><p>データ型を変換する方法のメモ。</p>
+<p><br></p>
+<h2 id="Stringへの変換"><a href="#Stringへの変換" class="headerlink" title="Stringへの変換"></a>Stringへの変換</h2><p><strong>方法1 - <code>String()</code>で囲む。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Number to string</span></span><br><span class="line">val = <span class="built_in">String</span>(<span class="number">4</span>+<span class="number">4</span>); <span class="comment">// 8</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Bool to string</span></span><br><span class="line">val = <span class="built_in">String</span>(<span class="literal">true</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Date to string</span></span><br><span class="line">val = <span class="built_in">String</span>(<span class="keyword">new</span> <span class="built_in">Date</span>()); <span class="comment">// Thu Apr 05 2018 05:24:27 GMT+0900 (JST)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Array to string</span></span><br><span class="line">val = <span class="built_in">String</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]); <span class="comment">// 1,2,3,4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br></pre></td></tr></table></figure>
+<p><strong>方法2 - <code>toString()</code>メソッドを使う。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Number to string</span></span><br><span class="line">val = (<span class="number">6</span>).toString(); <span class="comment">// 6</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Bool to string</span></span><br><span class="line">val = (<span class="literal">true</span>).toString(); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Date to string</span></span><br><span class="line">val = (<span class="keyword">new</span> <span class="built_in">Date</span>()).toString(); <span class="comment">// Thu Apr 05 2018 05:24:27 GMT+0900 (JST)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Array to string</span></span><br><span class="line">val = ([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]).toString(); <span class="comment">// 1,2,3,4 </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="Numberへの変換"><a href="#Numberへの変換" class="headerlink" title="Numberへの変換"></a>Numberへの変換</h2><p><strong>方法1 - <code>Number()</code>で囲む。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Number</span>(<span class="string">'6123.4'</span>); <span class="comment">// 6123.4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// number</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Number</span>(<span class="literal">true</span>); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// number</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Number</span>(<span class="literal">false</span>); <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// number</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Number</span>(<span class="literal">null</span>); <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// number</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Number</span>(<span class="string">'hello'</span>); <span class="comment">// NaN (not a number)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// number</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Number</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]); <span class="comment">// NaN (not a number)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// number</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Numberに変換するとtrueは1になり、falseとnullは0になる。</p>
+</li>
+<li><p>数値化できない場合のvalueは、<code>NaN (Not a number)</code>となる。<em>Not a number</em>とは言っても第一回の記事でメモしたように、<code>NaN</code>のデータ型はNumber型であることに注意。</p>
+</li>
+<li><p>1文字でも数字（および小数点、およびE+n表記）以外の文字列がある場合は<code>NaN</code>になる。ただし、<code>+</code>および<code>-</code>に関しては、それらが1番最初の文字の場合に限り<code>NaN</code>にならず数値化される。<br>例）<code>Number(&#39;+123.4&#39;)</code>は<code>123.4</code>となるが<code>Number(&#39;123+4&#39;)</code>は<code>NaN</code>となる。</p>
+</li>
+</ul>
+<p><br></p>
+<p><strong>方法2 - <code>parseInt()</code>または<code>parseFloat()</code>を使う。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ここから先は面倒なのでconsole.log()は省略して記載。</span></span><br><span class="line">val = <span class="built_in">parseInt</span>(<span class="string">'6123.4'</span>); <span class="comment">// 6123 </span></span><br><span class="line">val = <span class="built_in">parseFloat</span>(<span class="string">'6123.4'</span>); <span class="comment">// 6123.4</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">parseInt</span>([<span class="number">10.3</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// 10</span></span><br><span class="line">val = <span class="built_in">parseFloat</span>([<span class="number">10.3</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// 10.3</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">parseInt</span>(<span class="string">'61a23.4'</span>); <span class="comment">// 61</span></span><br><span class="line">val = <span class="built_in">parseFloat</span>(<span class="string">'61a23.4'</span>); <span class="comment">// 61</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">parseInt</span>(<span class="string">'hello'</span>); <span class="comment">// NaN</span></span><br><span class="line">val = <span class="built_in">parseFloat</span>(<span class="string">'hello'</span>); <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>parseInt()</code>は整数に、<code>parseFloat()</code>は小数に変換する。</p>
+</li>
+<li><p><code>parseInt()</code>に関しては本来は第2引数をもつが、今回はそこについては触れない。（基数という何進法として扱うかを設定できるパラメーターで、デフォルトでは10だが第1引数が0xで始まるときは16になる）</p>
+</li>
+<li><p>最初の文字が数値に変換できない場合は<code>NaN</code>を返す。</p>
+</li>
+<li><p><code>Number()</code>とは異なり、数値以外の文字列があったからといって必ずしも<code>NaN</code>にはならず、最初の文字から数値以外の文字列のところまではちゃんと数値化される。</p>
+</li>
+<li><p><code>Number()</code>とは異なり、配列だからといって必ずしも<code>NaN</code>にはならず、最初の要素が数値化される。</p>
+</li>
+</ul>
+<p><br></p>
+<h2 id="データ型の衝突-Type-Collision"><a href="#データ型の衝突-Type-Collision" class="headerlink" title="データ型の衝突 - Type Collision"></a>データ型の衝突 - Type Collision</h2><p>異なるデータ型が衝突したときに自動的にデータ型が変換される。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> val1 = <span class="built_in">String</span>(<span class="number">5</span>); <span class="comment">// 5 (string)</span></span><br><span class="line"><span class="keyword">const</span> val2 = <span class="number">6</span>; <span class="comment">// 6 (number)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sum = val1 + val2; <span class="comment">// 56 (string)</span></span><br><span class="line"><span class="keyword">const</span> sum = <span class="built_in">Number</span>(val1 + val2); <span class="comment">// 56 (number)</span></span><br></pre></td></tr></table></figure>
+<p>上記の例では、<code>val1 // string</code>と<code>val2 // number</code>の二つの異なるデータ型の変数を足し合わせている。その際、<code>val2</code>が自動的に<em>string型</em>に変換され文字列同士の足し算となり、<code>56</code>という結果が返されている。</p>
+<p><br></p>
+<hr>
+<h2 id="Mathオブジェクト"><a href="#Mathオブジェクト" class="headerlink" title="Mathオブジェクト"></a>Mathオブジェクト</h2><p>Mathオブジェクトのプロパティおよびメソッドに関するメモ。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Math</span>.PI; <span class="comment">// 3.1415...</span></span><br><span class="line">val = <span class="built_in">Math</span>.E; <span class="comment">// 2.7182...</span></span><br><span class="line">val = <span class="built_in">Math</span>.round(<span class="number">2.3</span>); <span class="comment">// 2</span></span><br><span class="line">val = <span class="built_in">Math</span>.round(<span class="number">2.9</span>); <span class="comment">// 3</span></span><br><span class="line">val = <span class="built_in">Math</span>.ceil(<span class="number">2.1</span>); <span class="comment">// 3　切り上げ</span></span><br><span class="line">val = <span class="built_in">Math</span>.floor(<span class="number">2.9</span>); <span class="comment">// 2　切り捨て</span></span><br><span class="line">val = <span class="built_in">Math</span>.sqrt(<span class="number">16</span>); <span class="comment">// 4</span></span><br><span class="line">val = <span class="built_in">Math</span>.abs(<span class="number">-16</span>); <span class="comment">// 16</span></span><br><span class="line">val = <span class="built_in">Math</span>.pow(<span class="number">6</span>, <span class="number">2</span>); <span class="comment">// 36 (6の2乗)</span></span><br><span class="line">val = <span class="built_in">Math</span>.min(<span class="number">5</span>, <span class="number">4</span>, <span class="number">123</span>, <span class="number">42</span>); <span class="comment">// 4 (一番小さい数)</span></span><br><span class="line">val = <span class="built_in">Math</span>.max(<span class="number">5</span>, <span class="number">4</span>, <span class="number">123</span>, <span class="number">42</span>); <span class="comment">// 123 (一番大きい数)</span></span><br><span class="line">val = <span class="built_in">Math</span>.random(); <span class="comment">// 0以上1未満のランダムな小数</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">6</span> + <span class="number">1</span>); <span class="comment">// 1から6までのランダムな数</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/04/js-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1357,7 +1657,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/hexotest/archives/">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
