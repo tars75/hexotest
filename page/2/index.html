@@ -384,29 +384,20 @@
 
       
         
-          
-            <p>JavaScriptについてのメモ。第3回目。</p>
+          <p>JavaScriptについてのメモ。第3回目。</p>
 <hr>
 <h2 id="Stringの取り扱い"><a href="#Stringの取り扱い" class="headerlink" title="Stringの取り扱い"></a>Stringの取り扱い</h2><p>String型の取り扱いについてメモしていく。</p>
 <h4 id="連結-Concatenation"><a href="#連結-Concatenation" class="headerlink" title="連結 - Concatenation"></a>連結 - Concatenation</h4><p><code>+</code>を使ってString同士を連結できる。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> firstName = <span class="string">'Bla'</span>;</span><br><span class="line"><span class="keyword">const</span> lastName = <span class="string">'Hoge'</span>;</span><br><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line">val = firstName + lastName; <span class="comment">// BlaHoge</span></span><br><span class="line">val = firstName + <span class="string">' '</span> + lastName; <span class="comment">// Bla Hoge</span></span><br></pre></td></tr></table></figure>
 <p><code>+=</code>で、すでに文字列を持っている変数にappendできる。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val = <span class="string">'blah '</span>;</span><br><span class="line"></span><br><span class="line">val += <span class="string">'hoge '</span>; <span class="comment">// blah hoge</span></span><br><span class="line">val += <span class="string">'and some more blah'</span>; <span class="comment">// blah hoge and some more blah</span></span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h4 id="エスケープ-Escape"><a href="#エスケープ-Escape" class="headerlink" title="エスケープ - Escape"></a>エスケープ - Escape</h4><p><code>&#39;</code>や<code>&quot;</code>など、直接入力できない文字を文字列として使いたい場合は、前に<code>\</code>を付ける。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val = <span class="string">'That\'s awesome!'</span>; <span class="comment">// That's awesome!</span></span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h4 id="メソッドとプロパティ-Methods-and-Properties"><a href="#メソッドとプロパティ-Methods-and-Properties" class="headerlink" title="メソッドとプロパティ - Methods and Properties"></a>メソッドとプロパティ - Methods and Properties</h4><p>Stringにはたくさんのメソッドやプロパティが用意されているが、その中からいくつかピックアップしてメモ。<br>また、メソッドではないが<strong>配列のようなBehavior</strong>についても結構重要そうなので合わせてメモしておく。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Length</span></span><br><span class="line">val = firstName.length; <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// concat() </span></span><br><span class="line"><span class="comment">// 文字列を挟んで連結する。concatation用のメソッド。</span></span><br><span class="line">val = firstName.concat(<span class="string">' '</span>, lastName); <span class="comment">// Bla Hoge</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Change case</span></span><br><span class="line">val = firstName.toUpperCase(); <span class="comment">// BLA</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Stringは読み取り専用の配列のように扱うことが可能。</span></span><br><span class="line">val = firstName[<span class="number">0</span>]; <span class="comment">// B</span></span><br><span class="line">val = firstName[<span class="number">1</span>]; <span class="comment">// l</span></span><br><span class="line">val = firstName[<span class="number">2</span>]; <span class="comment">// a</span></span><br><span class="line">val = firstName[<span class="number">3</span>]; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// indexOf()</span></span><br><span class="line">val = firstName.indexOf(<span class="string">'a'</span>); <span class="comment">// 2</span></span><br><span class="line">val = firstName.lastIndexOf(<span class="string">'a'</span>); <span class="comment">// 2 (一番最後に文字があったところのindexを取得) </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// charAt()</span></span><br><span class="line"><span class="comment">// indexOfの逆。上で紹介したように配列で書くこともできる。</span></span><br><span class="line">val = firstName.charAt(<span class="number">2</span>); <span class="comment">// a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 長さがわからないときに最後の文字を取得するやり方。</span></span><br><span class="line">val = firstName.charAt(firstName.length - <span class="number">1</span>); <span class="comment">// a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// substring()</span></span><br><span class="line"><span class="comment">// 開始indexと終了indexを指定して文字列を取得</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'Hello there my name is Blah'</span></span><br><span class="line">val = str.substring(<span class="number">0</span>, <span class="number">4</span>); <span class="comment">// Hell</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// slice() </span></span><br><span class="line"><span class="comment">// substringと似ているが、マイナスで後ろから取得できる</span></span><br><span class="line">val = str.slice(<span class="number">0</span>, <span class="number">4</span>); <span class="comment">// Hell</span></span><br><span class="line">val = str.slice(<span class="number">-7</span>); <span class="comment">// is Blah</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// split() </span></span><br><span class="line"><span class="comment">// 指定した文字で区切って配列として取得。</span></span><br><span class="line">val = str.split(<span class="string">' '</span>); <span class="comment">// ["Hello", "there", "my", "name", "is", "Blah"]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// replace() </span></span><br><span class="line"><span class="comment">// 指定した文字列を置き換える。</span></span><br><span class="line">val = str.replace(<span class="string">'Blah'</span>, <span class="string">'Hoge'</span>); <span class="comment">// Hello there my name is Hoge</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// includes() </span></span><br><span class="line"><span class="comment">// 指定した文字列が含まれているかチェック</span></span><br><span class="line">val = str.includes(<span class="string">'Hello'</span>); <span class="comment">// true</span></span><br><span class="line">val = str.includes(<span class="string">'foo'</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h4 id="テンプレートリテラル-Template-Literals"><a href="#テンプレートリテラル-Template-Literals" class="headerlink" title="テンプレートリテラル - Template Literals"></a>テンプレートリテラル - Template Literals</h4><p>ES6からの機能として、<code>`</code>（バックティック）で囲うことでテンプレートリテラルを使うことができ、より簡単にコードを書ける。</p>
-<p>特に文字列と変数や関数を連結するときにプレースホルダーを使うことでだいぶコードを短くかける。<br>プレースホルダーは<code>${foo}</code>と書き、<code>foo</code>には任意の変数や関数、計算式などが入る。</p>
-<p>共通の変数を下記として、従来の書き方とテンプレートリテラルを使った書き方を比較してみる。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 共通の変数</span></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">'John'</span>;</span><br><span class="line"><span class="keyword">const</span> age = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">let</span> html;</span><br></pre></td></tr></table></figure></p>
-<p><strong>従来の場合</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html = <span class="string">'&lt;p&gt;Name: '</span> + name + <span class="string">' Age: '</span> + age + <span class="string">'&lt;/p&gt; '</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = html; <span class="comment">// Name: John Age: 100</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>テンプレートリテラルを使った書き方</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html = <span class="string">`&lt;p&gt;Name: <span class="subst">$&#123;name&#125;</span>  Age: <span class="subst">$&#123;age&#125;</span>&lt;/p&gt;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = html; <span class="comment">// Name: John Age: 100</span></span><br></pre></td></tr></table></figure></p>
-<p>テンプレートリテラルを使うことで文字列と変数を連結したりする手間が省略でき、コードの見た目もスッキリ読みやすくなる。ミスも減らせそうなので有効活用していきたい。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/hexotest/2018/04/06/js-3/" rel="contents">
+              続きを読む &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -556,51 +547,19 @@
 
       
         
-          
-            <p>JavaScriptについてのメモ。第2回目。</p>
+          <p>JavaScriptについてのメモ。第2回目。</p>
 <hr>
 <h2 id="データ型の変換-Type-Conversion"><a href="#データ型の変換-Type-Conversion" class="headerlink" title="データ型の変換 - Type Conversion"></a>データ型の変換 - Type Conversion</h2><p>データ型を変換する方法のメモ。</p>
 <p><br></p>
 <h2 id="Stringへの変換"><a href="#Stringへの変換" class="headerlink" title="Stringへの変換"></a>Stringへの変換</h2><p><strong>方法1 - <code>String()</code>で囲む。</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Number to string</span></span><br><span class="line">val = <span class="built_in">String</span>(<span class="number">4</span>+<span class="number">4</span>); <span class="comment">// 8</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Bool to string</span></span><br><span class="line">val = <span class="built_in">String</span>(<span class="literal">true</span>); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Date to string</span></span><br><span class="line">val = <span class="built_in">String</span>(<span class="keyword">new</span> <span class="built_in">Date</span>()); <span class="comment">// Thu Apr 05 2018 05:24:27 GMT+0900 (JST)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Array to string</span></span><br><span class="line">val = <span class="built_in">String</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]); <span class="comment">// 1,2,3,4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br></pre></td></tr></table></figure>
-<p><strong>方法2 - <code>toString()</code>メソッドを使う。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Number to string</span></span><br><span class="line">val = (<span class="number">6</span>).toString(); <span class="comment">// 6</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Bool to string</span></span><br><span class="line">val = (<span class="literal">true</span>).toString(); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Date to string</span></span><br><span class="line">val = (<span class="keyword">new</span> <span class="built_in">Date</span>()).toString(); <span class="comment">// Thu Apr 05 2018 05:24:27 GMT+0900 (JST)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Array to string</span></span><br><span class="line">val = ([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]).toString(); <span class="comment">// 1,2,3,4 </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// string</span></span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h2 id="Numberへの変換"><a href="#Numberへの変換" class="headerlink" title="Numberへの変換"></a>Numberへの変換</h2><p><strong>方法1 - <code>Number()</code>で囲む。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Number</span>(<span class="string">'6123.4'</span>); <span class="comment">// 6123.4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// number</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Number</span>(<span class="literal">true</span>); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// number</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Number</span>(<span class="literal">false</span>); <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// number</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Number</span>(<span class="literal">null</span>); <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// number</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Number</span>(<span class="string">'hello'</span>); <span class="comment">// NaN (not a number)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// number</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Number</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]); <span class="comment">// NaN (not a number)</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> val); <span class="comment">// number</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>Numberに変換するとtrueは1になり、falseとnullは0になる。</p>
-</li>
-<li><p>数値化できない場合のvalueは、<code>NaN (Not a number)</code>となる。<em>Not a number</em>とは言っても第一回の記事でメモしたように、<code>NaN</code>のデータ型はNumber型であることに注意。</p>
-</li>
-<li><p>1文字でも数字（および小数点、およびE+n表記）以外の文字列がある場合は<code>NaN</code>になる。ただし、<code>+</code>および<code>-</code>に関しては、それらが1番最初の文字の場合に限り<code>NaN</code>にならず数値化される。<br>例）<code>Number(&#39;+123.4&#39;)</code>は<code>123.4</code>となるが<code>Number(&#39;123+4&#39;)</code>は<code>NaN</code>となる。</p>
-</li>
-</ul>
-<p><br></p>
-<p><strong>方法2 - <code>parseInt()</code>または<code>parseFloat()</code>を使う。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ここから先は面倒なのでconsole.log()は省略して記載。</span></span><br><span class="line">val = <span class="built_in">parseInt</span>(<span class="string">'6123.4'</span>); <span class="comment">// 6123 </span></span><br><span class="line">val = <span class="built_in">parseFloat</span>(<span class="string">'6123.4'</span>); <span class="comment">// 6123.4</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">parseInt</span>([<span class="number">10.3</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// 10</span></span><br><span class="line">val = <span class="built_in">parseFloat</span>([<span class="number">10.3</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// 10.3</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">parseInt</span>(<span class="string">'61a23.4'</span>); <span class="comment">// 61</span></span><br><span class="line">val = <span class="built_in">parseFloat</span>(<span class="string">'61a23.4'</span>); <span class="comment">// 61</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">parseInt</span>(<span class="string">'hello'</span>); <span class="comment">// NaN</span></span><br><span class="line">val = <span class="built_in">parseFloat</span>(<span class="string">'hello'</span>); <span class="comment">// NaN</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p><code>parseInt()</code>は整数に、<code>parseFloat()</code>は小数に変換する。</p>
-</li>
-<li><p><code>parseInt()</code>に関しては本来は第2引数をもつが、今回はそこについては触れない。（基数という何進法として扱うかを設定できるパラメーターで、デフォルトでは10だが第1引数が0xで始まるときは16になる）</p>
-</li>
-<li><p>最初の文字が数値に変換できない場合は<code>NaN</code>を返す。</p>
-</li>
-<li><p><code>Number()</code>とは異なり、数値以外の文字列があったからといって必ずしも<code>NaN</code>にはならず、最初の文字から数値以外の文字列のところまではちゃんと数値化される。</p>
-</li>
-<li><p><code>Number()</code>とは異なり、配列だからといって必ずしも<code>NaN</code>にはならず、最初の要素が数値化される。</p>
-</li>
-</ul>
-<p><br></p>
-<h2 id="データ型の衝突-Type-Collision"><a href="#データ型の衝突-Type-Collision" class="headerlink" title="データ型の衝突 - Type Collision"></a>データ型の衝突 - Type Collision</h2><p>異なるデータ型が衝突したときに自動的にデータ型が変換される。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> val1 = <span class="built_in">String</span>(<span class="number">5</span>); <span class="comment">// 5 (string)</span></span><br><span class="line"><span class="keyword">const</span> val2 = <span class="number">6</span>; <span class="comment">// 6 (number)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sum = val1 + val2; <span class="comment">// 56 (string)</span></span><br><span class="line"><span class="keyword">const</span> sum = <span class="built_in">Number</span>(val1 + val2); <span class="comment">// 56 (number)</span></span><br></pre></td></tr></table></figure>
-<p>上記の例では、<code>val1 // string</code>と<code>val2 // number</code>の二つの異なるデータ型の変数を足し合わせている。その際、<code>val2</code>が自動的に<em>string型</em>に変換され文字列同士の足し算となり、<code>56</code>という結果が返されている。</p>
-<p><br></p>
-<hr>
-<h2 id="Mathオブジェクト"><a href="#Mathオブジェクト" class="headerlink" title="Mathオブジェクト"></a>Mathオブジェクト</h2><p>Mathオブジェクトのプロパティおよびメソッドに関するメモ。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Math</span>.PI; <span class="comment">// 3.1415...</span></span><br><span class="line">val = <span class="built_in">Math</span>.E; <span class="comment">// 2.7182...</span></span><br><span class="line">val = <span class="built_in">Math</span>.round(<span class="number">2.3</span>); <span class="comment">// 2</span></span><br><span class="line">val = <span class="built_in">Math</span>.round(<span class="number">2.9</span>); <span class="comment">// 3</span></span><br><span class="line">val = <span class="built_in">Math</span>.ceil(<span class="number">2.1</span>); <span class="comment">// 3　切り上げ</span></span><br><span class="line">val = <span class="built_in">Math</span>.floor(<span class="number">2.9</span>); <span class="comment">// 2　切り捨て</span></span><br><span class="line">val = <span class="built_in">Math</span>.sqrt(<span class="number">16</span>); <span class="comment">// 4</span></span><br><span class="line">val = <span class="built_in">Math</span>.abs(<span class="number">-16</span>); <span class="comment">// 16</span></span><br><span class="line">val = <span class="built_in">Math</span>.pow(<span class="number">6</span>, <span class="number">2</span>); <span class="comment">// 36 (6の2乗)</span></span><br><span class="line">val = <span class="built_in">Math</span>.min(<span class="number">5</span>, <span class="number">4</span>, <span class="number">123</span>, <span class="number">42</span>); <span class="comment">// 4 (一番小さい数)</span></span><br><span class="line">val = <span class="built_in">Math</span>.max(<span class="number">5</span>, <span class="number">4</span>, <span class="number">123</span>, <span class="number">42</span>); <span class="comment">// 123 (一番大きい数)</span></span><br><span class="line">val = <span class="built_in">Math</span>.random(); <span class="comment">// 0以上1未満のランダムな小数</span></span><br><span class="line"></span><br><span class="line">val = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">6</span> + <span class="number">1</span>); <span class="comment">// 1から6までのランダムな数</span></span><br></pre></td></tr></table></figure>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/hexotest/2018/04/05/js-2/" rel="contents">
+              続きを読む &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -750,8 +709,7 @@
 
       
         
-          
-            <p>JavaScriptについて新たに学習したことや、改めて復習したことなどを自分のためにメモしていく。第1回目。</p>
+          <p>JavaScriptについて新たに学習したことや、改めて復習したことなどを自分のためにメモしていく。第1回目。</p>
 <hr>
 <h2 id="JavaScriptを動かす"><a href="#JavaScriptを動かす" class="headerlink" title="JavaScriptを動かす"></a>JavaScriptを動かす</h2><p>簡単にJavaScriptを動かす方法3つをメモ。<br><br></p>
 <p><strong>1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt; ほげほげ &lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
@@ -760,80 +718,14 @@
 <p>外部スクリプトを読み込んで実行する。htmlファイルとは別のファイルを作って、そこにjsを書く。この方法を使う場合は、1番目のやり方でscriptエレメントの中に直接スクリプトを書いてはいけない。<br><br></p>
 <p><strong>3. ブラウザのデベロッパーツールでコンソールを出して打ち込む。</strong><br>コンソールにJSを入力することはあんまりないかもしれないけど、入力すればちゃんと動く。</p>
 <hr>
-<h2 id="変数-var-let-const"><a href="#変数-var-let-const" class="headerlink" title="変数 - var, let, const"></a>変数 - var, let, const</h2><p>変数には、<strong><em>var</em></strong>, <strong><em>let</em></strong>, <strong><em>const</em></strong>の3つがある。<br>ES6(ES2015)からブロックスコープの変数である<strong><em>let</em></strong>と<strong><em>const</em></strong>が追加された。<br>主要なブラウザで<strong><em>let</em></strong>と<strong><em>const</em></strong>が使えるようになった現在では、グローバルスコープの変数である<strong><em>var</em></strong>の使用は非推奨となっている。<br><br></p>
-<p><strong><em>let</em></strong>と<strong><em>const</em></strong>の比較。</p>
-<ul>
-<li>let： 宣言できるのは一回のみ。reassign可（reassign = 代入しなおすこと）。</li>
-<li>const： 宣言できるのは一回のみ。reassign不可。また、宣言時に初期値を代入しないとエラーになる。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> firstName; <span class="comment">// Missing initializerというエラーになる。</span></span><br><span class="line"><span class="keyword">const</span> lastName = <span class="string">"hoge"</span>; <span class="comment">// このように宣言時に初期値をassignする必要がある。</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>ただし、<strong><em>const</em></strong>はreassign不可であるものの、配列やオブジェクトの場合は<strong><em>mutable</em></strong>である（値が可変であり、宣言したあとも中の値を変更できる可能性がある）ことに<strong>注意！！</strong><br><br></p>
-<p>変数名に使えるのは、次の三つ。</p>
-<ul>
-<li>英数字（英字に関しては、大文字と小文字は区別される）</li>
-<li>_（アンダースコア）</li>
-<li>$ （マネーサイン）</li>
-</ul>
-<p>ただし、数字を一文字目にはできない。<br>また、$や_を一文字目にしてもエラーなどはでないものの、他のライブラリやフレームワーク独自の規格とかぶったりするので基本的には避けたほうがよいとされている。<br><br></p>
-<p>変数名に複数の単語をもつ場合、従わなくてもエラーがでるわけではないけど書き方の作法のようなものがある。</p>
-<ul>
-<li><p><strong>Camel case</strong><br>基本的にはこの書き方を使う。<br>例）firstName</p>
-</li>
-<li><p><strong>Pascal case</strong><br>クラス名と、クラスのコンストラクタにはこの書き方を使う。<br>例）FirstName</p>
-</li>
-</ul>
-<hr>
-<h2 id="データ型"><a href="#データ型" class="headerlink" title="データ型"></a>データ型</h2><p>JavaScriptには、大きく分けて<strong><em>Primitive</em></strong>と<strong><em>Object</em></strong>の二つのデータ構造がある。さらに<strong><em>Primitive</em></strong>であるデータ型は6つある。その6つ以外のものは全てObject型となる。</p>
-<h3 id="Primitives"><a href="#Primitives" class="headerlink" title="Primitives"></a>Primitives</h3><p>オブジェクトではないデータのこと。基本的には値そのものを指す。メソッドは持たず、immutableな（変更することができない）値と定義されている。</p>
-<ul>
-<li><p><strong>String型</strong><br>文字列。ラッパーオブジェクトあり。</p>
-</li>
-<li><p><strong>Number型</strong><br>数値。整数に限らず、小数や+/-Infinity、およびNaNも全てこのnumber型。ラッパーオブジェクトあり。</p>
-</li>
-<li><p><strong>Boolean型</strong><br>trueまたはfalseのどちらかの値をもつ。ラッパーオブジェクトあり。</p>
-</li>
-<li><p><strong>Null型</strong><br>意図的に変数の値が空であることを示す時に使う。値はnullのみ。注意点として、<em>typeof null</em>のリターンが<em>Object</em>になるというバグがある。</p>
-</li>
-<li><p><strong>Undefined型</strong><br>何も代入されていない変数の値。</p>
-</li>
-<li><p><strong>Symbols型(ES6)</strong><br>ES6からの新機能。Objectのプロパティを指すユニークなシンボル。ラッパーオブジェクトあり。</p>
-</li>
-</ul>
-<h3 id="Objects"><a href="#Objects" class="headerlink" title="Objects"></a>Objects</h3><p>オブジェクトになるものの例。</p>
-<ul>
-<li>Arrays（配列）</li>
-<li>Object Literals（オブジェクトリテラル）</li>
-<li>Functions（関数）</li>
-<li>Dates（日付オブジェクト）<br>…など。<strong>Primitive</strong>でないものは全て<strong>Object</strong>になる。</li>
-</ul>
-<p><br></p>
-<h3 id="ラッパーオブジェクト"><a href="#ラッパーオブジェクト" class="headerlink" title="ラッパーオブジェクト"></a>ラッパーオブジェクト</h3><p><em>Null</em>と<em>Undefined</em>以外は<strong>ラッパーオブジェクト</strong>が用意されているため、オブジェクトのように扱うことができる。これによってもともと用意されている便利なビルトインメソッドやプロパティを使うことができる。</p>
-<p><br></p>
-<h3 id="Immutableについて"><a href="#Immutableについて" class="headerlink" title="Immutableについて"></a>Immutableについて</h3><p><em>immutabel</em>という単語を目にしたときに「どいうこと？変数に再代入できないの？」という疑問が浮かんだが、変数に再代入することはできる。</p>
-<p>試しに<code>str</code>という変数に、<code>&#39;foo&#39;</code>という文字列を格納したあと<code>&#39;bar&#39;</code>を再代入してみる。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// これは可能</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'foo'</span>; <span class="comment">// 文字列を格納するメモリが割り当てられる。</span></span><br><span class="line">str = <span class="string">'bar'</span>; <span class="comment">// 新たに別のbuffer(メモリ)が確保される</span></span><br></pre></td></tr></table></figure></p>
-<p>このとき何が行われているかというと、</p>
-<ol>
-<li><code>&#39;foo&#39;</code>を格納するためのメモリが割り当てられる。</li>
-<li><code>&#39;bar&#39;</code>を格納するために、新たに別のメモリが割り当てられる。</li>
-<li><code>&#39;foo&#39;</code>が格納されていたメモリはどうなるのかというと、<strong>メモリライフサイクル</strong>や<strong>Garbage Collection</strong>と呼ばれる機能によって必要ないと判断されたときに自動的に解放される。</li>
-</ol>
-<p>では、今度はメモリに格納されている値自体を変えようとしてみる。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'foo'</span>;</span><br><span class="line">str[<span class="number">0</span>] = <span class="string">'g'</span>; <span class="comment">// 直接'f'が格納されているメモリの値自体を変えようとしてみる。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//上記を実行してもエラーは起きないが値を表示してみると..</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(str); <span class="comment">// foo (gooにはなっていない)</span></span><br><span class="line"><span class="built_in">console</span>.log(str[<span class="number">0</span>]) <span class="comment">// f (fのまま変わっていない)</span></span><br></pre></td></tr></table></figure></p>
-<p>最初に<code>f</code>を格納したメモリの値を変えようとしても、変えられないということがわかる。</p>
-<p>つまり、<strong>Primitive値がimmutable</strong>というのは、変数のことではなくメモリに格納されている値そのものが<strong>immutable</strong>であるということを言っている。</p>
-<p><br></p>
-<h3 id="Dynamically-Typed-Language-（動的型付け言語）"><a href="#Dynamically-Typed-Language-（動的型付け言語）" class="headerlink" title="Dynamically Typed Language （動的型付け言語）"></a>Dynamically Typed Language （動的型付け言語）</h3><p>ここまでデータ型について記載したが、JSは動的型付けと呼ばれる言語のため自分でデータ型を指定する必要がない。以下それに関するメモ。</p>
-<ul>
-<li><p>データ型は宣言によって決まるのではなく、変数の中の値によって自動的に決まる。</p>
-</li>
-<li><p>同じ変数に別のデータ型が入る。例えば最初に数値を入れていた変数に対して、後から文字列を代入することができる。（自動的にNumberからStringに変換される。）</p>
-</li>
-<li><p>Primitive型でも必要に応じてラッパーオブジェクト（オブジェクト型）で自動的にラップされる。</p>
-</li>
-<li><p><strong>Static Typing（静的型付け）</strong>をできるようにするスーパーセット（上位拡張）やアドオンがある。TypeScriptやFlowなど。また特に日本国内ではそういったものをJSのAlternativesとして、AltJSと呼んだりする。英語圏で一般的に使われているのかどうかは不明。（おそらく、少なくとも意味は通じると思う。。。）</p>
-</li>
-</ul>
-
-          
+<h2 id="変数-var-let-const"><a href="#変数-var-let-const" class="headerlink" title="変数 - var, let, const"></a>変数 - var, let, const</h2><p>変数には、<strong><em>var</em></strong>, <strong><em>let</em></strong>, <strong><em>const</em></strong>の3つがある。<br>ES6(ES2015)からブロックスコープの変数である<strong><em>let</em></strong>と<strong><em>const</em></strong>が追加された。<br>主要なブラウザで<strong><em>let</em></strong>と<strong><em>const</em></strong>が使えるようになった現在では、グローバルスコープの変数である<strong><em>var</em></strong>の使用は非推奨となっている。<br><br><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/hexotest/2018/04/04/js-1/" rel="contents">
+              続きを読む &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

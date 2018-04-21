@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="ノートでありメモでありブログであり">
 <meta property="og:description" content="JavaScriptについてのメモ。第3回目。  Stringの取り扱いString型の取り扱いについてメモしていく。 連結 - Concatenation+を使ってString同士を連結できる。 123456const firstName = &apos;Bla&apos;;const lastName = &apos;Hoge&apos;;let val;val = firstName + lastName; // BlaHogev">
 <meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2018-04-21T19:14:44.000Z">
+<meta property="og:updated_time" content="2018-04-21T20:15:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScriptについて学ぶ - 3">
 <meta name="twitter:description" content="JavaScriptについてのメモ。第3回目。  Stringの取り扱いString型の取り扱いについてメモしていく。 連結 - Concatenation+を使ってString同士を連結できる。 123456const firstName = &apos;Bla&apos;;const lastName = &apos;Hoge&apos;;let val;val = firstName + lastName; // BlaHogev">
@@ -388,6 +388,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> firstName = <span class="string">'Bla'</span>;</span><br><span class="line"><span class="keyword">const</span> lastName = <span class="string">'Hoge'</span>;</span><br><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line">val = firstName + lastName; <span class="comment">// BlaHoge</span></span><br><span class="line">val = firstName + <span class="string">' '</span> + lastName; <span class="comment">// Bla Hoge</span></span><br></pre></td></tr></table></figure>
 <p><code>+=</code>で、すでに文字列を持っている変数にappendできる。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val = <span class="string">'blah '</span>;</span><br><span class="line"></span><br><span class="line">val += <span class="string">'hoge '</span>; <span class="comment">// blah hoge</span></span><br><span class="line">val += <span class="string">'and some more blah'</span>; <span class="comment">// blah hoge and some more blah</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p><br></p>
 <h4 id="エスケープ-Escape"><a href="#エスケープ-Escape" class="headerlink" title="エスケープ - Escape"></a>エスケープ - Escape</h4><p><code>&#39;</code>や<code>&quot;</code>など、直接入力できない文字を文字列として使いたい場合は、前に<code>\</code>を付ける。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val = <span class="string">'That\'s awesome!'</span>; <span class="comment">// That's awesome!</span></span><br></pre></td></tr></table></figure>

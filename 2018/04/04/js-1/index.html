@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="ノートでありメモでありブログであり">
 <meta property="og:description" content="JavaScriptについて新たに学習したことや、改めて復習したことなどを自分のためにメモしていく。第1回目。  JavaScriptを動かす簡単にJavaScriptを動かす方法3つをメモ。 1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。1&amp;lt;script&amp;gt; ほげほげ &amp;lt;/script&amp;gt; HTML5ではscriptエレメントの中に書いたも">
 <meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2018-04-21T19:14:29.000Z">
+<meta property="og:updated_time" content="2018-04-21T20:16:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScriptについて学ぶ - 1">
 <meta name="twitter:description" content="JavaScriptについて新たに学習したことや、改めて復習したことなどを自分のためにメモしていく。第1回目。  JavaScriptを動かす簡単にJavaScriptを動かす方法3つをメモ。 1. scriptエレメントの中に書いて、html文書に直接スクリプトを埋め込む。1&amp;lt;script&amp;gt; ほげほげ &amp;lt;/script&amp;gt; HTML5ではscriptエレメントの中に書いたも">
@@ -390,8 +390,7 @@
 <p>外部スクリプトを読み込んで実行する。htmlファイルとは別のファイルを作って、そこにjsを書く。この方法を使う場合は、1番目のやり方でscriptエレメントの中に直接スクリプトを書いてはいけない。<br><br></p>
 <p><strong>3. ブラウザのデベロッパーツールでコンソールを出して打ち込む。</strong><br>コンソールにJSを入力することはあんまりないかもしれないけど、入力すればちゃんと動く。</p>
 <hr>
-<h2 id="変数-var-let-const"><a href="#変数-var-let-const" class="headerlink" title="変数 - var, let, const"></a>変数 - var, let, const</h2><p>変数には、<strong><em>var</em></strong>, <strong><em>let</em></strong>, <strong><em>const</em></strong>の3つがある。<br>ES6(ES2015)からブロックスコープの変数である<strong><em>let</em></strong>と<strong><em>const</em></strong>が追加された。<br>主要なブラウザで<strong><em>let</em></strong>と<strong><em>const</em></strong>が使えるようになった現在では、グローバルスコープの変数である<strong><em>var</em></strong>の使用は非推奨となっている。<br><br></p>
-<p><strong><em>let</em></strong>と<strong><em>const</em></strong>の比較。</p>
+<h2 id="変数-var-let-const"><a href="#変数-var-let-const" class="headerlink" title="変数 - var, let, const"></a>変数 - var, let, const</h2><p>変数には、<strong><em>var</em></strong>, <strong><em>let</em></strong>, <strong><em>const</em></strong>の3つがある。<br>ES6(ES2015)からブロックスコープの変数である<strong><em>let</em></strong>と<strong><em>const</em></strong>が追加された。<br>主要なブラウザで<strong><em>let</em></strong>と<strong><em>const</em></strong>が使えるようになった現在では、グローバルスコープの変数である<strong><em>var</em></strong>の使用は非推奨となっている。<br><br><br><a id="more"></a><br><strong><em>let</em></strong>と<strong><em>const</em></strong>の比較。</p>
 <ul>
 <li>let： 宣言できるのは一回のみ。reassign可（reassign = 代入しなおすこと）。</li>
 <li>const： 宣言できるのは一回のみ。reassign不可。また、宣言時に初期値を代入しないとエラーになる。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> firstName; <span class="comment">// Missing initializerというエラーになる。</span></span><br><span class="line"><span class="keyword">const</span> lastName = <span class="string">"hoge"</span>; <span class="comment">// このように宣言時に初期値をassignする必要がある。</span></span><br></pre></td></tr></table></figure>

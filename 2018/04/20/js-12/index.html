@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="JavaScriptについてのメモ第12回目。今回はDOMの探索やノードのタイプについて。  DOMツリーの探索 - DOM TraversalDOMのノードには、親ノードを取得したり、子ノードを取得したり、兄弟ノードを取得したりするプロパティが用意されている。 使いこなせば一つのノードを起点に、DOMツリー上を縦横無尽に行ったり来たりできる。 ここではDOMのノードで使える、DOMツリーを行った">
+<meta name="description" content="JavaScriptについてのメモ第12回目。今回はDOMの探索やノードのタイプについて。  DOMツリーの探索 - DOM TraversalDOMのノードには、親ノードを取得したり、子ノードを取得したり、兄弟ノードを取得したりするプロパティが用意されている。 使いこなせば一つのノードを起点に、DOMツリー上を縦横無尽に行ったり来たりできる。 今回はそれらのプロパティについてメモ。">
 <meta name="keywords" content="学習メモ,JavaScript,DOM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScriptについて学ぶ - 12">
 <meta property="og:url" content="https://tars75.github.io/hexotest/2018/04/20/js-12/index.html">
 <meta property="og:site_name" content="ノートでありメモでありブログであり">
-<meta property="og:description" content="JavaScriptについてのメモ第12回目。今回はDOMの探索やノードのタイプについて。  DOMツリーの探索 - DOM TraversalDOMのノードには、親ノードを取得したり、子ノードを取得したり、兄弟ノードを取得したりするプロパティが用意されている。 使いこなせば一つのノードを起点に、DOMツリー上を縦横無尽に行ったり来たりできる。 ここではDOMのノードで使える、DOMツリーを行った">
+<meta property="og:description" content="JavaScriptについてのメモ第12回目。今回はDOMの探索やノードのタイプについて。  DOMツリーの探索 - DOM TraversalDOMのノードには、親ノードを取得したり、子ノードを取得したり、兄弟ノードを取得したりするプロパティが用意されている。 使いこなせば一つのノードを起点に、DOMツリー上を縦横無尽に行ったり来たりできる。 今回はそれらのプロパティについてメモ。">
 <meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2018-04-21T19:08:06.000Z">
+<meta property="og:updated_time" content="2018-04-21T20:03:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScriptについて学ぶ - 12">
-<meta name="twitter:description" content="JavaScriptについてのメモ第12回目。今回はDOMの探索やノードのタイプについて。  DOMツリーの探索 - DOM TraversalDOMのノードには、親ノードを取得したり、子ノードを取得したり、兄弟ノードを取得したりするプロパティが用意されている。 使いこなせば一つのノードを起点に、DOMツリー上を縦横無尽に行ったり来たりできる。 ここではDOMのノードで使える、DOMツリーを行った">
+<meta name="twitter:description" content="JavaScriptについてのメモ第12回目。今回はDOMの探索やノードのタイプについて。  DOMツリーの探索 - DOM TraversalDOMのノードには、親ノードを取得したり、子ノードを取得したり、兄弟ノードを取得したりするプロパティが用意されている。 使いこなせば一つのノードを起点に、DOMツリー上を縦横無尽に行ったり来たりできる。 今回はそれらのプロパティについてメモ。">
 
 
 
@@ -385,8 +385,7 @@
 <hr>
 <h2 id="DOMツリーの探索-DOM-Traversal"><a href="#DOMツリーの探索-DOM-Traversal" class="headerlink" title="DOMツリーの探索 - DOM Traversal"></a>DOMツリーの探索 - DOM Traversal</h2><p>DOMのノードには、親ノードを取得したり、子ノードを取得したり、兄弟ノードを取得したりするプロパティが用意されている。</p>
 <p>使いこなせば一つのノードを起点に、DOMツリー上を縦横無尽に行ったり来たりできる。</p>
-<p>ここではDOMのノードで使える、DOMツリーを行ったり来たりするためのプロパティをメモ。</p>
-<p><br></p>
+<p>今回はそれらのプロパティについてメモ。<br><a id="more"></a><br><br></p>
 <h2 id="子ノード"><a href="#子ノード" class="headerlink" title="子ノード"></a>子ノード</h2><ul>
 <li><p><code>.childNodes</code></p>
 <ul>
