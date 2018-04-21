@@ -229,6 +229,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/hexotest/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            カテゴリ
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/hexotest/tags/" rel="section">
             
@@ -257,6 +267,173 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/21/js-13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexotest/2018/04/21/js-13/" itemprop="url">JavaScriptについて学ぶ - 13</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-21T02:59:40+09:00">
+                2018-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/DOM/" itemprop="url" rel="index">
+                    <span itemprop="name">DOM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>JavaScriptについてのメモ第13回目。今回はエレメントを追加したり削除したりする方法について。</p>
+<hr>
+<h2 id="エレメントを作る-Create-Elements"><a href="#エレメントを作る-Create-Elements" class="headerlink" title="エレメントを作る - Create Elements"></a>エレメントを作る - Create Elements</h2><p>エレメントを作る方法についてメモ。</p>
+<p>ここでは試しにエレメントを作り、それにクラスや属性をセットし、テキストや子エレメントを追加して準備した上で、DOMツリーに入れ込んでみる。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// liエレメントを作成</span></span><br><span class="line"><span class="keyword">const</span> li = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// クラスを追加</span></span><br><span class="line">li.className = <span class="string">'collection-item'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// idを追加</span></span><br><span class="line">li.id = <span class="string">'new-item'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 属性を追加</span></span><br><span class="line">li.setAttribute(<span class="string">'title'</span>, <span class="string">'New Item'</span>); <span class="comment">// title="New Item"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// テキストノードを作って埋め込む</span></span><br><span class="line">li.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">'Hello World'</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// リンクとしてanchorエレメントを作成</span></span><br><span class="line"><span class="keyword">const</span> link = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// クラスを追加</span></span><br><span class="line">link.className = <span class="string">'delete-item secondary-content'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// リンクのアイコンを追加</span></span><br><span class="line">link.innerHTML = <span class="string">'&lt;i class="fa fa-remove"&gt;&lt;/i&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// liにリンクをアペンド</span></span><br><span class="line">li.appendChild(link);</span><br><span class="line"></span><br><span class="line"><span class="comment">// DOM上のulの子エレメントとして、準備したliをアペンド</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'ul.collection'</span>).appendChild(li);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="エレメントを置き換える-Replace-Elements"><a href="#エレメントを置き換える-Replace-Elements" class="headerlink" title="エレメントを置き換える - Replace Elements"></a>エレメントを置き換える - Replace Elements</h2><p>すでにDOM上にあるエレメントと、新しく作ったエレメントを置き換える方法についてメモ。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 見出しを入れ替えてみる</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新しいh2を作成</span></span><br><span class="line"><span class="keyword">const</span> newHeading = <span class="built_in">document</span>.createElement(<span class="string">'h2'</span>);</span><br><span class="line"><span class="comment">// idを追加</span></span><br><span class="line">newHeading.id = <span class="string">'task-title'</span>;</span><br><span class="line"><span class="comment">// テキストノードを追加</span></span><br><span class="line">newHeading.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">'Task List'</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 古い見出しをDOMから取得</span></span><br><span class="line"><span class="keyword">const</span> oldHeading = <span class="built_in">document</span>.getElementById(<span class="string">'task-title'</span>);</span><br><span class="line"><span class="comment">// その親ノードを取得</span></span><br><span class="line"><span class="keyword">const</span> cardAction = <span class="built_in">document</span>.querySelector(<span class="string">'.card-action'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 古い見出しを新しく作ったh2に置き換え</span></span><br><span class="line">cardAction.replaceChild(newHeading, oldHeading);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="エレメントを取り除く-Remove-Elements"><a href="#エレメントを取り除く-Remove-Elements" class="headerlink" title="エレメントを取り除く - Remove Elements"></a>エレメントを取り除く - Remove Elements</h2><p>DOM上にあるエレメントや、クラス、属性を取り除く方法についてメモ。</p>
+<p>エレメントを直接<code>.remove()</code>で取り除く方法と、<code>.removeChild()</code>で子エレメントを取り除く方法がある。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// すべてのliを取得</span></span><br><span class="line"><span class="keyword">const</span> lis = <span class="built_in">document</span>.querySelectorAll(<span class="string">'li'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ulを取得</span></span><br><span class="line"><span class="keyword">const</span> list = <span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// エレメントを削除</span></span><br><span class="line">lis[<span class="number">0</span>].remove(); <span class="comment">// liの1つ目を削除</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 子エレメントを削除</span></span><br><span class="line">list.removeChild(lis[<span class="number">3</span>]); <span class="comment">// ulの子エレメント = liの4つ目を削除</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="クラスと属性の削除-Remove-Classes-amp-Attr"><a href="#クラスと属性の削除-Remove-Classes-amp-Attr" class="headerlink" title="クラスと属性の削除 - Remove Classes &amp; Attr"></a>クラスと属性の削除 - Remove Classes &amp; Attr</h2><p>クラスや属性を追加したり削除したりする方法についてメモ。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 最初のliを取得</span></span><br><span class="line"><span class="keyword">const</span> firstLi = <span class="built_in">document</span>.querySelector(<span class="string">'li:first-child'</span>); </span><br><span class="line"></span><br><span class="line"><span class="comment">// liの最初の子ノードを取得</span></span><br><span class="line"><span class="keyword">const</span> link = firstLi.children[<span class="number">0</span>]; <span class="comment">// 今回liの最初の子ノードはリンク（anchorエレメント） </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// consoleログで確認用</span></span><br><span class="line"><span class="keyword">let</span> val; </span><br><span class="line"></span><br><span class="line"><span class="comment">// クラスいろいろおさらい</span></span><br><span class="line">val = link.className; <span class="comment">// linkのクラス名</span></span><br><span class="line">val = link.classList; <span class="comment">// linkのクラス一覧</span></span><br><span class="line">val = link.classList[<span class="number">0</span>]; <span class="comment">// linkのクラス1個目</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// クラスを追加</span></span><br><span class="line">link.classList.add(<span class="string">'test'</span>); <span class="comment">// クラスにtestを追加</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// クラスを削除</span></span><br><span class="line">link.classList.remove(<span class="string">'test'</span>); <span class="comment">// クラスtestを削除</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 属性の取得</span></span><br><span class="line">val = link.getAttribute(<span class="string">'href'</span>); <span class="comment">// href属性を取得</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 属性をセット</span></span><br><span class="line">val = link.setAttribute(<span class="string">'href'</span>, <span class="string">'http://google.com'</span>); <span class="comment">// hrefにgoogleのアドレスを指定</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 属性があるかどうかチェック - boolean</span></span><br><span class="line">val = link.hasAttribute(<span class="string">'href'</span>); <span class="comment">// true - hrefがあるかどうかチェック</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 属性を削除</span></span><br><span class="line">link.removeAttribute(<span class="string">'href'</span>); <span class="comment">// href属性を削除</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// テスト用</span></span><br><span class="line"><span class="comment">// val = link;</span></span><br><span class="line"><span class="comment">// console.log(val);</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -313,6 +490,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/DOM/" itemprop="url" rel="index">
+                    <span itemprop="name">DOM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -342,7 +552,7 @@
       
         
           
-            <p>JavaScriptについてのメモ第12回目。DOMについては3回目。</p>
+            <p>JavaScriptについてのメモ第12回目。今回はDOMの探索やノードのタイプについて。</p>
 <hr>
 <h2 id="DOMツリーの探索-DOM-Traversal"><a href="#DOMツリーの探索-DOM-Traversal" class="headerlink" title="DOMツリーの探索 - DOM Traversal"></a>DOMツリーの探索 - DOM Traversal</h2><p>DOMのノードには、親ノードを取得したり、子ノードを取得したり、兄弟ノードを取得したりするプロパティが用意されている。</p>
 <p>使いこなせば一つのノードを起点に、DOMツリー上を縦横無尽に行ったり来たりできる。</p>
@@ -568,6 +778,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/DOM/" itemprop="url" rel="index">
+                    <span itemprop="name">DOM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -756,6 +999,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/DOM/" itemprop="url" rel="index">
+                    <span itemprop="name">DOM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -891,6 +1167,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/基礎/" itemprop="url" rel="index">
+                    <span itemprop="name">基礎</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1048,6 +1357,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/DOM/" itemprop="url" rel="index">
+                    <span itemprop="name">DOM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1220,6 +1562,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/基礎/" itemprop="url" rel="index">
+                    <span itemprop="name">基礎</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1384,6 +1759,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/基礎/" itemprop="url" rel="index">
+                    <span itemprop="name">基礎</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1527,6 +1935,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/基礎/" itemprop="url" rel="index">
+                    <span itemprop="name">基礎</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1712,6 +2153,39 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/基礎/" itemprop="url" rel="index">
+                    <span itemprop="name">基礎</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1818,145 +2292,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/06/js-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tars75">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/hexotest/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ノートでありメモでありブログであり">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hexotest/2018/04/06/js-3/" itemprop="url">JavaScriptについて学ぶ - 3</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">投稿日</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-06T03:39:15+09:00">
-                2018-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>JavaScriptについてのメモ。第3回目。</p>
-<hr>
-<h2 id="Stringの取り扱い"><a href="#Stringの取り扱い" class="headerlink" title="Stringの取り扱い"></a>Stringの取り扱い</h2><p>String型の取り扱いについてメモしていく。</p>
-<h4 id="連結-Concatenation"><a href="#連結-Concatenation" class="headerlink" title="連結 - Concatenation"></a>連結 - Concatenation</h4><p><code>+</code>を使ってString同士を連結できる。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> firstName = <span class="string">'Bla'</span>;</span><br><span class="line"><span class="keyword">const</span> lastName = <span class="string">'Hoge'</span>;</span><br><span class="line"><span class="keyword">let</span> val;</span><br><span class="line"></span><br><span class="line">val = firstName + lastName; <span class="comment">// BlaHoge</span></span><br><span class="line">val = firstName + <span class="string">' '</span> + lastName; <span class="comment">// Bla Hoge</span></span><br></pre></td></tr></table></figure>
-<p><code>+=</code>で、すでに文字列を持っている変数にappendできる。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> val = <span class="string">'blah '</span>;</span><br><span class="line"></span><br><span class="line">val += <span class="string">'hoge '</span>; <span class="comment">// blah hoge</span></span><br><span class="line">val += <span class="string">'and some more blah'</span>; <span class="comment">// blah hoge and some more blah</span></span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h4 id="エスケープ-Escape"><a href="#エスケープ-Escape" class="headerlink" title="エスケープ - Escape"></a>エスケープ - Escape</h4><p><code>&#39;</code>や<code>&quot;</code>など、直接入力できない文字を文字列として使いたい場合は、前に<code>\</code>を付ける。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val = <span class="string">'That\'s awesome!'</span>; <span class="comment">// That's awesome!</span></span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h4 id="メソッドとプロパティ-Methods-and-Properties"><a href="#メソッドとプロパティ-Methods-and-Properties" class="headerlink" title="メソッドとプロパティ - Methods and Properties"></a>メソッドとプロパティ - Methods and Properties</h4><p>Stringにはたくさんのメソッドやプロパティが用意されているが、その中からいくつかピックアップしてメモ。<br>また、メソッドではないが<strong>配列のようなBehavior</strong>についても結構重要そうなので合わせてメモしておく。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Length</span></span><br><span class="line">val = firstName.length; <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// concat() </span></span><br><span class="line"><span class="comment">// 文字列を挟んで連結する。concatation用のメソッド。</span></span><br><span class="line">val = firstName.concat(<span class="string">' '</span>, lastName); <span class="comment">// Bla Hoge</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Change case</span></span><br><span class="line">val = firstName.toUpperCase(); <span class="comment">// BLA</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Stringは読み取り専用の配列のように扱うことが可能。</span></span><br><span class="line">val = firstName[<span class="number">0</span>]; <span class="comment">// B</span></span><br><span class="line">val = firstName[<span class="number">1</span>]; <span class="comment">// l</span></span><br><span class="line">val = firstName[<span class="number">2</span>]; <span class="comment">// a</span></span><br><span class="line">val = firstName[<span class="number">3</span>]; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// indexOf()</span></span><br><span class="line">val = firstName.indexOf(<span class="string">'a'</span>); <span class="comment">// 2</span></span><br><span class="line">val = firstName.lastIndexOf(<span class="string">'a'</span>); <span class="comment">// 2 (一番最後に文字があったところのindexを取得) </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// charAt()</span></span><br><span class="line"><span class="comment">// indexOfの逆。上で紹介したように配列で書くこともできる。</span></span><br><span class="line">val = firstName.charAt(<span class="number">2</span>); <span class="comment">// a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 長さがわからないときに最後の文字を取得するやり方。</span></span><br><span class="line">val = firstName.charAt(firstName.length - <span class="number">1</span>); <span class="comment">// a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// substring()</span></span><br><span class="line"><span class="comment">// 開始indexと終了indexを指定して文字列を取得</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'Hello there my name is Blah'</span></span><br><span class="line">val = str.substring(<span class="number">0</span>, <span class="number">4</span>); <span class="comment">// Hell</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// slice() </span></span><br><span class="line"><span class="comment">// substringと似ているが、マイナスで後ろから取得できる</span></span><br><span class="line">val = str.slice(<span class="number">0</span>, <span class="number">4</span>); <span class="comment">// Hell</span></span><br><span class="line">val = str.slice(<span class="number">-7</span>); <span class="comment">// is Blah</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// split() </span></span><br><span class="line"><span class="comment">// 指定した文字で区切って配列として取得。</span></span><br><span class="line">val = str.split(<span class="string">' '</span>); <span class="comment">// ["Hello", "there", "my", "name", "is", "Blah"]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// replace() </span></span><br><span class="line"><span class="comment">// 指定した文字列を置き換える。</span></span><br><span class="line">val = str.replace(<span class="string">'Blah'</span>, <span class="string">'Hoge'</span>); <span class="comment">// Hello there my name is Hoge</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// includes() </span></span><br><span class="line"><span class="comment">// 指定した文字列が含まれているかチェック</span></span><br><span class="line">val = str.includes(<span class="string">'Hello'</span>); <span class="comment">// true</span></span><br><span class="line">val = str.includes(<span class="string">'foo'</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-<p><br></p>
-<h4 id="テンプレートリテラル-Template-Literals"><a href="#テンプレートリテラル-Template-Literals" class="headerlink" title="テンプレートリテラル - Template Literals"></a>テンプレートリテラル - Template Literals</h4><p>ES6からの機能として、<code>`</code>（バックティック）で囲うことでテンプレートリテラルを使うことができ、より簡単にコードを書ける。</p>
-<p>特に文字列と変数や関数を連結するときにプレースホルダーを使うことでだいぶコードを短くかける。<br>プレースホルダーは<code>${foo}</code>と書き、<code>foo</code>には任意の変数や関数、計算式などが入る。</p>
-<p>共通の変数を下記として、従来の書き方とテンプレートリテラルを使った書き方を比較してみる。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 共通の変数</span></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">'John'</span>;</span><br><span class="line"><span class="keyword">const</span> age = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">let</span> html;</span><br></pre></td></tr></table></figure></p>
-<p><strong>従来の場合</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html = <span class="string">'&lt;p&gt;Name: '</span> + name + <span class="string">' Age: '</span> + age + <span class="string">'&lt;/p&gt; '</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = html; <span class="comment">// Name: John Age: 100</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>テンプレートリテラルを使った書き方</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html = <span class="string">`&lt;p&gt;Name: <span class="subst">$&#123;name&#125;</span>  Age: <span class="subst">$&#123;age&#125;</span>&lt;/p&gt;`</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.body.innerHTML = html; <span class="comment">// Name: John Age: 100</span></span><br></pre></td></tr></table></figure></p>
-<p>テンプレートリテラルを使うことで文字列と変数を連結したりする手間が省略でき、コードの見た目もスッキリ読みやすくなる。ミスも減らせそうなので有効活用していきたい。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2007,12 +2342,21 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/hexotest/archives/">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">ポスト</span>
               </a>
             </div>
           
 
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/hexotest/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">カテゴリ</span>
+              </a>
+            </div>
           
 
           
