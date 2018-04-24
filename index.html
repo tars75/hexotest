@@ -281,6 +281,181 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/24/js-14/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tars75">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexotest/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ノートでありメモでありブログであり">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/hexotest/2018/04/24/js-14/" itemprop="url">JavaScriptについて学ぶ - 14</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">投稿日</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-24T22:39:29+09:00">
+                2018-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/DOM/" itemprop="url" rel="index">
+                    <span itemprop="name">DOM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>JavaScriptについてのメモ第14回目。今回はイベントについて。</p>
+<hr>
+<h2 id="イベントリスナー-Event-Listeners"><a href="#イベントリスナー-Event-Listeners" class="headerlink" title="イベントリスナー / Event Listeners"></a>イベントリスナー / Event Listeners</h2><p>UIとWebページのインタラクションを実装するには、イベントリスナーを使う。</p>
+<p>DOM上のエレメントなどにイベントリスナーをつけることで、そこで特定のイベントが発生したかどうかを拾って、イベントが発生したときの動作を決めることができる。</p>
+<p>DOM上のすべてのエレメントに対してイベントリスナーをつけることができる。</p>
+<p><br></p>
+<p>書き方は下記の通り。</p>
+<p><code>.addEventListener(パラメータ1, パラメータ2);</code></p>
+<ul>
+<li><p>パラメータ1には何のイベントをトリガーにするかを指定。</p>
+</li>
+<li><p>パラメータ2にはコールバックする関数を指定。</p>
+</li>
+<li><p>イベントが発生した際は、まず関数がコールバックされ、そのあとにデフォルトのビヘイビアがあればそれが行われる。（例えばそのエレメントがリンクであれば、関数が実行された後にデフォルトのビヘイビアとしてリンク先のページに飛ぶ。）</p>
+</li>
+<li><p>関数のパラメータにイベントオブジェクトを引数として指定でき、それに対して<code>.preventDefault()</code>を使うことでデフォルトのビヘイビアを防ぐことができる。</p>
+</li>
+</ul>
+<p><br></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/hexotest/2018/04/24/js-14/" rel="contents">
+              続きを読む &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/21/js-13/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1737,165 +1912,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/06/js-4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Tars75">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/hexotest/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ノートでありメモでありブログであり">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hexotest/2018/04/06/js-4/" itemprop="url">JavaScriptについて学ぶ - 4</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">投稿日</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-06T17:32:32+09:00">
-                2018-04-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/hexotest/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/hexotest/categories/JavaScript/基礎/" itemprop="url" rel="index">
-                    <span itemprop="name">基礎</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>JavaScriptについての学習メモ。第4回目。</p>
-<hr>
-<h2 id="配列-Arrays"><a href="#配列-Arrays" class="headerlink" title="配列 - Arrays"></a>配列 - Arrays</h2><p>配列の作り方や、メソッド、プロパティに関するメモ。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/hexotest/2018/04/06/js-4/" rel="contents">
-              続きを読む &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1946,7 +1962,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/hexotest/archives/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">ポスト</span>
               </a>
             </div>

@@ -78,7 +78,7 @@
 <link href="/hexotest/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="学習メモ,curl,CLI," />
+  <meta name="keywords" content="学習メモ,JavaScript,DOM," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Webについて勉強しはじめたばかりだけどコマンドラインが関わってくると、かなりの頻度でこのcurlというコマンドがでてくる。curlってなんだ？？ってことで、ちょっと調べてみることにした。 なるべくあとで見返したときにわかりやすように、調べたことを自分の言葉でメモしていこうと思う。  curlとは？curlとは、指定したURLに対していろんなタイプのリクエスト（GETとかPOSTとか）を行ったり、">
-<meta name="keywords" content="学習メモ,curl,CLI">
+<meta name="description" content="JavaScriptについてのメモ第14回目。今回はイベントについて。  イベントリスナー / Event ListenersUIとWebページのインタラクションを実装するには、イベントリスナーを使う。 DOM上のエレメントなどにイベントリスナーをつけることで、そこで特定のイベントが発生したかどうかを拾って、イベントが発生したときの動作を決めることができる。 DOM上のすべてのエレメントに対してイ">
+<meta name="keywords" content="学習メモ,JavaScript,DOM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="curlについて調べる">
-<meta property="og:url" content="https://tars75.github.io/hexotest/2018/04/02/curl/index.html">
+<meta property="og:title" content="JavaScriptについて学ぶ - 14">
+<meta property="og:url" content="https://tars75.github.io/hexotest/2018/04/24/js-14/index.html">
 <meta property="og:site_name" content="ノートでありメモでありブログであり">
-<meta property="og:description" content="Webについて勉強しはじめたばかりだけどコマンドラインが関わってくると、かなりの頻度でこのcurlというコマンドがでてくる。curlってなんだ？？ってことで、ちょっと調べてみることにした。 なるべくあとで見返したときにわかりやすように、調べたことを自分の言葉でメモしていこうと思う。  curlとは？curlとは、指定したURLに対していろんなタイプのリクエスト（GETとかPOSTとか）を行ったり、">
+<meta property="og:description" content="JavaScriptについてのメモ第14回目。今回はイベントについて。  イベントリスナー / Event ListenersUIとWebページのインタラクションを実装するには、イベントリスナーを使う。 DOM上のエレメントなどにイベントリスナーをつけることで、そこで特定のイベントが発生したかどうかを拾って、イベントが発生したときの動作を決めることができる。 DOM上のすべてのエレメントに対してイ">
 <meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2018-04-21T19:19:04.000Z">
+<meta property="og:updated_time" content="2018-04-24T14:50:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="curlについて調べる">
-<meta name="twitter:description" content="Webについて勉強しはじめたばかりだけどコマンドラインが関わってくると、かなりの頻度でこのcurlというコマンドがでてくる。curlってなんだ？？ってことで、ちょっと調べてみることにした。 なるべくあとで見返したときにわかりやすように、調べたことを自分の言葉でメモしていこうと思う。  curlとは？curlとは、指定したURLに対していろんなタイプのリクエスト（GETとかPOSTとか）を行ったり、">
+<meta name="twitter:title" content="JavaScriptについて学ぶ - 14">
+<meta name="twitter:description" content="JavaScriptについてのメモ第14回目。今回はイベントについて。  イベントリスナー / Event ListenersUIとWebページのインタラクションを実装するには、イベントリスナーを使う。 DOM上のエレメントなどにイベントリスナーをつけることで、そこで特定のイベントが発生したかどうかを拾って、イベントが発生したときの動作を決めることができる。 DOM上のすべてのエレメントに対してイ">
 
 
 
@@ -138,7 +138,7 @@
 
 
 
-  <title>curlについて調べる | ノートでありメモでありブログであり</title>
+  <title>JavaScriptについて学ぶ - 14 | ノートでありメモでありブログであり</title>
   
 
 
@@ -281,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/02/curl/">
+    <link itemprop="mainEntityOfPage" href="https://tars75.github.io/hexotest/hexotest/2018/04/24/js-14/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tars75">
@@ -298,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">curlについて調べる</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScriptについて学ぶ - 14</h1>
         
 
         <div class="post-meta">
@@ -310,8 +310,8 @@
               
                 <span class="post-meta-item-text">投稿日</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-02T22:04:02+09:00">
-                2018-04-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-24T22:39:29+09:00">
+                2018-04-24
               </time>
             
 
@@ -333,8 +333,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/hexotest/categories/コマンドライン/" itemprop="url" rel="index">
-                    <span itemprop="name">コマンドライン</span>
+                  <a href="/hexotest/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexotest/categories/JavaScript/DOM/" itemprop="url" rel="index">
+                    <span itemprop="name">DOM</span>
                   </a>
                 </span>
 
@@ -370,41 +381,32 @@
       
 
       
-        <p>Webについて勉強しはじめたばかりだけどコマンドラインが関わってくると、かなりの頻度でこの<strong>curl</strong>というコマンドがでてくる。<strong>curl</strong>ってなんだ？？ってことで、ちょっと調べてみることにした。</p>
-<p>なるべくあとで見返したときにわかりやすように、調べたことを自分の言葉でメモしていこうと思う。</p>
+        <p>JavaScriptについてのメモ第14回目。今回はイベントについて。</p>
 <hr>
-<h3 id="curlとは？"><a href="#curlとは？" class="headerlink" title="curlとは？"></a>curlとは？</h3><p>curlとは、指定したURLに対していろんなタイプのリクエスト（GETとかPOSTとか）を行ったり、データをやりとり（ダウンロードとかアップロードとか）したりするのに使うツールのこと。</p>
-<p>HTTPやらFTPなど、いろんなインターネットプロトコルに対応している。</p>
-<p>全く同じ名前のCurl言語というプログラミング言語があるみたいだけど、それとは全く別物なので注意。</p>
-<p>読み方はそのまま<em>カール</em>でおk。または<em>シーユーアールエル</em>と呼ばれることもある。</p>
-<p><a href="https://curl.haxx.se/" target="_blank" rel="noopener">ここ</a>に公式のドキュメントがある。</p>
-<h3 id="curlの歴史"><a href="#curlの歴史" class="headerlink" title="curlの歴史"></a>curlの歴史</h3><p>1996年にDaniel Stenbergさんという方が、IRC（チャットのアプリみたいなもの）で、為替レートを変換してくれるチャットボット（100ドルを円に変換して！といったら変換してくれるみたいなもの）を暇つぶしで作ろうとしたのがきっかけだそうな。</p>
-<p>最初は<strong>HttpGet 1.0</strong>という名前で文字通りhttp-onlyのツールだったのが、その後にFTPダウンロードもサポートした<strong>urlget 2.0</strong>になり、最終的に1998年に<strong>curl 4</strong>という名前でリリースされたらしい。ちょうど20年前くらい。オープンソースで開発され、世界中のたくさんの有志の人たちが関わって作ったとのこと。</p>
-<h3 id="どういう風に使うの？"><a href="#どういう風に使うの？" class="headerlink" title="どういう風に使うの？"></a>どういう風に使うの？</h3><h4 id="1-準備"><a href="#1-準備" class="headerlink" title="1. 準備"></a>1. 準備</h4><p>とりあえずここでは、コマンドラインで使う前提で進める。</p>
-<p>最近のバージョンのOS X / macOSや、ほとんどのLinuxのディストリビューションであれば最初からインストールされていて、コマンドラインですぐにこのcurlというツールを使えるようになっている。Windowsの場合でも<em>Git bash</em>などのコマンドラインツールであれば最初からcurlコマンドが使える。</p>
-<p>とうことで、基本的にはWindows以外であれば特に準備はいらない。Windowsの場合でもcurlが使えるコマンドラインツールを使ったり、curl自体をダウンロードすれば普通に使えるようだ。</p>
-<h4 id="2-コマンドを入力"><a href="#2-コマンドを入力" class="headerlink" title="2. コマンドを入力"></a>2. コマンドを入力</h4><p>ターミナルやGit bashなどのコマンドラインツールにcurlコマンドを入力して使う。</p>
-<p>基本は</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl &lt;option とか url/uri とかいろいろ&gt;</span><br></pre></td></tr></table></figure>
-<p>というかたちで入力する。オプションはかなりいろいろあって、</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --<span class="built_in">help</span></span><br></pre></td></tr></table></figure>
-<p>と入力すると、すべてのオプション一覧が見れる。</p>
-<p>オプションなしで、</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl &lt;url/uri&gt;</span><br></pre></td></tr></table></figure>
-<p>とやると、GETリクエストされる。そのままurl/uriに対してGETリクエストした結果が出力される。</p>
-<h4 id="3-試してみる！！"><a href="#3-試してみる！！" class="headerlink" title="3. 試してみる！！"></a>3. 試してみる！！</h4><p>さっそく試しにどこか適当なURIを貼っつけてみる。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://www.youtube.com</span><br></pre></td></tr></table></figure>
-<p>今回は試しにYoutubeのURIを貼り付けてみた。そうすると、Youtubeのソースコードが出力された。</p>
-<p>次に今度はオプションをつけてみる。</p>
-<p>オプションを試すにあたって、今回はここの<a href="https://jsonplaceholder.typicode.com/" target="_blank" rel="noopener">ダミーサイト</a>を使っう。</p>
-<p>-dというdataをPOSTするオプションを試してみる。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -d <span class="string">"title=Hello&amp;body=Hello World"</span> https://jsonplaceholder.typicode.com/posts</span><br></pre></td></tr></table></figure>
-<p>結果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"title"</span>: <span class="string">"Hello"</span>,</span><br><span class="line">  <span class="string">"body"</span>: <span class="string">"Hello World"</span>,</span><br><span class="line">  <span class="string">"id"</span>: 101</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>POSTリクエストで、titleに「Hello」、bodyに「Hello World」という情報を送ることができた。（ダミーサイトなので実際にはPOSTしたデータは保存されていない）</p>
-<h3 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h3><p>今まではまったく何もわからずに何らかのTutorialとかに従って<strong>curl</strong>コマンドを打ち込んでいたけど、もやもやがちょっとすっきり。</p>
-<p>オプションがかなりいろいろあるので、バックエンドの開発をするときに例えばデバッグとかでも結構使えそうだと思った。</p>
-<p>ただ、逆にバックエンド系のことをしないのであればそんなに使わなさそうというのが正直な感想。</p>
+<h2 id="イベントリスナー-Event-Listeners"><a href="#イベントリスナー-Event-Listeners" class="headerlink" title="イベントリスナー / Event Listeners"></a>イベントリスナー / Event Listeners</h2><p>UIとWebページのインタラクションを実装するには、イベントリスナーを使う。</p>
+<p>DOM上のエレメントなどにイベントリスナーをつけることで、そこで特定のイベントが発生したかどうかを拾って、イベントが発生したときの動作を決めることができる。</p>
+<p>DOM上のすべてのエレメントに対してイベントリスナーをつけることができる。</p>
+<p><br></p>
+<p>書き方は下記の通り。</p>
+<p><code>.addEventListener(パラメータ1, パラメータ2);</code></p>
+<ul>
+<li><p>パラメータ1には何のイベントをトリガーにするかを指定。</p>
+</li>
+<li><p>パラメータ2にはコールバックする関数を指定。</p>
+</li>
+<li><p>イベントが発生した際は、まず関数がコールバックされ、そのあとにデフォルトのビヘイビアがあればそれが行われる。（例えばそのエレメントがリンクであれば、関数が実行された後にデフォルトのビヘイビアとしてリンク先のページに飛ぶ。）</p>
+</li>
+<li><p>関数のパラメータにイベントオブジェクトを引数として指定でき、それに対して<code>.preventDefault()</code>を使うことでデフォルトのビヘイビアを防ぐことができる。</p>
+</li>
+</ul>
+<p><br></p>
+<a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 試しに、クリアタスクというリンクエレメントにイベントリスナーをつけてみる</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'.clear-tasks'</span>).addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// クリアタスクがクリックされたらコンソールにHello Worldと表示</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Hello World'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// デフォルトのビヘイビアを防ぎ、リンク先には飛ばさない</span></span><br><span class="line">  e.preventDefault();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="イベントオブジェクト-The-Event-Object"><a href="#イベントオブジェクト-The-Event-Object" class="headerlink" title="イベントオブジェクト / The Event Object"></a>イベントオブジェクト / The Event Object</h2><p>イベントオブジェクトは、DOM上で発生したイベントを表す。</p>
+<p>何かしらイベントが発生すると、イベントオブジェクトが生成される。</p>
+<p>イベントオブジェクトにはいろいろな情報が含まれており、例えばイベントが発生したエレメントや座標、イベントが発生したときにシフトキーが押されていたかどうかなど、書きれないほどたくさんの情報をもつ。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// イベントオブジェクトを見てみる</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'.clear-tasks'</span>).addEventListener(<span class="string">'click'</span>, onClick);</span><br><span class="line"></span><br><span class="line"><span class="comment">// コールバック関数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onClick</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> val; <span class="comment">// コンソールログ用</span></span><br><span class="line"></span><br><span class="line">  val = e; <span class="comment">// イベントオブジェクト</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// targetはイベントが発生したエレメントを取得</span></span><br><span class="line">  val = e.target; <span class="comment">// イベントが発生したエレメント</span></span><br><span class="line">  val = e.target.className; <span class="comment">// エレメントのクラス名</span></span><br><span class="line">  val = e.target.classList; <span class="comment">// クラスリスト</span></span><br><span class="line"></span><br><span class="line">  e.target.innerText = <span class="string">'Hello'</span>; <span class="comment">// エレメントのテキストをHelloに書き換え</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// イベントのタイプ</span></span><br><span class="line">  val = e.type; <span class="comment">// click</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// タイムスタンプ</span></span><br><span class="line">  val = e.timeStamp; </span><br><span class="line"></span><br><span class="line">  <span class="comment">// コーディネート</span></span><br><span class="line">  val = e.clientY; <span class="comment">// 526 イベントが発生した場所のY軸座標</span></span><br><span class="line">  val = e.clientX; <span class="comment">// 167 イベントが発生した場所のX軸座標</span></span><br><span class="line">  val= e.offsetY; <span class="comment">// 6 オフセットされたY軸座標</span></span><br><span class="line">  val= e.offsetX; <span class="comment">// 2 オフセットされたX軸座標</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(val); <span class="comment">// テスト用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -424,9 +426,9 @@
           
             <a href="/hexotest/tags/学習メモ/" rel="tag"># 学習メモ</a>
           
-            <a href="/hexotest/tags/curl/" rel="tag"># curl</a>
+            <a href="/hexotest/tags/JavaScript/" rel="tag"># JavaScript</a>
           
-            <a href="/hexotest/tags/CLI/" rel="tag"># CLI</a>
+            <a href="/hexotest/tags/DOM/" rel="tag"># DOM</a>
           
         </div>
       
@@ -439,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hexotest/2018/04/02/1/" rel="next" title="Themeを変える">
-                <i class="fa fa-chevron-left"></i> Themeを変える
+              <a href="/hexotest/2018/04/21/js-13/" rel="next" title="JavaScriptについて学ぶ - 13">
+                <i class="fa fa-chevron-left"></i> JavaScriptについて学ぶ - 13
               </a>
             
           </div>
@@ -448,10 +450,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/hexotest/2018/04/04/js-1/" rel="prev" title="JavaScriptについて学ぶ - 1">
-                JavaScriptについて学ぶ - 1 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -585,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#curlとは？"><span class="nav-number">1.</span> <span class="nav-text">curlとは？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#curlの歴史"><span class="nav-number">2.</span> <span class="nav-text">curlの歴史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#どういう風に使うの？"><span class="nav-number">3.</span> <span class="nav-text">どういう風に使うの？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-準備"><span class="nav-number">3.1.</span> <span class="nav-text">1. 準備</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-コマンドを入力"><span class="nav-number">3.2.</span> <span class="nav-text">2. コマンドを入力</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-試してみる！！"><span class="nav-number">3.3.</span> <span class="nav-text">3. 試してみる！！</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感想"><span class="nav-number">4.</span> <span class="nav-text">感想</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#イベントリスナー-Event-Listeners"><span class="nav-number">1.</span> <span class="nav-text">イベントリスナー / Event Listeners</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#イベントオブジェクト-The-Event-Object"><span class="nav-number">2.</span> <span class="nav-text">イベントオブジェクト / The Event Object</span></a></li></ol></div>
             
 
           </div>
